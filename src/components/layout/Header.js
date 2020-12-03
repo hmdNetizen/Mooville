@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import SwitchButton from "../SwitchButton";
 import { connect } from "react-redux";
 
