@@ -1,0 +1,41 @@
+//MEDIA QUERY MANAGER
+/* 
+    0 - 600px - Phone (extra small)
+    601 - 960px - Tablet portrait (small)
+    961 - 1280px - Tablet Landscape (medium)
+    1281 - 1920px - Laptop screen (large)
+    1921px + - Large screens (Extra Large)
+
+*/
+
+@mixin match($breakpoints) {
+  @if $breakpoints == xs {
+    @media (max-width: 600px) {
+      @content;
+    }
+  }
+
+  @if $breakpoints == sm {
+    @media (max-width: 960px) {
+      @content;
+    }
+  }
+
+  @if $breakpoints == md {
+    @media (max-width: 1280px) {
+      @content;
+    }
+  }
+
+  @if $breakpoints == lg {
+    @media (max-width: 1920px) {
+      @content;
+    }
+  }
+
+  @if $breakpoints == xl {
+    @media (min-width: 1921px) {
+      @content;
+    }
+  }
+}

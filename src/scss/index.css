@@ -1,0 +1,229 @@
+/* 
+    0 - 600px - Phone (extra small)
+    601 - 960px - Tablet portrait (small)
+    961 - 1280px - Tablet Landscape (medium)
+    1281 - 1920px - Laptop screen (large)
+    1921px + - Large screens (Extra Large)
+
+*/
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+}
+
+#root {
+  max-width: 100%;
+  min-height: 100%;
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+}
+
+.checkbox:checked + .checkbox__label {
+  background: #fff;
+}
+
+.checkbox:checked + .checkbox__label .ball {
+  -webkit-transform: translateX(2.45em);
+          transform: translateX(2.45em);
+  background: #333333;
+}
+
+.checkbox__label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 2.52em;
+  padding: 0.5em;
+  width: 5em;
+  border-radius: 5em;
+  background: #333333;
+  position: relative;
+}
+
+.checkbox__icon {
+  font-size: 1.9rem !important;
+}
+
+.checkbox__icon--moon {
+  color: #967921;
+}
+
+.checkbox__icon--sun {
+  color: #d3a43f;
+}
+
+.checkbox__ball {
+  width: 2.2em;
+  height: 2.2em;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  left: 0.2em;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.footer {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  padding: 0;
+  position: static;
+}
+
+@media (max-width: 960px) {
+  .footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding: 1em 5em;
+    -webkit-box-shadow: 0px -1px 5px 0px rgba(50, 50, 50, 0.68);
+    box-shadow: 0px -1px 5px 0px rgba(50, 50, 50, 0.68);
+  }
+}
+
+@media (max-width: 960px) {
+  .footer__darkMode {
+    background: #262525;
+    -webkit-transition: background-color 0.25s ease-out;
+    transition: background-color 0.25s ease-out;
+  }
+}
+
+.footer__darkMode .footer__link {
+  color: #fff;
+}
+
+.footer__darkMode .footer__link:hover {
+  color: #d3a43f;
+}
+
+.footer__darkMode .footer__link:active {
+  color: #d3a43f;
+}
+
+.footer__darkMode .footer__link:focus {
+  color: #d3a43f;
+}
+
+@media (max-width: 960px) {
+  .footer__lightMode {
+    background: #fff;
+    -webkit-transition: background-color 0.25s ease-out;
+    transition: background-color 0.25s ease-out;
+  }
+}
+
+.footer__list {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .footer__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    list-style: none;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+}
+
+@media (max-width: 960px) and (max-width: 600px) {
+  .footer__list {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+.footer__link {
+  color: #262525;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.footer__link:hover {
+  color: red;
+}
+
+.footer__link:active {
+  color: red;
+}
+
+.fas,
+.far {
+  font-size: 2.5rem;
+}
+
+@media (max-width: 600px) {
+  .fas,
+  .far {
+    font-size: 2rem;
+  }
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 5em;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 5em;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.68);
+  box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.68);
+}
+
+.header__logo {
+  color: #d3a43f;
+}
+
+.header__darkMode {
+  background: #262525;
+  -webkit-transition: background-color 0.25s ease-out;
+  transition: background-color 0.25s ease-out;
+}
+
+.header__lightMode {
+  background: #fff;
+  -webkit-transition: background-color 0.25s ease-out;
+  transition: background-color 0.25s ease-out;
+}
+
+.toolbar {
+  margin-bottom: 5em;
+}
+/*# sourceMappingURL=index.css.map */
