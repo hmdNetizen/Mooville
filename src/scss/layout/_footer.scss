@@ -3,7 +3,7 @@
     position: fixed;
     width: 100%;
     bottom: 0;
-    padding: 1em 5em;
+    padding: 1em 2em;
     -webkit-box-shadow: 0px -1px 5px 0px rgba(50, 50, 50, 0.68);
     -moz-box-shadow: 0px -1px 5px 0px rgba(50, 50, 50, 0.68);
     box-shadow: 0px -1px 5px 0px rgba(50, 50, 50, 0.68);
@@ -53,6 +53,20 @@
       justify-content: space-around;
     }
     display: none;
+
+    &__item {
+      &:last-child {
+        cursor: pointer;
+        text-align: center;
+      }
+      &--darkMode {
+        color: $color-white;
+      }
+
+      &--lightMode {
+        color: $color-primary;
+      }
+    }
   }
 
   &__link {
