@@ -1,0 +1,92 @@
+.search {
+  width: 100%;
+
+  @include match(sm) {
+    padding: 0 5em;
+  }
+
+  @include match(xs) {
+    padding: 0 2em;
+  }
+
+  &__input {
+    display: block;
+    width: 30em;
+    margin: 0 auto 0.25em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid $color-light-grey;
+    font-size: 2rem;
+    padding: 0.25em 0;
+    background: transparent;
+
+    @include match(sm) {
+      width: 25em;
+    }
+
+    @include match(xs) {
+      width: 100%;
+    }
+
+    &--darkMode {
+      color: $color-lighter-grey;
+      &::placeholder {
+        color: rgba($color-secondary, 0.6);
+      }
+    }
+
+    &--lightMode {
+      color: $color-primary;
+      &::placeholder {
+        color: rgba($color-tertiary, 0.6);
+      }
+    }
+  }
+
+  &__button {
+    display: block;
+    width: 30em;
+    margin: 0 auto;
+    padding: 0.3em 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 2em;
+    cursor: pointer;
+    color: $color-white;
+
+    &--darkMode {
+      background: $color-secondary;
+
+      &:hover {
+        background: $color-gold;
+      }
+
+      &:active {
+        background: $color-secondary;
+      }
+    }
+    &--lightMode {
+      background: $color-light-grey;
+
+      &:hover {
+        background: $color-dark-grey;
+      }
+
+      &:active {
+        background: $color-light-grey;
+      }
+    }
+
+    @include match(sm) {
+      width: 25em;
+    }
+
+    @include match(xs) {
+      width: 100%;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

@@ -1,13 +1,23 @@
 import React from "react";
-import NavMenu from "./NavMenu";
+import NavMenu from "../../components/NavMenu";
+import SearchField from "../SearchField";
+import { connect } from "react-redux";
 
-const MainSection = ({ openDrawer, setOpenDrawer }) => {
+const MainSection = ({ darkMode }) => {
   return (
-    <main style={{ display: "flex" }}>
-      <NavMenu openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
-      <h2>Main Section</h2>
+    <main className={`main ${darkMode ? "main__darkMode" : "main__lightMode"}`}>
+      <NavMenu />
+      <section className="section">
+        <SearchField />
+      </section>
     </main>
   );
 };
 
-export default MainSection;
+const mapStateToProps = (state) => {
+  return {
+    darkMode: state.theme.darkTheme,
+  };
+};
+
+export default connect(mapStateToProps)(MainSection);

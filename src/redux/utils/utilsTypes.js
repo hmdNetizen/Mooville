@@ -1,0 +1,3 @@
+export const SET_VALUE = "SET_VALUE";
+export const SET_OPEN_DRAWER = "SET_OPEN_DRAWER";
+export const SET_SELECTED_MENU = "SET_SELECTED_MENU";

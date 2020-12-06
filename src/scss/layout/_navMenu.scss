@@ -21,7 +21,7 @@
 
   &__menu--close {
     @include match(sm) {
-      transform: translateX(-25em);
+      transform: translateX(-27em);
     }
 
     @include match(xs) {
@@ -35,15 +35,24 @@
 
   &__menu--lightMode {
     background: #fcfcfc;
+    -webkit-box-shadow: 5px 4px 6px 0px rgba(172, 172, 172, 0.65);
+    -moz-box-shadow: 5px 4px 6px 0px rgba(172, 172, 172, 0.65);
+    box-shadow: 5px 4px 6px 0px rgba(172, 172, 172, 0.65);
   }
 
   &__heading {
     font-size: 2rem;
-    padding-bottom: 0.5em;
+    padding-bottom: 1.5em;
+    padding-top: 1.5em;
+
+    @include match(sm) {
+      padding-bottom: 0.5em;
+    }
 
     &--darkMode {
       color: $color-white;
     }
+
     &--lightMode {
       color: $color-primary;
     }
@@ -51,18 +60,29 @@
 
   &__link {
     display: block;
+    transition: background 0.25s ease-in;
 
     &:hover {
+      background: $color-primary;
+      color: $color-white;
+      opacity: 0.7;
+    }
+
+    &__darkMode {
+      color: $color-gold;
+    }
+
+    &__lightMode {
+      color: $color-tertiary;
+    }
+
+    &--active {
       background: $color-light-grey;
       color: $color-white;
     }
 
-    &--darkMode {
-      color: $color-gold;
-    }
-
-    &--lightMode {
-      color: #c93126;
+    &--inactive {
+      background: none;
     }
   }
 
@@ -76,7 +96,16 @@
     padding: 0.75em 1em;
 
     &--darkMode {
-      border-bottom: 0.5px solid $color-primary;
+      -webkit-box-shadow: -1px 6px 6px 0px rgba($color-primary, 0.65);
+      -moz-box-shadow: -1px 6px 6px 0px rgba($color-primary, 0.65);
+      box-shadow: -1px 6px 6px 0px rgba($color-primary, 0.65);
+    }
+
+    &--lightMode {
+      border-bottom: 0.5px solid $color-lighter-grey;
+      -webkit-box-shadow: 5px 4px 6px 0px rgba(172, 172, 172, 0.65);
+      -moz-box-shadow: 5px 4px 6px 0px rgba(172, 172, 172, 0.65);
+      box-shadow: 5px 4px 6px 0px rgba(172, 172, 172, 0.65);
     }
   }
 }

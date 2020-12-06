@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/layout/Header";
@@ -8,7 +8,6 @@ import store from "./redux/store";
 import MainSection from "./components/layout/MainSection";
 
 function App() {
-  const [openDrawer, setOpenDrawer] = useState(false);
   return (
     <Provider store={store}>
       <Router>
@@ -23,8 +22,8 @@ function App() {
         </Switch>
         <div className="container">
           <Header />
-          <MainSection openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
-          <Footer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
+          <MainSection />
+          <Footer />
         </div>
       </Router>
     </Provider>

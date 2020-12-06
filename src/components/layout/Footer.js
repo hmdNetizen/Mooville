@@ -1,8 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { setOpenDrawer } from "./../../redux/";
+import { setSelectedMenu } from "./../../redux/utils/utilsAction";
 
-const Footer = ({ darkMode, openDrawer, setOpenDrawer }) => {
+const Footer = (props) => {
+  const {
+    darkMode,
+    openDrawer,
+    setOpenDrawer,
+    selectedMenu,
+    setSelectedMenu,
+  } = props;
+  const footerMenus = [
+    { id: 0, title: "Home", icon: "fas fa-home", path: "/" },
+    { id: 1, title: "Search", icon: "fas fa-search", path: "/search" },
+    { id: 2, title: "Bookmarks", icon: "far fa-bookmark", path: "/bookmarks" },
+  ];
+
+  useEffect(() => {
+    [...footerMenus].forEach((menu) => {
+      switch (window.location.pathname) {
+        case menu.path:
+          if (selectedMenu !== menu.id) {
+            setSelectedMenu(menu.id);
+          }
+          break;
+        default:
+          break;
+      }
+    });
+  });
   return (
     <footer
       className={`footer ${
@@ -10,31 +38,35 @@ const Footer = ({ darkMode, openDrawer, setOpenDrawer }) => {
       }`}
     >
       <ul className="footer__list">
-        <Link to="/" className="footer__link">
-          <li className="footer__list__item">
-            <i className="fas fa-home list__item__icon"></i>
-            <p className="list__item__text">Home</p>
-          </li>
-        </Link>
-        <Link to="/search" className="footer__link">
-          <li className="footer__list__item">
-            <i className="fas fa-search list__item__icon"></i>
-            <p className="list__item__text">Search</p>
-          </li>
-        </Link>
-        <Link to="/bookmarks" className="footer__link">
-          <li className="footer__list__item">
-            <i className="far fa-bookmark list__item__icon"></i>
-            <p className="list__item__text">Bookmarks</p>
-          </li>
-        </Link>
+        {footerMenus.map((menu) => (
+          <Link
+            key={menu.id}
+            to={menu.path}
+            className={`footer__link ${
+              darkMode && selectedMenu === menu.id && "footer__link--darkActive"
+            } ${
+              !darkMode &&
+              selectedMenu === menu.id &&
+              "footer__link--lightActive"
+            }`}
+            onClick={() => {
+              setOpenDrawer(false);
+              setSelectedMenu(menu.id);
+            }}
+          >
+            <li className="footer__list__item">
+              <i className={`${menu.icon} list__item__icon`}></i>
+              <p className="list__item__text">{menu.title}</p>
+            </li>
+          </Link>
+        ))}
         <li
           className={`footer__list__item ${
             darkMode
               ? "footer__list__item--darkMode"
               : "footer__list__item--lightMode"
           }`}
-          onClick={() => setOpenDrawer((prev) => !prev)}
+          onClick={() => setOpenDrawer(!openDrawer)}
         >
           {!openDrawer ? (
             <i className="fas fa-bars list__item__icon"></i>
@@ -52,7 +84,16 @@ const Footer = ({ darkMode, openDrawer, setOpenDrawer }) => {
 const mapStateToProps = (state) => {
   return {
     darkMode: state.theme.darkTheme,
+    openDrawer: state.utils.openDrawer,
+    selectedMenu: state.utils.selectedMenu,
   };
 };
 
-export default connect(mapStateToProps)(Footer);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setOpenDrawer: (openDrawer) => dispatch(setOpenDrawer(openDrawer)),
+    setSelectedMenu: (selectedMenu) => dispatch(setSelectedMenu(selectedMenu)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);

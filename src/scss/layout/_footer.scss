@@ -21,11 +21,7 @@
         color: $color-gold;
       }
 
-      &:active {
-        color: $color-gold;
-      }
-
-      &:focus {
+      &--darkActive {
         color: $color-gold;
       }
     }
@@ -34,6 +30,12 @@
     @include match(sm) {
       background: $color-white;
       transition: background-color 0.25s ease-out;
+
+      & .footer__link {
+        &--lightActive {
+          color: $color-tertiary;
+        }
+      }
     }
   }
 
