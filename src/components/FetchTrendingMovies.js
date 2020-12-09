@@ -4,23 +4,23 @@ import swiperCore, { EffectCoverflow } from "swiper";
 import { connect } from "react-redux";
 import { getTrendingMovies } from "../redux";
 
-import sampleImg from "../../src/assets/sample.jpg";
-import sampleImg2 from "../../src/assets/sampleImg2.png";
-import sampleImg3 from "../../src/assets/sampleImg3.jpg";
-import sampleImg4 from "../../src/assets/sampleImg4.png";
-import sampleImg5 from "../../src/assets/sampleImg5.jpg";
-import sampleImg6 from "../../src/assets/founder.jpg";
+// import sampleImg from "../../src/assets/sample.jpg";
+// import sampleImg2 from "../../src/assets/sampleImg2.png";
+// import sampleImg3 from "../../src/assets/sampleImg3.jpg";
+// import sampleImg4 from "../../src/assets/sampleImg4.png";
+// import sampleImg5 from "../../src/assets/sampleImg5.jpg";
+// import sampleImg6 from "../../src/assets/founder.jpg";
 
 swiperCore.use([EffectCoverflow]);
 
-const demoMovies = [
-  { id: 0, poster: sampleImg },
-  { id: 1, poster: sampleImg2 },
-  { id: 2, poster: sampleImg3 },
-  { id: 3, poster: sampleImg4 },
-  { id: 4, poster: sampleImg5 },
-  { id: 5, poster: sampleImg6 },
-];
+// const demoMovies = [
+//   { id: 0, poster: sampleImg },
+//   { id: 1, poster: sampleImg2 },
+//   { id: 2, poster: sampleImg3 },
+//   { id: 3, poster: sampleImg4 },
+//   { id: 4, poster: sampleImg5 },
+//   { id: 5, poster: sampleImg6 },
+// ];
 
 const FetchTrendingMovie = ({ showTrendingMovies, trending }) => {
   console.log(trending);
