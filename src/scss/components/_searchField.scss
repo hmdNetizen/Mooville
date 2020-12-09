@@ -31,14 +31,14 @@
     &--darkMode {
       color: $color-lighter-grey;
       &::placeholder {
-        color: rgba($color-secondary, 0.6);
+        color: rgba($color-light-grey, 0.6);
       }
     }
 
     &--lightMode {
       color: $color-primary;
       &::placeholder {
-        color: rgba($color-tertiary, 0.6);
+        color: rgba($color-light-grey, 0.6);
       }
     }
   }
@@ -55,25 +55,27 @@
     color: $color-white;
 
     &--darkMode {
-      background: $color-secondary;
+      background: $color-gold;
+      transition: background 0.25s linear;
 
       &:hover {
-        background: $color-gold;
+        background: $color-secondary;
       }
 
       &:active {
-        background: $color-secondary;
+        background: $color-gold;
       }
     }
     &--lightMode {
-      background: $color-light-grey;
+      background: $color-tertiary;
+      transition: background 0.25s linear;
 
       &:hover {
-        background: $color-dark-grey;
+        background: rgba($color-tertiary, 0.9);
       }
 
       &:active {
-        background: $color-light-grey;
+        background: $color-tertiary;
       }
     }
 

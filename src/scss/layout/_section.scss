@@ -4,10 +4,12 @@
 
   &__darkMode {
     background: rgb(44, 44, 44);
+    transition: background 0.25s linear;
   }
 
   &__lightMode {
     background: $color-white;
+    transition: background 0.25s linear;
   }
 }
 .section {

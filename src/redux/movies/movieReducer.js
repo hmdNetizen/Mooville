@@ -1,18 +1,19 @@
-import { GET_MOVIES } from "./movieTypes";
+import { GET_TRENDING_MOVIES_SUCCESS } from "./movieTypes";
+
 const initialState = {
-  movies: [
-    { id: 0, name: "The Legend of the seeker", genre: "Adventure" },
-    { id: 1, name: "Exit plan", genre: "Action" },
-    { id: 2, name: "The conjuring", genre: "Horror" },
-  ],
+  moviesData: {
+    trending: [],
+  },
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_MOVIES:
+    case GET_TRENDING_MOVIES_SUCCESS:
       return {
         ...state,
-        movies: state.movies[1],
+        moviesData: {
+          trending: action.payload,
+        },
       };
     default:
       return state;
