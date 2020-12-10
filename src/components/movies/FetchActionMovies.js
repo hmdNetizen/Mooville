@@ -14,16 +14,33 @@ const FetchActionMovies = ({ actions, darkMode }) => {
       </h2>
       <div className="action__card__wrapper">
         {actions.map((action) => (
-          <div className="action__card">
-            <Link>
+          <Link className="action__card__link">
+            <div className="action__card">
               <img
                 src={`http://image.tmdb.org/t/p/w185/${action.poster_path}`}
                 alt={`${action.original_title} poster`}
+                className="action__card__poster"
               />
-              <h4>{action.original_title}</h4>
-              <p>Ratings: {action.id}</p>
-            </Link>
-          </div>
+              <h4
+                className={`action__card__title ${
+                  darkMode
+                    ? "action__card__title--darkMode"
+                    : "action__card__title--lightMode"
+                }`}
+              >
+                {action.original_title}
+              </h4>
+              <p
+                className={`action__card__rating ${
+                  darkMode
+                    ? "action__card__rating--darkMode"
+                    : "action__card__rating--lightMode"
+                }`}
+              >
+                Ratings: {action.id}
+              </p>
+            </div>
+          </Link>
         ))}
       </div>
     </section>

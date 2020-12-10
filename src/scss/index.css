@@ -411,9 +411,29 @@ body {
   border-radius: 1em;
 }
 
-.action__card img {
+.action__card__poster {
   border-radius: 1em;
   width: 100%;
+}
+
+.action__card__title {
+  font-size: 1.25rem;
+}
+
+.action__card__title--darkMode {
+  color: #d1d1d1;
+}
+
+.action__card__title--lightMode {
+  color: #262525;
+}
+
+.action__card__rating--darkMode {
+  color: #d3a43f;
+}
+
+.action__card__rating--lightMode {
+  color: #c93126;
 }
 
 .footer {
