@@ -1,0 +1,35 @@
+.action {
+  margin-top: 5em;
+
+  &__heading {
+    @include headingTitle;
+  }
+
+  &__card__wrapper {
+    @include card-wrapper;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 1em;
+
+    @include match(md) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    @include match(sm) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    @include match(xs) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  &__card {
+    border-radius: 1em;
+
+    & img {
+      border-radius: 1em;
+      width: 100%;
+    }
+  }
+}

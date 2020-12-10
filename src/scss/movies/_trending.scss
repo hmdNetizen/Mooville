@@ -1,9 +1,8 @@
 .slider-wrapper {
-  max-width: 96em;
-  margin: 0 auto;
+  @include card-wrapper;
 }
 
-.trendingCard {
+.trending {
   margin-top: 5em;
 
   @include match(sm) {
@@ -11,21 +10,25 @@
   }
 
   &__heading {
-    font-size: 2.5rem;
-    font-weight: 500;
-    margin-bottom: 1.5em;
-    margin-left: 2.7em;
+    @include headingTitle;
 
     @include match(sm) {
       margin-left: 0;
     }
+  }
+
+  &__error__heading {
+    @include headingTitle;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
 
     &--darkMode {
-      color: $color-lighter-grey;
+      color: $color-tertiary;
     }
 
     &--lightMode {
-      color: $color-primary;
+      color: $color-tertiary;
     }
   }
 

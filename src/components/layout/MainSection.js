@@ -2,7 +2,8 @@ import React, { Fragment } from "react";
 import NavMenu from "../../components/NavMenu";
 import SearchField from "../SearchField";
 import { connect } from "react-redux";
-import FetchTrendingMovie from "../FetchTrendingMovies";
+import FetchTrendingMovie from "../movies/FetchTrendingMovies";
+import FetchActionMovies from "../movies/FetchActionMovies";
 
 const MainSection = ({ darkMode }) => {
   return (
@@ -14,6 +15,9 @@ const MainSection = ({ darkMode }) => {
         </Fragment>
         <Fragment>
           <FetchTrendingMovie />
+        </Fragment>
+        <Fragment>
+          <FetchActionMovies />
         </Fragment>
       </section>
     </main>

@@ -8,7 +8,10 @@
 //components
 @import "components/switchButton";
 @import "components/searchField";
-@import "components/card";
+
+//movies
+@import "movies/trending";
+@import "movies/action";
 
 //layout
 @import "layout/footer";

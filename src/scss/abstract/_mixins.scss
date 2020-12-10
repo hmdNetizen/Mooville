@@ -1,3 +1,32 @@
+// MOVIES HEADING
+@mixin headingTitle {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5em;
+  margin-left: 2.7em;
+
+  &--darkMode {
+    color: $color-lighter-grey;
+  }
+
+  &--lightMode {
+    color: $color-primary;
+  }
+}
+
+// CARD PARENT WRAPPER
+@mixin card-wrapper {
+  max-width: 96em;
+  margin: 0 auto;
+
+  @include match(md) {
+    max-width: 65em;
+  }
+  @include match(sm) {
+    max-width: 96em;
+  }
+}
+
 //MEDIA QUERY MANAGER
 /* 
     0 - 600px - Phone (extra small)
