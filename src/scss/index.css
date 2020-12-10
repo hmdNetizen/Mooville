@@ -226,10 +226,13 @@ body {
   outline: none;
 }
 
+.slider-wrapper {
+  max-width: 96em;
+  margin: 0 auto;
+}
+
 .trendingCard {
   margin-top: 5em;
-  margin-left: 3em;
-  overflow-x: hidden;
 }
 
 @media (max-width: 960px) {
@@ -242,12 +245,32 @@ body {
   font-size: 2.5rem;
   font-weight: 500;
   margin-bottom: 1.5em;
+  margin-left: 2.7em;
+}
+
+@media (max-width: 960px) {
+  .trendingCard__heading {
+    margin-left: 0;
+  }
+}
+
+.trendingCard__heading--darkMode {
+  color: #d1d1d1;
+}
+
+.trendingCard__heading--lightMode {
+  color: #262525;
 }
 
 .trendingCard__poster__wrapper {
   width: 17em;
   height: 25em;
   border-radius: 1.5em;
+}
+
+.trendingCard__poster__wrapper--darkMode {
+  -webkit-box-shadow: 1px 1px 15px 0px rgba(140, 140, 140, 0.48);
+  box-shadow: 1px 1px 15px 0px rgba(140, 140, 140, 0.48);
 }
 
 .trendingCard__poster {

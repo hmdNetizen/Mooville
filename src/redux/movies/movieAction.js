@@ -2,7 +2,14 @@ import axios from "axios";
 import {
   GET_TRENDING_MOVIES_SUCCESS,
   GET_TRENDING_MOVIES_FAILURE,
+  SET_LOADING,
 } from "./movieTypes";
+
+const setLoading = () => {
+  return {
+    type: SET_LOADING,
+  };
+};
 
 const getTrendingMoviesSuccess = (success) => {
   return {
@@ -19,6 +26,7 @@ const getTrendingMoviesFailure = (error) => {
 };
 
 export const getTrendingMovies = () => async (dispatch) => {
+  dispatch(setLoading());
   try {
     const response = await axios.get(
       "https://api.themoviedb.org/3/trending/movie/day?api_key=f5205bcd74d03769d95f80b89c9f4db6"

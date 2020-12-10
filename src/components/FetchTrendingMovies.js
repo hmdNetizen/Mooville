@@ -1,17 +1,12 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import swiperCore, { EffectCoverflow } from "swiper";
+import swiperCore, { EffectCoverflow, Scrollbar } from "swiper";
 import { connect } from "react-redux";
 import { getTrendingMovies } from "../redux";
+import Spinner from "./Spinner";
 
-// import sampleImg from "../../src/assets/sample.jpg";
-// import sampleImg2 from "../../src/assets/sampleImg2.png";
-// import sampleImg3 from "../../src/assets/sampleImg3.jpg";
-// import sampleImg4 from "../../src/assets/sampleImg4.png";
-// import sampleImg5 from "../../src/assets/sampleImg5.jpg";
-// import sampleImg6 from "../../src/assets/founder.jpg";
-
-swiperCore.use([EffectCoverflow]);
+swiperCore.use([EffectCoverflow, Scrollbar]);
 
 // const demoMovies = [
 //   { id: 0, poster: sampleImg },
@@ -22,34 +17,59 @@ swiperCore.use([EffectCoverflow]);
 //   { id: 5, poster: sampleImg6 },
 // ];
 
-const FetchTrendingMovie = ({ showTrendingMovies, trending }) => {
-  console.log(trending);
+const FetchTrendingMovie = (props) => {
+  const { showTrendingMovies, trending, darkMode, loading } = props;
   useEffect(() => {
     showTrendingMovies();
   }, [showTrendingMovies]);
   return (
     <section className="trendingCard">
-      <h2 className="trendingCard__heading">Trending Now</h2>
-      <Swiper
-        // spaceBetween={50}
-        centeredSlides={true}
-        effect="coverflow"
-        height={250}
-        width={170}
+      <h2
+        className={`trendingCard__heading ${
+          darkMode
+            ? "trendingCard__heading--darkMode"
+            : "trendingCard__heading--lightMode"
+        }`}
       >
-        {trending.map((trend) => (
-          <SwiperSlide key={trend.id}>
-            <div className="trendingCard__poster__wrapper">
-              <img
-                src={`http://image.tmdb.org/t/p/w185/${trend.poster_path}`}
-                alt="post"
-                className="trendingCard__poster"
-                sizes="185px"
-              />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+        Trending Now
+      </h2>
+      <div className="slider-wrapper">
+        {loading ? (
+          <Spinner />
+        ) : (
+          <Swiper
+            // spaceBetween={50}
+            centeredSlides={true}
+            effect="coverflow"
+            height={250}
+            width={170}
+          >
+            {trending.map((trend) => (
+              <SwiperSlide
+                key={trend.id}
+                stle={{ borderRadius: "20px !important" }}
+              >
+                <div
+                  className={`trendingCard__poster__wrapper ${
+                    darkMode
+                      ? "trendingCard__poster__wrapper--darkMode"
+                      : undefined
+                  }`}
+                >
+                  <Link to="/">
+                    <img
+                      src={`http://image.tmdb.org/t/p/w185/${trend.poster_path}`}
+                      alt="post"
+                      className="trendingCard__poster"
+                      sizes="185px"
+                    />
+                  </Link>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
+      </div>
     </section>
   );
 };
@@ -57,6 +77,8 @@ const FetchTrendingMovie = ({ showTrendingMovies, trending }) => {
 const mapStateToProps = (state) => {
   return {
     trending: state.movies.moviesData.trending,
+    darkMode: state.theme.darkTheme,
+    loading: state.movies.loading,
   };
 };
 
