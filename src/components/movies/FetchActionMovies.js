@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -18,6 +18,7 @@ const FetchActionMovies = ({ actions, darkMode }) => {
             <Link>
               <img
                 src={`http://image.tmdb.org/t/p/w185/${action.poster_path}`}
+                alt={`${action.original_title} poster`}
               />
               <h4>{action.original_title}</h4>
               <p>Ratings: {action.id}</p>
