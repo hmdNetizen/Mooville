@@ -1,13 +1,13 @@
 import {
-  GET_TRENDING_MOVIES_FAILURE,
+  GET_ACTION_MOVIES_SUCCESS,
+  GET_MOVIES_FAILURE,
   GET_TRENDING_MOVIES_SUCCESS,
   SET_LOADING,
 } from "./movieTypes";
 
 const initialState = {
-  moviesData: {
-    trending: [],
-  },
+  trending: [],
+  actionMovies: [],
   error: "",
   loading: false,
 };
@@ -22,17 +22,21 @@ export default (state = initialState, action) => {
     case GET_TRENDING_MOVIES_SUCCESS:
       return {
         ...state,
-        moviesData: {
-          trending: action.payload,
-        },
+
+        trending: action.payload,
+
         loading: false,
       };
-    case GET_TRENDING_MOVIES_FAILURE:
+    case GET_ACTION_MOVIES_SUCCESS:
       return {
         ...state,
-        movieData: {
-          trending: [],
-        },
+        actionMovies: action.payload,
+      };
+    case GET_MOVIES_FAILURE:
+      return {
+        ...state,
+        trending: [],
+        actionMovies: [],
         error: action.payload,
         loading: false,
       };

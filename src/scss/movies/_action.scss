@@ -36,10 +36,34 @@
     &__poster {
       border-radius: 1em;
       width: 100%;
+
+      &--darkMode {
+        -webkit-box-shadow: 1px 1px 15px 0px rgba($color-light-grey, 0.48);
+        -moz-box-shadow: 1px 1px 15px 0px rgba($color-light-grey, 0.48);
+        box-shadow: 1px 1px 15px 0px rgba($color-light-grey, 0.48);
+      }
+
+      &--lightMode {
+        -webkit-box-shadow: 1px 1px 15px 0px rgba($color-dark-grey, 0.48);
+        -moz-box-shadow: 1px 1px 15px 0px rgba($color-dark-grey, 0.48);
+        box-shadow: 1px 1px 15px 0px rgba($color-dark-grey, 0.48);
+      }
     }
 
     &__title {
       font-size: 1.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 25ch;
+
+      @include match(md) {
+        max-width: 17ch;
+      }
+
+      @include match(sm) {
+        max-width: 15ch;
+      }
 
       &--darkMode {
         color: $color-lighter-grey;

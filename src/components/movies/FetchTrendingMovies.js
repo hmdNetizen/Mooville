@@ -76,7 +76,7 @@ const FetchTrendingMovie = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    trending: state.movies.moviesData.trending,
+    trending: state.movies.trending,
     darkMode: state.theme.darkTheme,
     loading: state.movies.loading,
     error: state.movies.error,

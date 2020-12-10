@@ -416,8 +416,34 @@ body {
   width: 100%;
 }
 
+.action__card__poster--darkMode {
+  -webkit-box-shadow: 1px 1px 15px 0px rgba(140, 140, 140, 0.48);
+  box-shadow: 1px 1px 15px 0px rgba(140, 140, 140, 0.48);
+}
+
+.action__card__poster--lightMode {
+  -webkit-box-shadow: 1px 1px 15px 0px rgba(51, 51, 51, 0.48);
+  box-shadow: 1px 1px 15px 0px rgba(51, 51, 51, 0.48);
+}
+
 .action__card__title {
   font-size: 1.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 25ch;
+}
+
+@media (max-width: 1280px) {
+  .action__card__title {
+    max-width: 17ch;
+  }
+}
+
+@media (max-width: 960px) {
+  .action__card__title {
+    max-width: 15ch;
+  }
 }
 
 .action__card__title--darkMode {
