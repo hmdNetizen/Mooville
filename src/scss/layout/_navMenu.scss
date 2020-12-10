@@ -1,6 +1,7 @@
 .nav {
   height: 100vh;
   position: fixed;
+  z-index: 10;
   @include match(sm) {
     margin-top: -0.5em;
     transition: all 0.25s linear;
