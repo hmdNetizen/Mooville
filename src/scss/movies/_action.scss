@@ -3,6 +3,10 @@
 
   &__heading {
     @include headingTitle;
+
+    @include match(sm) {
+      margin-left: 0.5em;
+    }
   }
 
   &__card__wrapper {
@@ -17,10 +21,12 @@
 
     @include match(sm) {
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      margin: 0 0.75em;
     }
 
     @include match(xs) {
       grid-template-columns: 1fr 1fr 1fr;
+      margin: 0 0.75em;
     }
   }
 

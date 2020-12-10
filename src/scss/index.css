@@ -281,11 +281,11 @@ body {
 }
 
 .trending__heading--darkMode {
-  color: #d1d1d1;
+  color: #d3a43f;
 }
 
 .trending__heading--lightMode {
-  color: #262525;
+  color: #c93126;
 }
 
 @media (max-width: 960px) {
@@ -305,11 +305,11 @@ body {
 }
 
 .trending__error__heading--darkMode {
-  color: #d1d1d1;
+  color: #d3a43f;
 }
 
 .trending__error__heading--lightMode {
-  color: #262525;
+  color: #c93126;
 }
 
 .trending__error__heading--darkMode {
@@ -349,11 +349,17 @@ body {
 }
 
 .action__heading--darkMode {
-  color: #d1d1d1;
+  color: #d3a43f;
 }
 
 .action__heading--lightMode {
-  color: #262525;
+  color: #c93126;
+}
+
+@media (max-width: 960px) {
+  .action__heading {
+    margin-left: 0.5em;
+  }
 }
 
 .action__card__wrapper {
@@ -389,6 +395,7 @@ body {
   .action__card__wrapper {
     -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin: 0 0.75em;
   }
 }
 
@@ -396,6 +403,7 @@ body {
   .action__card__wrapper {
     -ms-grid-columns: 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 0.75em;
   }
 }
 
