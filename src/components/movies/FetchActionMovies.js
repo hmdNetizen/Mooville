@@ -3,14 +3,10 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getActionMovies } from "../../redux";
 import Spinner from "../Spinner";
+import StarRating from "../StarRating";
 
-const FetchActionMovies = ({
-  darkMode,
-  showActionMovies,
-  actionMovies,
-  loading,
-}) => {
-  console.log(actionMovies);
+const FetchActionMovies = (props) => {
+  const { darkMode, showActionMovies, actionMovies, loading } = props;
   useEffect(() => {
     showActionMovies();
   }, [showActionMovies]);
@@ -21,18 +17,18 @@ const FetchActionMovies = ({
           darkMode ? "action__heading--darkMode" : "action__heading--lightMode"
         }`}
       >
-        Discover Movies (Action){" "}
+        Discover Movies (Action)
       </h2>
-      <div className="action__card__wrapper">
-        {loading ? (
-          <Spinner />
-        ) : (
-          actionMovies.map((action) => (
-            <Link to="/" className="action__card__link" key={action.id}>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="action__card__wrapper">
+          {actionMovies.map((movie) => (
+            <Link to="/" className="action__card__link" key={movie.id}>
               <div className="action__card">
                 <img
-                  src={`http://image.tmdb.org/t/p/w185/${action.poster_path}`}
-                  alt={`${action.original_title} poster`}
+                  src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`}
+                  alt={`${movie.original_title} poster`}
                   className={`action__card__poster ${
                     darkMode
                       ? "action__card__poster--darkMode"
@@ -46,7 +42,7 @@ const FetchActionMovies = ({
                       : "action__card__title--lightMode"
                   }`}
                 >
-                  {action.original_title}
+                  {movie.original_title}
                 </h4>
                 <p
                   className={`action__card__rating ${
@@ -55,13 +51,13 @@ const FetchActionMovies = ({
                       : "action__card__rating--lightMode"
                   }`}
                 >
-                  Ratings: {action.id}
+                  <StarRating rating={Math.ceil(movie.vote_average / 2)} />
                 </p>
               </div>
             </Link>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 };

@@ -30,7 +30,6 @@ body {
 .container {
   min-width: 100%;
   position: relative;
-  height: 3000px;
 }
 
 .checkbox {
@@ -338,7 +337,8 @@ body {
 }
 
 .action {
-  margin-top: 5em;
+  padding-top: 5em;
+  padding-bottom: 5em;
 }
 
 .action__heading {
