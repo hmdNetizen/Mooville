@@ -56,7 +56,7 @@ const FetchTrendingMovie = (props) => {
                     darkMode ? "trending__poster__wrapper--darkMode" : undefined
                   }`}
                 >
-                  <Link to="/">
+                  <Link to={`/movie/${trend.id}`}>
                     <img
                       src={`http://image.tmdb.org/t/p/w185/${trend.poster_path}`}
                       alt="post"

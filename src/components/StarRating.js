@@ -5,10 +5,9 @@ import { connect } from "react-redux";
 const StarRating = ({ rating, darkMode }) => {
   return (
     <StarRatingComponent
+      name="rating"
       editing={false}
-      renderStarIcon={() => (
-        <i class="fas fa-star" style={{ fontSize: 15 }}></i>
-      )}
+      renderStarIcon={() => <i className="fas fa-star movie__star__icon"></i>}
       starCount={5}
       value={rating}
       emptyStarColor={darkMode ? "#8c8c8c" : undefined}

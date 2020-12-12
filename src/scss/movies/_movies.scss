@@ -1,4 +1,4 @@
-.action {
+.movie {
   padding-top: 5em;
   padding-bottom: 5em;
 
@@ -7,6 +7,21 @@
 
     @include match(sm) {
       margin-left: 0.5em;
+    }
+  }
+
+  &__error__heading {
+    @include headingTitle;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+
+    &--darkMode {
+      color: $color-tertiary;
+    }
+
+    &--lightMode {
+      color: $color-tertiary;
     }
   }
 
@@ -21,7 +36,7 @@
     }
 
     @include match(sm) {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
       margin: 0 0.75em;
     }
 
@@ -33,6 +48,7 @@
 
   &__card {
     border-radius: 1em;
+    margin-bottom: 2em;
 
     &__poster {
       border-radius: 1em;
@@ -66,6 +82,15 @@
         max-width: 15ch;
       }
 
+      @include match(xs) {
+        max-width: 12ch;
+      }
+
+      @include match(xxs) {
+        font-size: 0.85rem;
+        max-width: 10ch;
+      }
+
       &--darkMode {
         color: $color-lighter-grey;
       }
@@ -83,6 +108,17 @@
       &--lightMode {
         color: $color-tertiary;
       }
+    }
+  }
+  &__star__icon {
+    font-size: 1.5rem !important;
+
+    @include match(xs) {
+      font-size: 1.2rem !important;
+    }
+
+    @include match(xxs) {
+      font-size: 0.85rem !important;
     }
   }
 }

@@ -1,72 +1,41 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getActionMovies } from "../../redux";
 import Spinner from "../Spinner";
-import StarRating from "../StarRating";
+import MovieItem from "./MovieItem";
 
 const FetchActionMovies = (props) => {
-  const { darkMode, showActionMovies, actionMovies, loading } = props;
+  const { showActionMovies, actionMovies, loading, error, darkMode } = props;
   useEffect(() => {
     showActionMovies();
   }, [showActionMovies]);
-  return (
-    <section className="action">
-      <h2
-        className={`action__heading ${
-          darkMode ? "action__heading--darkMode" : "action__heading--lightMode"
-        }`}
-      >
-        Discover Movies (Action)
-      </h2>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <div className="action__card__wrapper">
-          {actionMovies.map((movie) => (
-            <Link to="/" className="action__card__link" key={movie.id}>
-              <div className="action__card">
-                <img
-                  src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`}
-                  alt={`${movie.original_title} poster`}
-                  className={`action__card__poster ${
-                    darkMode
-                      ? "action__card__poster--darkMode"
-                      : "action__card__poster--lightMode"
-                  }`}
-                />
-                <h4
-                  className={`action__card__title ${
-                    darkMode
-                      ? "action__card__title--darkMode"
-                      : "action__card__title--lightMode"
-                  }`}
-                >
-                  {movie.original_title}
-                </h4>
-                <p
-                  className={`action__card__rating ${
-                    darkMode
-                      ? "action__card__rating--darkMode"
-                      : "action__card__rating--lightMode"
-                  }`}
-                >
-                  <StarRating rating={Math.ceil(movie.vote_average / 2)} />
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      )}
-    </section>
+  return loading ? (
+    <Spinner />
+  ) : error ? (
+    <h2
+      className={`movie__error__heading ${
+        darkMode
+          ? "movie__error__heading--darkMode"
+          : "movie__error__heading--lightMode"
+      }`}
+    >
+      Unknown Server Error!
+    </h2>
+  ) : (
+    <div className="movie__card__wrapper">
+      {actionMovies.map((movie) => (
+        <MovieItem key={movie.id} movie={movie} />
+      ))}
+    </div>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    darkMode: state.theme.darkTheme,
     loading: state.movies.loading,
     actionMovies: state.movies.actionMovies,
+    error: state.movies.error,
+    darkMode: state.theme.darkTheme,
   };
 };
 

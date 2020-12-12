@@ -38,6 +38,12 @@
 */
 
 @mixin match($breakpoints) {
+  @if $breakpoints == xxs {
+    @media (max-width: 320px) {
+      @content;
+    }
+  }
+
   @if $breakpoints == xs {
     @media (max-width: 600px) {
       @content;

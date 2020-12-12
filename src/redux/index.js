@@ -1,6 +1,7 @@
 export { setDarkTheme } from "./theme/themeAction";
-export { setValue } from "./utils/utilsAction";
-export { setOpenDrawer } from "./utils/utilsAction";
-export { setSelectedMenu } from "./utils/utilsAction";
-export { getTrendingMovies } from "./movies/movieAction";
-export { getActionMovies } from "./movies/movieAction";
+export { setValue, setOpenDrawer, setSelectedMenu } from "./utils/utilsAction";
+export {
+  getTrendingMovies,
+  getActionMovies,
+  getSingleMovie,
+} from "./movies/movieAction";

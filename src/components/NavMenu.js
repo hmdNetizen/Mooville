@@ -7,7 +7,7 @@ const navLists = [
   { id: 0, title: "Action", link: "/action" },
   { id: 1, title: "Adventure", link: "/adventure" },
   { id: 2, title: "Animation", link: "/animation" },
-  { id: 3, title: "Commedy", link: "/comedy" },
+  { id: 3, title: "Comedy", link: "/comedy" },
   { id: 4, title: "Documentary", link: "/documentary" },
   { id: 5, title: "Horror", link: "/horror" },
   { id: 6, title: "Romance", link: "/romance" },

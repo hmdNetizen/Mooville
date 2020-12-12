@@ -6,23 +6,33 @@ import Footer from "./components/layout/Footer";
 import "./scss/index.css";
 import store from "./redux/store";
 import MainSection from "./components/layout/MainSection";
+import SearchField from "./components/SearchField";
+import FetchMovie from "./components/movies/FetchMovie";
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Switch>
-          <Route exact path="/" component={() => <div>Home</div>} />
-          <Route exact path="/search" component={() => <div>Search</div>} />
-          <Route
-            exact
-            path="/bookmarks"
-            component={() => <div>Bookmarks</div>}
-          />
-        </Switch>
+        <Header />
         <div className="container">
-          <Header />
-          <MainSection />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={(props) => <MainSection {...props} />}
+            />
+            <Route
+              exact
+              path="/movie/:id"
+              render={(props) => <FetchMovie {...props} />}
+            />
+            <Route exact path="/search" component={SearchField} />
+            <Route
+              exact
+              path="/bookmarks"
+              component={() => <div>Bookmarks</div>}
+            />
+          </Switch>
           <Footer />
         </div>
       </Router>

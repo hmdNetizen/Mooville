@@ -4,6 +4,7 @@ import {
   GET_MOVIES_FAILURE,
   SET_LOADING,
   GET_ACTION_MOVIES_SUCCESS,
+  GET_SINGLE_MOVIE,
 } from "./movieTypes";
 
 const apiKey = "f5205bcd74d03769d95f80b89c9f4db6";
@@ -28,6 +29,20 @@ const getMoviesFailure = (error) => {
   };
 };
 
+export const getSingleMovie = (movieId) => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&append_to_response=videos`
+    );
+    dispatch({
+      type: GET_SINGLE_MOVIE,
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
 export const getTrendingMovies = () => async (dispatch) => {
   dispatch(setLoading());
   try {
@@ -40,13 +55,6 @@ export const getTrendingMovies = () => async (dispatch) => {
   }
 };
 
-const getActionMoviesSuccess = (success) => {
-  return {
-    type: GET_ACTION_MOVIES_SUCCESS,
-    payload: success,
-  };
-};
-
 export const getActionMovies = () => async (dispatch) => {
   setLoading();
   try {
@@ -54,7 +62,10 @@ export const getActionMovies = () => async (dispatch) => {
       `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=28`
     );
 
-    dispatch(getActionMoviesSuccess(response.data.results));
+    dispatch({
+      type: GET_ACTION_MOVIES_SUCCESS,
+      payload: response.data.results,
+    });
   } catch (error) {
     dispatch(getMoviesFailure(error.message));
   }
