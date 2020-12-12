@@ -6,7 +6,7 @@ import StarRating from "../StarRating";
 const Movies = ({ movie, darkMode }) => {
   return (
     <Fragment>
-      <Link to={`/`} className="movie__card__link">
+      <Link to={`/movie/${movie.id}`} className="movie__card__link">
         <div className="movie__card">
           <img
             src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`}
