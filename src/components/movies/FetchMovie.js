@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { cloneDeep } from "lodash";
+// import { cloneDeep } from "lodash";
 import { connect } from "react-redux";
 import { getSingleMovie } from "./../../redux";
 import StarRating from "../StarRating";
@@ -32,6 +32,7 @@ const FetchMovie = (props) => {
         >
           <div className="singleMovie__video">
             <iframe
+              title={movie.title}
               width="420"
               height="345"
               src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&controls=0"
@@ -46,8 +47,9 @@ const FetchMovie = (props) => {
             }`}
           >
             <h2 className="singleMovie__title">{movie.title}</h2>
-
-            <StarRating rating={Math.ceil(movie.vote_average / 2)} />
+            <Fragment>
+              <StarRating rating={Math.ceil(movie.vote_average / 2)} />
+            </Fragment>
 
             <p className="singleMovie__overview">{movie.overview}</p>
             <ul className="singleMovie__list">
