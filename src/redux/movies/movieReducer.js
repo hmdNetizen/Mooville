@@ -4,14 +4,16 @@ import {
   GET_TRENDING_MOVIES_SUCCESS,
   SET_LOADING,
   GET_SINGLE_MOVIE,
+  GET_SIMILAR_MOVIES,
 } from "./movieTypes";
 
 const initialState = {
   trending: [],
   actionMovies: [],
+  similarMovies: [],
   error: "",
   loading: false,
-  movie: {},
+  selectedMovie: {},
 };
 
 export default (state = initialState, action) => {
@@ -35,7 +37,12 @@ export default (state = initialState, action) => {
     case GET_SINGLE_MOVIE:
       return {
         ...state,
-        movie: action.payload,
+        selectedMovie: action.payload,
+      };
+    case GET_SIMILAR_MOVIES:
+      return {
+        ...state,
+        similarMovies: action.payload,
       };
     case GET_MOVIES_FAILURE:
       return {

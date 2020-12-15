@@ -27,6 +27,22 @@
     }
   }
 
+  &__spinner__wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--details {
+      margin-top: 5em;
+
+      @include match(sm) {
+        margin-top: 0;
+      }
+    }
+  }
+
   &__video {
     width: 60%;
     margin-right: 5%;
@@ -57,6 +73,10 @@
       height: 60vh;
       z-index: 1;
     }
+
+    @include match(xs) {
+      height: 35vh;
+    }
   }
 
   &__description {
@@ -78,6 +98,7 @@
     }
 
     @include match(xs) {
+      margin-top: 35vh;
       padding-left: 2em;
       padding-right: 2em;
     }
@@ -182,12 +203,98 @@
       font-size: 1.2rem;
     }
   }
+
+  &__download__wrapper {
+    margin-top: 5em;
+  }
+
+  &__download__btn {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    height: 2.5em;
+    border-radius: 0.5em;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: $color-tertiary;
+    color: $color-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: #b92b21;
+    }
+
+    &__icon {
+      margin-right: 1.5em;
+    }
+  }
+
+  & .dv-star-rating-non-editable {
+    @include match(md) {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__similarMovies {
+    margin-top: 5em;
+
+    &__heading {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      margin-bottom: 1em;
+    }
+    &__wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 1em;
+
+      & .dv-star-rating-non-editable {
+        @include match(md) {
+          left: 0;
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+
+  & .movie__star__icon {
+    font-size: 1rem !important;
+
+    @include match(xs) {
+      font-size: 1.2rem !important;
+    }
+
+    @include match(xxs) {
+      font-size: 0.85rem !important;
+    }
+  }
+
+  & .movie__card__title {
+    max-width: 17ch;
+
+    @include match(md) {
+      max-width: 17ch;
+    }
+
+    @include match(sm) {
+      max-width: 15ch;
+    }
+
+    @include match(xs) {
+      max-width: 12ch;
+    }
+
+    @include match(xxs) {
+      font-size: 0.85rem;
+      max-width: 10ch;
+    }
+  }
 }
 
 // Star rating preset style name
-.dv-star-rating-non-editable {
-  @include match(md) {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}

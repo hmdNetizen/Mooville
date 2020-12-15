@@ -5,6 +5,7 @@ import {
   SET_LOADING,
   GET_ACTION_MOVIES_SUCCESS,
   GET_SINGLE_MOVIE,
+  GET_SIMILAR_MOVIES,
 } from "./movieTypes";
 
 const apiKey = "f5205bcd74d03769d95f80b89c9f4db6";
@@ -66,6 +67,23 @@ export const getActionMovies = () => async (dispatch) => {
     dispatch({
       type: GET_ACTION_MOVIES_SUCCESS,
       payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
+export const getSimilarMovies = (movieId) => async (dispatch) => {
+  setLoading();
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${apiKey}&language=en-US&page=1`
+    );
+    const limitResponse = response.data.results.slice(1, 7);
+
+    dispatch({
+      type: GET_SIMILAR_MOVIES,
+      payload: limitResponse,
     });
   } catch (error) {
     dispatch(getMoviesFailure(error.message));

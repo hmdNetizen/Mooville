@@ -4,4 +4,5 @@ export {
   getTrendingMovies,
   getActionMovies,
   getSingleMovie,
+  getSimilarMovies,
 } from "./movies/movieAction";
