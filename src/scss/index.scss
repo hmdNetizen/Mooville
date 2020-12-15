@@ -10,8 +10,9 @@
 @import "components/searchField";
 
 //movies
-@import "movies/trending";
 @import "movies/movies";
+@import "movies/singleMovie";
+@import "movies/trending";
 
 //layout
 @import "layout/footer";

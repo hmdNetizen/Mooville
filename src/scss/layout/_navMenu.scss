@@ -2,6 +2,10 @@
   height: 100vh;
   position: fixed;
   z-index: 10;
+  padding: 2em 0 0 0;
+  width: 25em;
+  text-align: center;
+
   @include match(sm) {
     margin-top: -0.5em;
     transition: all 0.25s linear;
@@ -10,9 +14,14 @@
   @include match(xs) {
     width: 100%;
   }
-  padding: 2em 0 0 0;
-  width: 25em;
-  text-align: center;
+
+  &__menu--hidden {
+    display: none;
+
+    @include match(xs) {
+      display: block;
+    }
+  }
 
   &__menu--open {
     @include match(sm) {

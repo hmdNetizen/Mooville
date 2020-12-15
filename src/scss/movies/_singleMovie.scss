@@ -1,0 +1,193 @@
+.singleMovie {
+  margin-top: 5em;
+  margin-left: 25em;
+
+  @include match(sm) {
+    margin-left: 0;
+  }
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    padding-right: 3em;
+    transition: background 0.25s linear;
+
+    @include match(md) {
+      flex-direction: column;
+      align-items: center;
+      padding-right: 0;
+    }
+
+    &--darkMode {
+      background: $color-dark-grey-1;
+    }
+
+    &--lightMode {
+      background: $color-white;
+    }
+  }
+
+  &__video {
+    width: 60%;
+    margin-right: 5%;
+
+    @include match(md) {
+      width: 100%;
+      margin-right: 0;
+    }
+
+    @include match(sm) {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+
+  &__videoPlayer {
+    width: 50%;
+    height: 70vh;
+    position: fixed;
+    z-index: 11;
+    border: none;
+
+    @include match(md) {
+      width: 100%;
+    }
+
+    @include match(sm) {
+      height: 60vh;
+      z-index: 1;
+    }
+  }
+
+  &__description {
+    width: 35%;
+    padding-top: 3em;
+    padding-bottom: 15em;
+
+    @include match(md) {
+      margin-top: 70vh;
+      width: 100%;
+      padding-left: 7em;
+      padding-right: 7em;
+    }
+
+    @include match(sm) {
+      margin-top: 60vh;
+      padding-left: 5em;
+      padding-right: 5em;
+    }
+
+    @include match(xs) {
+      padding-left: 2em;
+      padding-right: 2em;
+    }
+
+    &--darkMode {
+      color: $color-white;
+    }
+
+    &--lightMode {
+      color: $color-primary;
+    }
+  }
+
+  &__title {
+    font-size: 3.5rem;
+    margin-bottom: 0.5em;
+
+    @include match(md) {
+      font-size: 3rem;
+      text-align: center;
+    }
+
+    @include match(sm) {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__overview {
+    font-size: 2rem;
+    margin-top: 0.75em;
+    line-height: 1.7;
+    margin-bottom: 1em;
+
+    @include match(md) {
+      text-align: center;
+    }
+
+    @include match(sm) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+
+    @include match(md) {
+      justify-content: center;
+    }
+
+    @include match(sm) {
+      justify-content: space-around;
+    }
+  }
+
+  &__listItem {
+    text-align: center;
+    cursor: pointer;
+
+    @include match(md) {
+      &:not(:last-child) {
+        margin-right: 5em;
+      }
+    }
+  }
+
+  &__listItemIcon {
+    font-size: 3.5rem;
+    color: $color-light-grey;
+
+    @include match(xs) {
+      font-size: 2.5rem;
+    }
+
+    &__iconStyles {
+      &--darkMode {
+        color: $color-gold;
+      }
+
+      &--lightMode {
+        color: $color-tertiary;
+      }
+    }
+
+    &__textStyles {
+      &--darkMode {
+        color: $color-gold;
+      }
+
+      &--lightMode {
+        color: $color-tertiary;
+      }
+    }
+  }
+
+  &__listItemText {
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    @include match(xs) {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// Star rating preset style name
+.dv-star-rating-non-editable {
+  @include match(md) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

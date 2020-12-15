@@ -2,6 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/layout/Header";
+import NavMenu from "./components/NavMenu";
 import Footer from "./components/layout/Footer";
 import "./scss/index.css";
 import store from "./redux/store";
@@ -14,11 +15,13 @@ function App() {
     <Provider store={store}>
       <Router>
         <Header />
+        <NavMenu />
         <div className="container">
           <Switch>
             <Route
               exact
               path="/"
+              strict
               render={(props) => <MainSection {...props} />}
             />
             <Route

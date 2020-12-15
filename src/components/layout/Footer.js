@@ -13,9 +13,27 @@ const Footer = (props) => {
     setSelectedMenu,
   } = props;
   const footerMenus = [
-    { id: 0, title: "Home", icon: "fas fa-home", path: "/" },
-    { id: 1, title: "Search", icon: "fas fa-search", path: "/search" },
-    { id: 2, title: "Bookmarks", icon: "far fa-bookmark", path: "/bookmarks" },
+    {
+      id: 0,
+      title: "Home",
+      icon: "fas fa-home",
+      path: "/",
+      description: "Footer home icon",
+    },
+    {
+      id: 1,
+      title: "Search",
+      icon: "fas fa-search",
+      path: "/search",
+      description: "Footer search icon",
+    },
+    {
+      id: 2,
+      title: "Bookmarks",
+      icon: "far fa-bookmark",
+      path: "/bookmarks",
+      description: "Footer saved bookmarks icon",
+    },
   ];
 
   useEffect(() => {
@@ -55,7 +73,10 @@ const Footer = (props) => {
             }}
           >
             <li className="footer__list__item">
-              <i className={`${menu.icon} list__item__icon`}></i>
+              <i
+                className={`${menu.icon} list__item__icon`}
+                title={menu.description}
+              ></i>
               <p className="list__item__text">{menu.title}</p>
             </li>
           </Link>
@@ -69,9 +90,15 @@ const Footer = (props) => {
           onClick={() => setOpenDrawer(!openDrawer)}
         >
           {!openDrawer ? (
-            <i className="fas fa-bars list__item__icon"></i>
+            <i
+              className="fas fa-bars list__item__icon"
+              title="Footer open menu"
+            ></i>
           ) : (
-            <i className="fas fa-times list__item__icon"></i>
+            <i
+              className="fas fa-times list__item__icon"
+              title="Footer close menu"
+            ></i>
           )}
 
           <p className="list__item__text">Menu</p>
