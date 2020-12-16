@@ -1,12 +1,18 @@
 import React, { Fragment, useEffect, useState } from "react";
 // import { cloneDeep } from "lodash";
 import { connect } from "react-redux";
-import { getSingleMovie, getSimilarMovies } from "./../../redux";
+import {
+  getSingleMovie,
+  getSimilarMovies,
+  getMovieVideo,
+  fetchMovieState,
+} from "./../../redux";
 import StarRating from "../StarRating";
 import { CgPlayListAdd } from "react-icons/cg";
 import { AiFillLike, AiFillDislike, AiOutlineDownload } from "react-icons/ai";
 import Spinner from "../Spinner";
 import MovieItem from "./MovieItem";
+import ReactPlayer from "react-player";
 
 // This component fetches individual movies based on the movie user clicked
 const FetchMovie = (props) => {
@@ -18,6 +24,8 @@ const FetchMovie = (props) => {
     darkMode,
     similarMovies,
     fetchSimilarMovies,
+    fetchMovieVideo,
+    video,
   } = props;
 
   const [bookmarked, setBookmarked] = useState(false);
@@ -25,9 +33,13 @@ const FetchMovie = (props) => {
   const [disliked, setDisliked] = useState(false);
 
   useEffect(() => {
+    fetchMovieState();
     getMovie(match.params.id);
     fetchSimilarMovies(match.params.id);
-  }, [getMovie, match, fetchSimilarMovies]);
+    fetchMovieVideo(match.params.id);
+  }, [getMovie, match, fetchSimilarMovies, fetchMovieVideo]);
+
+  console.log(video && video[0]);
 
   return (
     <section className="singleMovie">
@@ -44,13 +56,23 @@ const FetchMovie = (props) => {
               <Spinner />
             </div>
           ) : (
-            <iframe
-              title={selectedMovie.title}
-              width="420"
-              height="345"
-              src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&controls=0"
-              className="singleMovie__videoPlayer"
-            ></iframe>
+            video &&
+            video.map((vid) => (
+              // <iframe
+              //   key={vid.id}
+              //   title={vid.name}
+              //   allow="autoplay; encrypted-media"
+              //   src={`https://www.youtube.com/embed/${vid.key}?autoplay=1&controls=0`}
+              //   className="singleMovie__videoPlayer"
+              // ></iframe>
+              <ReactPlayer
+                key={vid.id}
+                playing
+                playsinline
+                url={`https://www.youtube.com/embed/${vid.key}?showinfo=0&enablejsapi=1&origin=http://https://mooville.vercel.app/`}
+                className="singleMovie__videoPlayer"
+              />
+            ))
           )}
         </div>
         <div
@@ -192,6 +214,7 @@ const mapStateToProps = (state) => {
     loading: state.utils.loading,
     darkMode: state.theme.darkTheme,
     similarMovies: state.movies.similarMovies,
+    video: state.movies.movieVideo,
   };
 };
 
@@ -199,6 +222,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getMovie: (id) => dispatch(getSingleMovie(id)),
     fetchSimilarMovies: (id) => dispatch(getSimilarMovies(id)),
+    fetchMovieVideo: (id) => dispatch(getMovieVideo(id)),
+    getMovieState: () => dispatch(fetchMovieState),
   };
 };
 

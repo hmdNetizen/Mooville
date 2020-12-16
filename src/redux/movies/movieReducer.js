@@ -5,6 +5,8 @@ import {
   SET_LOADING,
   GET_SINGLE_MOVIE,
   GET_SIMILAR_MOVIES,
+  GET_MOVIE_VIDEO,
+  GET_MOVIES_STATE,
 } from "./movieTypes";
 
 const initialState = {
@@ -14,6 +16,7 @@ const initialState = {
   error: "",
   loading: false,
   selectedMovie: {},
+  movieVideo: null,
 };
 
 export default (state = initialState, action) => {
@@ -44,6 +47,11 @@ export default (state = initialState, action) => {
         ...state,
         similarMovies: action.payload,
       };
+    case GET_MOVIE_VIDEO:
+      return {
+        ...state,
+        movieVideo: action.payload,
+      };
     case GET_MOVIES_FAILURE:
       return {
         ...state,
@@ -51,6 +59,11 @@ export default (state = initialState, action) => {
         actionMovies: [],
         error: action.payload,
         loading: false,
+      };
+
+    case GET_MOVIES_STATE:
+      return {
+        ...state,
       };
 
     default:

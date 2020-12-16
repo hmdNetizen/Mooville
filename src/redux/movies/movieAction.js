@@ -6,6 +6,8 @@ import {
   GET_ACTION_MOVIES_SUCCESS,
   GET_SINGLE_MOVIE,
   GET_SIMILAR_MOVIES,
+  GET_MOVIE_VIDEO,
+  GET_MOVIES_STATE,
 } from "./movieTypes";
 
 const apiKey = "f5205bcd74d03769d95f80b89c9f4db6";
@@ -88,4 +90,21 @@ export const getSimilarMovies = (movieId) => async (dispatch) => {
   } catch (error) {
     dispatch(getMoviesFailure(error.message));
   }
+};
+
+export const getMovieVideo = (movieId) => async (dispatch) => {
+  setLoading();
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}&language=en-US`
+  );
+  dispatch({
+    type: GET_MOVIE_VIDEO,
+    payload: response.data.results,
+  });
+};
+
+export const fetchMovieState = () => (dispatch) => {
+  dispatch({
+    type: GET_MOVIES_STATE,
+  });
 };
