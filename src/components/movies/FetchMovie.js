@@ -69,7 +69,7 @@ const FetchMovie = (props) => {
                 key={vid.id}
                 playing
                 playsinline
-                url={`https://www.youtube.com/embed/${vid.key}?showinfo=0&enablejsapi=1&origin=http://https://mooville.vercel.app/`}
+                url={`https://www.youtube.com/embed/${vid.key}?showinfo=0&enablejsapi=1&origin=https://mooville.vercel.app/`}
                 className="singleMovie__videoPlayer"
               />
             ))
