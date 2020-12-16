@@ -12,7 +12,6 @@ import { CgPlayListAdd } from "react-icons/cg";
 import { AiFillLike, AiFillDislike, AiOutlineDownload } from "react-icons/ai";
 import Spinner from "../Spinner";
 import MovieItem from "./MovieItem";
-import ReactPlayer from "react-player";
 
 // This component fetches individual movies based on the movie user clicked
 const FetchMovie = (props) => {
@@ -39,8 +38,6 @@ const FetchMovie = (props) => {
     fetchMovieVideo(match.params.id);
   }, [getMovie, match, fetchSimilarMovies, fetchMovieVideo]);
 
-  console.log(video && video[0]);
-
   return (
     <section className="singleMovie">
       <div
@@ -58,20 +55,13 @@ const FetchMovie = (props) => {
           ) : (
             video &&
             video.map((vid) => (
-              // <iframe
-              //   key={vid.id}
-              //   title={vid.name}
-              //   allow="autoplay; encrypted-media"
-              //   src={`https://www.youtube.com/embed/${vid.key}?autoplay=1&controls=0`}
-              //   className="singleMovie__videoPlayer"
-              // ></iframe>
-              <ReactPlayer
+              <iframe
                 key={vid.id}
-                playing
-                playsinline
-                url={`https://www.youtube.com/embed/${vid.key}?showinfo=0&enablejsapi=1&origin=https://mooville.vercel.app/`}
+                title={vid.name}
+                allow="autoplay; encrypted-media"
+                src={`https://www.youtube.com/embed/${vid.key}?autoplay=1&controls=1&showinfo=0&enablejsapi=1&origin=https://mooville.vercel.app/`}
                 className="singleMovie__videoPlayer"
-              />
+              ></iframe>
             ))
           )}
         </div>
