@@ -430,6 +430,7 @@ body {
 .singleMovie {
   margin-top: 5em;
   margin-left: 25em;
+  height: 100%;
 }
 
 @media (max-width: 960px) {
@@ -528,7 +529,7 @@ body {
 
 @media (max-width: 960px) {
   .singleMovie__videoPlayer {
-    height: 60vh;
+    height: 50vh;
     z-index: 1;
   }
 }
@@ -704,7 +705,6 @@ body {
   cursor: pointer;
   border: none;
   outline: none;
-  background: #c93126;
   color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -717,12 +717,24 @@ body {
           justify-content: center;
 }
 
-.singleMovie__download__btn:hover {
-  background: #b92b21;
-}
-
 .singleMovie__download__btn__icon {
   margin-right: 1.5em;
+}
+
+.singleMovie__download__btn--darkMode {
+  background: #d3a43f;
+}
+
+.singleMovie__download__btn--darkMode:hover {
+  background: #967921;
+}
+
+.singleMovie__download__btn--lightMode {
+  background: #c93126;
+}
+
+.singleMovie__download__btn--lightMode:hover {
+  background: #b92b21;
 }
 
 @media (max-width: 1280px) {
@@ -757,6 +769,14 @@ body {
     -webkit-transform: translateX(0);
             transform: translateX(0);
   }
+}
+
+.singleMovie .movie__card {
+  height: 100%;
+}
+
+.singleMovie .movie__card__poster {
+  height: 85%;
 }
 
 .singleMovie .movie__star__icon {
@@ -801,6 +821,256 @@ body {
   .singleMovie .movie__card__title {
     font-size: 0.85rem;
     max-width: 10ch;
+  }
+}
+
+.singleMovie__reviews {
+  margin-top: 5em;
+}
+
+.singleMovie__reviews__divider {
+  width: 95%;
+  height: 0.2em;
+  background: #8c8c8c;
+  margin: 0 0 1.5em;
+}
+
+.singleMovie__reviews__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.singleMovie__reviews__heading {
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .singleMovie__reviews__heading {
+    font-size: 1.5rem;
+  }
+}
+
+.singleMovie__reviews__icon {
+  cursor: pointer;
+}
+
+.singleMovie__reviews__posts {
+  margin-top: 3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media (max-width: 1280px) {
+  .singleMovie__reviews__posts {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+}
+
+@media (max-width: 600px) {
+  .singleMovie__reviews__posts {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+.singleMovie__reviews__form--hidden {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+}
+
+.singleMovie__reviews__form--visible {
+  visibility: visible;
+  opacity: 1;
+  position: static;
+}
+
+.singleMovie__reviews__label {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  .singleMovie__reviews__label {
+    width: 3em;
+    height: 3em;
+  }
+}
+
+@media (max-width: 320px) {
+  .singleMovie__reviews__label {
+    width: 2em;
+    height: 2em;
+  }
+}
+
+.singleMovie__reviews__label--darkMode {
+  background: #d3a43f;
+}
+
+.singleMovie__reviews__label--lightMode {
+  background: #c93126;
+}
+
+.singleMovie__reviews__label h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+@media (max-width: 600px) {
+  .singleMovie__reviews__label h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .singleMovie__reviews__label h2 {
+    font-size: 1rem;
+  }
+}
+
+.singleMovie__reviews__textAreaWrapper textarea {
+  font-size: 2.5rem;
+  width: 13em;
+  color: #8c8c8c;
+  border-radius: 0.2rem;
+}
+
+@media (max-width: 1280px) {
+  .singleMovie__reviews__textAreaWrapper textarea {
+    width: 20em;
+  }
+}
+
+@media (max-width: 600px) {
+  .singleMovie__reviews__textAreaWrapper textarea {
+    width: 100%;
+  }
+}
+
+@media (max-width: 320px) {
+  .singleMovie__reviews__textAreaWrapper textarea {
+    width: 90%;
+  }
+}
+
+.singleMovie__reviews__textAreaWrapper textarea:focus {
+  outline: none;
+}
+
+.singleMovie__reviews__btnWrapper {
+  margin-top: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 3em;
+}
+
+.singleMovie__reviews__btnWrapper button {
+  padding: 0.5em 2.5em;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.singleMovie__reviews__btnWrapper button:focus {
+  outline: none;
+}
+
+.singleMovie__reviews__btnWrapper button:last-child {
+  color: #fff;
+}
+
+.singleMovie__reviews__btnWrapper button:not(:last-child) {
+  margin-right: 1.5em;
+}
+
+.singleMovie__reviews__btn__post--darkMode {
+  background: #d3a43f;
+}
+
+.singleMovie__reviews__btn__post--lightMode {
+  background: #c93126;
+}
+
+.singleMovie__reviews__title {
+  text-align: center;
+}
+
+.singleMovie__reviews__details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 2em;
+}
+
+@media (max-width: 1280px) {
+  .singleMovie__reviews__details {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+}
+
+@media (max-width: 600px) {
+  .singleMovie__reviews__details {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+.singleMovie__reviews__details p {
+  max-width: 20em;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 1280px) {
+  .singleMovie__reviews__details p {
+    max-width: 30em;
+  }
+}
+
+@media (max-width: 960px) {
+  .singleMovie__reviews__details p {
+    max-width: 27em;
+  }
+}
+
+@media (max-width: 600px) {
+  .singleMovie__reviews__details p {
+    max-width: 17em;
+  }
+}
+
+@media (max-width: 320px) {
+  .singleMovie__reviews__details p {
+    max-width: 15em;
+    font-size: 1.2rem;
   }
 }
 
