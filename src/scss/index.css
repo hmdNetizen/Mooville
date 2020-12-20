@@ -445,6 +445,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   padding-right: 3em;
+  padding-bottom: 15em;
   -webkit-transition: background 0.25s linear;
   transition: background 0.25s linear;
 }
@@ -459,6 +460,12 @@ body {
         -ms-flex-align: center;
             align-items: center;
     padding-right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .singleMovie__wrapper {
+    padding-bottom: 0;
   }
 }
 
@@ -888,6 +895,12 @@ body {
   visibility: hidden;
   opacity: 0;
   position: absolute;
+}
+
+@media (max-width: 600px) {
+  .singleMovie__reviews__form--hidden {
+    position: static;
+  }
 }
 
 .singleMovie__reviews__form--visible {

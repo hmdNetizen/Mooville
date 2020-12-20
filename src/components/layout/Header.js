@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import SwitchButton from "../SwitchButton";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
   return (
@@ -10,7 +11,9 @@ const Header = (props) => {
           props.darkMode ? "header__darkMode" : "header__lightMode"
         } `}
       >
-        <h1 className="header__logo">Mooville</h1>
+        <Link to="/">
+          <h1 className="header__logo">Mooville</h1>
+        </Link>
         <div className="header__switch">
           <SwitchButton />
         </div>

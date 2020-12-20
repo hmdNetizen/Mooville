@@ -14,7 +14,7 @@ const initialState = {
   similarMovies: [],
   error: "",
   loading: false,
-  selectedMovie: {},
+  selectedMovie: null,
   movieVideo: null,
 };
 
@@ -35,6 +35,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         actionMovies: action.payload,
+        loading: false,
       };
     case GET_SINGLE_MOVIE:
       return {
@@ -60,6 +61,8 @@ export default (state = initialState, action) => {
         trending: [],
         actionMovies: [],
         error: action.payload,
+        selectedMovie: null,
+        movieVideo: null,
         loading: false,
       };
 

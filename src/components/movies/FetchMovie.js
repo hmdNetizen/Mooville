@@ -39,8 +39,6 @@ const FetchMovie = (props) => {
 
   const limitActionMovie = actionMovies.slice(1, 7);
 
-  console.log(limitActionMovie);
-
   return (
     <section className="singleMovie">
       <div
@@ -75,209 +73,167 @@ const FetchMovie = (props) => {
               : "singleMovie__description-lightMode"
           }`}
         >
-          {loading && selectedMovie === {} ? (
+          {loading ? (
             <div className="singleMovie__spinner__wrapper singleMovie__spinner__wrapper--details">
               <Spinner />
             </div>
           ) : (
-            <Fragment>
-              <h2 className="singleMovie__title">{selectedMovie.title}</h2>
+            selectedMovie && (
               <Fragment>
-                <StarRating
-                  rating={Math.ceil(selectedMovie.vote_average / 2)}
-                />
-              </Fragment>
+                <h2 className="singleMovie__title">{selectedMovie.title}</h2>
+                <Fragment>
+                  <StarRating
+                    rating={Math.ceil(selectedMovie.vote_average / 2)}
+                  />
+                </Fragment>
 
-              <p className="singleMovie__overview">{selectedMovie.overview}</p>
-              <ul className="singleMovie__list">
-                <li
-                  className={`singleMovie__listItem`}
-                  onClick={() => setBookmarked((prev) => !prev)}
-                >
-                  <CgPlayListAdd
-                    className={`singleMovie__listItemIcon ${
-                      bookmarked && darkMode
-                        ? "singleMovie__listItemIcon__iconStyles--darkMode"
-                        : bookmarked && !darkMode
-                        ? "singleMovie__listItemIcon__iconStyles--lightMode"
-                        : undefined
-                    }`}
-                  />
-                  <p
-                    className={`singleMovie__listItemText ${
-                      bookmarked && darkMode
-                        ? "singleMovie__listItemIcon__textStyles--darkMode"
-                        : bookmarked && !darkMode
-                        ? "singleMovie__listItemIcon__textStyles--lightMode"
-                        : undefined
-                    }`}
+                <p className="singleMovie__overview">
+                  {selectedMovie.overview}
+                </p>
+                <ul className="singleMovie__list">
+                  <li
+                    className={`singleMovie__listItem`}
+                    onClick={() => setBookmarked((prev) => !prev)}
                   >
-                    {bookmarked ? "Bookmarked" : "Bookmark"}
-                  </p>
-                </li>
-                <li
-                  className="singleMovie__listItem"
-                  onClick={() => {
-                    setLiked((prev) => !prev);
-                    setDisliked(false);
-                  }}
-                >
-                  <AiFillLike
-                    className={`singleMovie__listItemIcon ${
-                      liked && darkMode
-                        ? "singleMovie__listItemIcon__iconStyles--darkMode"
-                        : liked && !darkMode
-                        ? "singleMovie__listItemIcon__iconStyles--lightMode"
-                        : undefined
-                    }`}
-                  />
-                  <p
-                    className={`singleMovie__listItemText ${
-                      liked && darkMode
-                        ? "singleMovie__listItemIcon__textStyles--darkMode"
-                        : liked && !darkMode
-                        ? "singleMovie__listItemIcon__textStyles--lightMode"
-                        : undefined
-                    }`}
-                  >
-                    {liked ? "Liked" : "Like"}
-                  </p>
-                </li>
-                <li
-                  className="singleMovie__listItem"
-                  onClick={() => {
-                    setDisliked((prev) => !prev);
-                    setLiked(false);
-                  }}
-                >
-                  <AiFillDislike
-                    className={`singleMovie__listItemIcon ${
-                      disliked && darkMode
-                        ? "singleMovie__listItemIcon__iconStyles--darkMode"
-                        : disliked && !darkMode
-                        ? "singleMovie__listItemIcon__iconStyles--lightMode"
-                        : undefined
-                    }`}
-                  />
-                  <p
-                    className={`singleMovie__listItemText ${
-                      disliked && darkMode
-                        ? "singleMovie__listItemIcon__textStyles--darkMode"
-                        : disliked && !darkMode
-                        ? "singleMovie__listItemIcon__textStyles--lightMode"
-                        : undefined
-                    }`}
-                  >
-                    {disliked ? "Disliked" : "Dislike"}
-                  </p>
-                </li>
-              </ul>
-              <div className="singleMovie__download__wrapper">
-                <button
-                  className={`singleMovie__download__btn ${
-                    darkMode
-                      ? "singleMovie__download__btn--darkMode"
-                      : "singleMovie__download__btn--lightMode"
-                  }`}
-                >
-                  <AiOutlineDownload
-                    size="2rem"
-                    className="singleMovie__download__btn__icon"
-                  />
-                  <span className="singleMovie__download__btn__text">
-                    Download
-                  </span>
-                </button>
-              </div>
-              <div className="singleMovie__similarMovies">
-                <h2 className="singleMovie__similarMovies__heading">
-                  More like this
-                </h2>
-                <div className="singleMovie__similarMovies__wrapper">
-                  {similarMovies.length < 1
-                    ? limitActionMovie.map((action) => (
-                        <MovieItem movie={action} key={action.id} />
-                      ))
-                    : similarMovies &&
-                      similarMovies.map((movie) => (
-                        <MovieItem movie={movie} key={movie.id} />
-                      ))}
-                </div>
-              </div>
-              <div className="singleMovie__reviews">
-                <div className="singleMovie__reviews__divider"></div>
-                <div
-                  className="singleMovie__reviews__wrapper"
-                  onClick={() => setShowReview((prev) => !prev)}
-                >
-                  <h2 className="singleMovie__reviews__heading">Reviews</h2>
-                  <div className="singleMovie__reviews__iconWrapper">
-                    {showReview ? (
-                      <IoIosArrowDropupCircle
-                        size="2em"
-                        className="singleMovie__reviews__icon"
-                      />
-                    ) : (
-                      <IoIosArrowDropdownCircle
-                        size="2em"
-                        className="singleMovie__reviews__icon"
-                      />
-                    )}
-                  </div>
-                </div>
-                <form
-                  className={`${
-                    showReview
-                      ? "singleMovie__reviews__form--visible"
-                      : "singleMovie__reviews__form--hidden"
-                  }`}
-                >
-                  <div className={`singleMovie__reviews__posts`}>
-                    <div
-                      className={`singleMovie__reviews__label ${
-                        darkMode
-                          ? "singleMovie__reviews__label--darkMode"
-                          : "singleMovie__reviews__label--lightMode"
+                    <CgPlayListAdd
+                      className={`singleMovie__listItemIcon ${
+                        bookmarked && darkMode
+                          ? "singleMovie__listItemIcon__iconStyles--darkMode"
+                          : bookmarked && !darkMode
+                          ? "singleMovie__listItemIcon__iconStyles--lightMode"
+                          : undefined
+                      }`}
+                    />
+                    <p
+                      className={`singleMovie__listItemText ${
+                        bookmarked && darkMode
+                          ? "singleMovie__listItemIcon__textStyles--darkMode"
+                          : bookmarked && !darkMode
+                          ? "singleMovie__listItemIcon__textStyles--lightMode"
+                          : undefined
                       }`}
                     >
-                      <h2>H</h2>
-                    </div>
-                    <div className="singleMovie__reviews__textAreaWrapper">
-                      <textarea name="review" rows="7">
-                        Post a Review
-                      </textarea>
-                    </div>
-                  </div>
-
-                  <div className="singleMovie__reviews__btnWrapper">
-                    <button className="singleMovie__reviews__btn__cancel">
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      className={`${
-                        darkMode
-                          ? "singleMovie__reviews__btn__post--darkMode"
-                          : "singleMovie__reviews__btn__post--lightMode"
+                      {bookmarked ? "Bookmarked" : "Bookmark"}
+                    </p>
+                  </li>
+                  <li
+                    className="singleMovie__listItem"
+                    onClick={() => {
+                      setLiked((prev) => !prev);
+                      setDisliked(false);
+                    }}
+                  >
+                    <AiFillLike
+                      className={`singleMovie__listItemIcon ${
+                        liked && darkMode
+                          ? "singleMovie__listItemIcon__iconStyles--darkMode"
+                          : liked && !darkMode
+                          ? "singleMovie__listItemIcon__iconStyles--lightMode"
+                          : undefined
+                      }`}
+                    />
+                    <p
+                      className={`singleMovie__listItemText ${
+                        liked && darkMode
+                          ? "singleMovie__listItemIcon__textStyles--darkMode"
+                          : liked && !darkMode
+                          ? "singleMovie__listItemIcon__textStyles--lightMode"
+                          : undefined
                       }`}
                     >
-                      Post
-                    </button>
+                      {liked ? "Liked" : "Like"}
+                    </p>
+                  </li>
+                  <li
+                    className="singleMovie__listItem"
+                    onClick={() => {
+                      setDisliked((prev) => !prev);
+                      setLiked(false);
+                    }}
+                  >
+                    <AiFillDislike
+                      className={`singleMovie__listItemIcon ${
+                        disliked && darkMode
+                          ? "singleMovie__listItemIcon__iconStyles--darkMode"
+                          : disliked && !darkMode
+                          ? "singleMovie__listItemIcon__iconStyles--lightMode"
+                          : undefined
+                      }`}
+                    />
+                    <p
+                      className={`singleMovie__listItemText ${
+                        disliked && darkMode
+                          ? "singleMovie__listItemIcon__textStyles--darkMode"
+                          : disliked && !darkMode
+                          ? "singleMovie__listItemIcon__textStyles--lightMode"
+                          : undefined
+                      }`}
+                    >
+                      {disliked ? "Disliked" : "Dislike"}
+                    </p>
+                  </li>
+                </ul>
+                <div className="singleMovie__download__wrapper">
+                  <button
+                    className={`singleMovie__download__btn ${
+                      darkMode
+                        ? "singleMovie__download__btn--darkMode"
+                        : "singleMovie__download__btn--lightMode"
+                    }`}
+                  >
+                    <AiOutlineDownload
+                      size="2rem"
+                      className="singleMovie__download__btn__icon"
+                    />
+                    <span className="singleMovie__download__btn__text">
+                      Download
+                    </span>
+                  </button>
+                </div>
+                <div className="singleMovie__similarMovies">
+                  <h2 className="singleMovie__similarMovies__heading">
+                    More like this
+                  </h2>
+                  <div className="singleMovie__similarMovies__wrapper">
+                    {similarMovies.length < 1
+                      ? limitActionMovie.map((action) => (
+                          <MovieItem movie={action} key={action.id} />
+                        ))
+                      : similarMovies &&
+                        similarMovies.map((movie) => (
+                          <MovieItem movie={movie} key={movie.id} />
+                        ))}
                   </div>
-                </form>
-                <div
-                  className={`${
-                    showReview
-                      ? "singleMovie__reviews__form--visible"
-                      : "singleMovie__reviews__form--hidden"
-                  }`}
-                >
+                </div>
+                <div className="singleMovie__reviews">
                   <div className="singleMovie__reviews__divider"></div>
-                  <div className="singleMovie__reviews__reviewLists">
-                    <h2 className="singleMovie__reviews__title">
-                      Hamed Ayinde Jimoh
-                    </h2>
-                    <div className="singleMovie__reviews__details">
+                  <div
+                    className="singleMovie__reviews__wrapper"
+                    onClick={() => setShowReview((prev) => !prev)}
+                  >
+                    <h2 className="singleMovie__reviews__heading">Reviews</h2>
+                    <div className="singleMovie__reviews__iconWrapper">
+                      {showReview ? (
+                        <IoIosArrowDropupCircle
+                          size="2em"
+                          className="singleMovie__reviews__icon"
+                        />
+                      ) : (
+                        <IoIosArrowDropdownCircle
+                          size="2em"
+                          className="singleMovie__reviews__icon"
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <form
+                    className={`${
+                      showReview
+                        ? "singleMovie__reviews__form--visible"
+                        : "singleMovie__reviews__form--hidden"
+                    }`}
+                  >
+                    <div className={`singleMovie__reviews__posts`}>
                       <div
                         className={`singleMovie__reviews__label ${
                           darkMode
@@ -287,16 +243,62 @@ const FetchMovie = (props) => {
                       >
                         <h2>H</h2>
                       </div>
-                      <p>
-                        This Movie web application was created using React as
-                        the frontend, Redux for state management and TMDB API
-                        for fetching the movie data. Thanks for viewing.
-                      </p>
+                      <div className="singleMovie__reviews__textAreaWrapper">
+                        <textarea name="review" rows="7">
+                          Post a Review
+                        </textarea>
+                      </div>
+                    </div>
+
+                    <div className="singleMovie__reviews__btnWrapper">
+                      <button className="singleMovie__reviews__btn__cancel">
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        className={`${
+                          darkMode
+                            ? "singleMovie__reviews__btn__post--darkMode"
+                            : "singleMovie__reviews__btn__post--lightMode"
+                        }`}
+                      >
+                        Post
+                      </button>
+                    </div>
+                  </form>
+                  <div
+                    className={`${
+                      showReview
+                        ? "singleMovie__reviews__form--visible"
+                        : "singleMovie__reviews__form--hidden"
+                    }`}
+                  >
+                    <div className="singleMovie__reviews__divider"></div>
+                    <div className="singleMovie__reviews__reviewLists">
+                      <h2 className="singleMovie__reviews__title">
+                        Hamed Ayinde Jimoh
+                      </h2>
+                      <div className="singleMovie__reviews__details">
+                        <div
+                          className={`singleMovie__reviews__label ${
+                            darkMode
+                              ? "singleMovie__reviews__label--darkMode"
+                              : "singleMovie__reviews__label--lightMode"
+                          }`}
+                        >
+                          <h2>H</h2>
+                        </div>
+                        <p>
+                          This Movie web application was created using React as
+                          the frontend, Redux for state management and TMDB API
+                          for fetching the movie data. Thanks for viewing.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </Fragment>
+              </Fragment>
+            )
           )}
         </div>
       </div>
@@ -307,7 +309,7 @@ const FetchMovie = (props) => {
 const mapStateToProps = (state) => {
   return {
     selectedMovie: state.movies.selectedMovie,
-    loading: state.utils.loading,
+    loading: state.movies.loading,
     darkMode: state.theme.darkTheme,
     similarMovies: state.movies.similarMovies,
     video: state.movies.movieVideo,

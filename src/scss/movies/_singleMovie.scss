@@ -11,12 +11,17 @@
     width: 100%;
     display: flex;
     padding-right: 3em;
+    padding-bottom: 15em;
     transition: background 0.25s linear;
 
     @include match(md) {
       flex-direction: column;
       align-items: center;
       padding-right: 0;
+    }
+
+    @include match(xs) {
+      padding-bottom: 0;
     }
 
     &--darkMode {
@@ -360,6 +365,10 @@
         visibility: hidden;
         opacity: 0;
         position: absolute;
+
+        @include match(xs) {
+          position: static;
+        }
       }
 
       &--visible {
