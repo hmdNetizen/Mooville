@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { getSearchedMovies } from "../redux";
 
-const SearchField = ({
+const SearchInput = ({
   darkMode,
   selectedMenu,
   fetchSearchedMovies,
@@ -60,4 +60,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchField);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchInput);

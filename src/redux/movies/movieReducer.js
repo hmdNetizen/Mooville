@@ -2,29 +2,25 @@ import {
   GET_ACTION_MOVIES_SUCCESS,
   GET_MOVIES_FAILURE,
   GET_TRENDING_MOVIES_SUCCESS,
-  SET_LOADING,
   GET_SINGLE_MOVIE,
   GET_SIMILAR_MOVIES,
   GET_MOVIE_VIDEO,
+  GET_SEARCHED_MOVIES,
 } from "./movieTypes";
 
 const initialState = {
   trending: [],
   actionMovies: [],
   similarMovies: [],
+  searchMovies: [],
   error: "",
-  loading: false,
+  loading: true,
   selectedMovie: null,
   movieVideo: null,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SET_LOADING:
-      return {
-        ...state,
-        loading: true,
-      };
     case GET_TRENDING_MOVIES_SUCCESS:
       return {
         ...state,
@@ -55,11 +51,18 @@ export default (state = initialState, action) => {
         movieVideo: action.payload,
         loading: false,
       };
+    case GET_SEARCHED_MOVIES:
+      return {
+        ...state,
+        searchedMovies: action.payload,
+        loading: false,
+      };
     case GET_MOVIES_FAILURE:
       return {
         ...state,
         trending: [],
         actionMovies: [],
+        searchedMovies: [],
         error: action.payload,
         selectedMovie: null,
         movieVideo: null,

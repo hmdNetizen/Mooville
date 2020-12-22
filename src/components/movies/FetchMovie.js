@@ -25,6 +25,7 @@ const FetchMovie = (props) => {
     fetchMovieVideo,
     video,
     actionMovies,
+    error,
   } = props;
 
   const [bookmarked, setBookmarked] = useState(false);
@@ -37,18 +38,21 @@ const FetchMovie = (props) => {
   const myRef = useRef(null);
 
   useEffect(() => {
-    window.addEventListener(
-      "DOMContentLoaded",
-      () => {
-        if (matchesSM && selectedMovie !== null) {
-          window.scrollTo(0, myRef.current.offsetTop + 500);
-        }
-      },
-      false
-    );
+    function showMovieTitle() {
+      document.addEventListener(
+        "DOMContentLoaded",
+        () => {
+          if (matchesSM && selectedMovie !== null) {
+            window.scrollTo(0, myRef.current.offsetTop + "40vh");
+          }
+        },
+        false
+      );
+    }
     getMovie(match.params.id);
     fetchSimilarMovies(match.params.id);
     fetchMovieVideo(match.params.id);
+    showMovieTitle();
   }, [
     getMovie,
     match,
@@ -74,8 +78,18 @@ const FetchMovie = (props) => {
             <div className="singleMovie__spinner__wrapper">
               <Spinner />
             </div>
+          ) : error ? (
+            <h2
+              className={`movie__error__heading ${
+                darkMode
+                  ? "movie__error__heading--darkMode"
+                  : "movie__error__heading--lightMode"
+              }`}
+            >
+              Unknown Server Error!
+            </h2>
           ) : (
-            video &&
+            video !== null &&
             video.map((vid) => (
               <iframe
                 key={vid.id}
@@ -88,6 +102,7 @@ const FetchMovie = (props) => {
           )}
         </div>
         <div
+          ref={myRef}
           className={`singleMovie__description ${
             darkMode
               ? "singleMovie__description--darkMode"
@@ -101,9 +116,7 @@ const FetchMovie = (props) => {
           ) : (
             selectedMovie && (
               <Fragment>
-                <h2 className="singleMovie__title" ref={myRef}>
-                  {selectedMovie.title}
-                </h2>
+                <h2 className="singleMovie__title">{selectedMovie.title}</h2>
                 <Fragment>
                   <StarRating
                     rating={Math.ceil(selectedMovie.vote_average / 2)}
@@ -339,6 +352,7 @@ const mapStateToProps = (state) => {
     similarMovies: state.movies.similarMovies,
     video: state.movies.movieVideo,
     actionMovies: state.movies.actionMovies,
+    error: state.movies.error,
   };
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/layout/Header";
@@ -7,10 +7,13 @@ import Footer from "./components/layout/Footer";
 import "./scss/index.css";
 import store from "./redux/store";
 import MainSection from "./components/layout/MainSection";
-import SearchField from "./components/SearchField";
+import SearchInput from "./components/SearchField";
 import FetchMovie from "./components/movies/FetchMovie";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import SearchedMovie from "./components/movies/SearchedMovie";
 
 function App() {
+  const matchesSM = useMediaQuery("(max-width: 960px)");
   return (
     <Provider store={store}>
       <Router>
@@ -29,7 +32,19 @@ function App() {
               path="/movie/:id"
               render={(props) => <FetchMovie {...props} />}
             />
-            <Route exact path="/search" component={SearchField} />
+            {matchesSM && (
+              <Route
+                exact
+                path="/search"
+                render={(props) => (
+                  <Fragment>
+                    <SearchInput />
+                    <SearchedMovie />
+                  </Fragment>
+                )}
+              />
+            )}
+
             <Route
               exact
               path="/bookmarks"

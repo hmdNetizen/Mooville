@@ -6,4 +6,5 @@ export {
   getSingleMovie,
   getSimilarMovies,
   getMovieVideo,
+  getSearchedMovies,
 } from "./movies/movieAction";

@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import SearchField from "../SearchField";
+import SearchInput from "../SearchField";
 import { connect } from "react-redux";
 import FetchTrendingMovie from "../movies/FetchTrendingMovies";
 import FetchAllMovies from "../movies/FetchAllMovies";
@@ -9,7 +9,7 @@ const MainSection = ({ darkMode }) => {
     <main className={`main ${darkMode ? "main__darkMode" : "main__lightMode"}`}>
       <section className="section">
         <Fragment>
-          <SearchField />
+          <SearchInput />
         </Fragment>
         <Fragment>
           <FetchTrendingMovie />
