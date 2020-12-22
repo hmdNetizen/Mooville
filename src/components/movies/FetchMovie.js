@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
 import { getSingleMovie, getSimilarMovies, getMovieVideo } from "./../../redux";
 import StarRating from "../StarRating";
@@ -10,6 +10,7 @@ import {
 } from "react-icons/io";
 import Spinner from "../Spinner";
 import MovieItem from "./MovieItem";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 // This component fetches individual movies based on the movie user clicked
 const FetchMovie = (props) => {
@@ -31,11 +32,31 @@ const FetchMovie = (props) => {
   const [disliked, setDisliked] = useState(false);
   const [showReview, setShowReview] = useState(false);
 
+  const matchesSM = useMediaQuery("(max-width: 960px)");
+
+  const myRef = useRef(null);
+
   useEffect(() => {
+    window.addEventListener(
+      "DOMContentLoaded",
+      () => {
+        if (matchesSM && selectedMovie !== null) {
+          window.scrollTo(0, myRef.current.offsetTop + 500);
+        }
+      },
+      false
+    );
     getMovie(match.params.id);
     fetchSimilarMovies(match.params.id);
     fetchMovieVideo(match.params.id);
-  }, [getMovie, match, fetchSimilarMovies, fetchMovieVideo]);
+  }, [
+    getMovie,
+    match,
+    matchesSM,
+    selectedMovie,
+    fetchSimilarMovies,
+    fetchMovieVideo,
+  ]);
 
   const limitActionMovie = actionMovies.slice(1, 7);
 
@@ -80,7 +101,9 @@ const FetchMovie = (props) => {
           ) : (
             selectedMovie && (
               <Fragment>
-                <h2 className="singleMovie__title">{selectedMovie.title}</h2>
+                <h2 className="singleMovie__title" ref={myRef}>
+                  {selectedMovie.title}
+                </h2>
                 <Fragment>
                   <StarRating
                     rating={Math.ceil(selectedMovie.vote_average / 2)}
@@ -244,9 +267,11 @@ const FetchMovie = (props) => {
                         <h2>H</h2>
                       </div>
                       <div className="singleMovie__reviews__textAreaWrapper">
-                        <textarea name="review" rows="7">
-                          Post a Review
-                        </textarea>
+                        <textarea
+                          name="review"
+                          rows="7"
+                          placeholder="Post a Review"
+                        ></textarea>
                       </div>
                     </div>
 

@@ -536,14 +536,14 @@ body {
 
 @media (max-width: 960px) {
   .singleMovie__videoPlayer {
-    height: 50vh;
+    height: 45vh;
     z-index: 1;
   }
 }
 
 @media (max-width: 600px) {
   .singleMovie__videoPlayer {
-    height: 35vh;
+    height: 30vh;
   }
 }
 
@@ -564,15 +564,16 @@ body {
 
 @media (max-width: 960px) {
   .singleMovie__description {
-    margin-top: 60vh;
+    margin-top: 45vh;
     padding-left: 5em;
     padding-right: 5em;
+    padding-top: 0;
   }
 }
 
 @media (max-width: 600px) {
   .singleMovie__description {
-    margin-top: 35vh;
+    margin-top: 30vh;
     padding-left: 2em;
     padding-right: 2em;
   }
@@ -595,6 +596,7 @@ body {
   .singleMovie__title {
     font-size: 3rem;
     text-align: center;
+    margin-top: 1em;
   }
 }
 
