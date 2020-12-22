@@ -4,14 +4,13 @@
 
   &__hideForm {
     @include match(sm) {
-      transform: translateY(-20em);
-      position: absolute;
+      display: none;
     }
   }
 
   &__showForm {
     @include match(sm) {
-      transform: translateY(0);
+      display: block;
     }
   }
 

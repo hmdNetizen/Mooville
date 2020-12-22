@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { setOpenDrawer } from "./../../redux/";
 import { setSelectedMenu } from "./../../redux/utils/utilsAction";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
 const Footer = (props) => {
   const {
@@ -81,28 +82,30 @@ const Footer = (props) => {
             </li>
           </Link>
         ))}
-        <li
-          className={`footer__list__item ${
-            darkMode
-              ? "footer__list__item--darkMode"
-              : "footer__list__item--lightMode"
-          }`}
-          onClick={() => setOpenDrawer(!openDrawer)}
-        >
-          {!openDrawer ? (
-            <i
-              className="fas fa-bars list__item__icon"
-              title="Footer open menu"
-            ></i>
-          ) : (
-            <i
-              className="fas fa-times list__item__icon"
-              title="Footer close menu"
-            ></i>
-          )}
+        <ClickAwayListener onClickAway={() => setOpenDrawer(false)}>
+          <li
+            className={`footer__list__item ${
+              darkMode
+                ? "footer__list__item--darkMode"
+                : "footer__list__item--lightMode"
+            }`}
+            onClick={() => setOpenDrawer(!openDrawer)}
+          >
+            {!openDrawer ? (
+              <i
+                className="fas fa-bars list__item__icon"
+                title="Footer open menu"
+              ></i>
+            ) : (
+              <i
+                className="fas fa-times list__item__icon"
+                title="Footer close menu"
+              ></i>
+            )}
 
-          <p className="list__item__text">Menu</p>
-        </li>
+            <p className="list__item__text">Menu</p>
+          </li>
+        </ClickAwayListener>
       </ul>
     </footer>
   );
