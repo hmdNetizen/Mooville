@@ -5,7 +5,7 @@ import { FaCloudDownloadAlt } from "react-icons/fa";
 import { connect } from "react-redux";
 
 const makeshiftPoster =
-  "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8bW92aWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=154&h=231&q=60";
+  "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8bW92aWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=185&h=231&q=60";
 
 const MovieListItem = ({ title, movie, darkMode }) => {
   return (
@@ -13,11 +13,17 @@ const MovieListItem = ({ title, movie, darkMode }) => {
       <h3>{title}</h3>
       <Link to={`/movie/${movie.id}`} className="movieList__card__link">
         <div className="movieList__wrapper">
-          <div className="movieList__card">
+          <div
+            className={`movieList__card ${
+              darkMode
+                ? "movieList__card--darkMode"
+                : "movieList__card--lightMode"
+            }`}
+          >
             <img
               src={`${
                 movie.poster_path !== null
-                  ? "http://image.tmdb.org/t/p/w154/" + movie.poster_path
+                  ? "http://image.tmdb.org/t/p/w185/" + movie.poster_path
                   : makeshiftPoster
               }`}
               alt={`${movie.title || movie.name} poster`}

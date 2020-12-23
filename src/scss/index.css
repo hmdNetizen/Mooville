@@ -449,8 +449,27 @@ body {
   margin-right: 2em;
 }
 
+.movieList__card--darkMode {
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(140, 140, 140, 0.33);
+  box-shadow: 0px 0px 15px 0px rgba(140, 140, 140, 0.33);
+}
+
+.movieList__card--lightMode {
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.33);
+  box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.33);
+}
+
+@media (max-width: 600px) {
+  .movieList__card {
+    width: 10em;
+    height: 15em;
+  }
+}
+
 .movieList__card__poster {
   border-radius: 1em;
+  width: 100%;
+  height: 100%;
 }
 
 .movieList__details {
@@ -462,7 +481,13 @@ body {
 .movieList__title {
   font-size: 1.75rem;
   font-weight: 700;
-  margin-bottom: 0.25em;
+  margin-bottom: 0.35em;
+}
+
+@media (max-width: 600px) {
+  .movieList__title {
+    font-size: 1.5rem;
+  }
 }
 
 .movieList__title--darkMode {
@@ -476,7 +501,7 @@ body {
 .movieList__date {
   font-size: 1.2rem;
   color: #8c8c8c;
-  margin-bottom: 5em;
+  margin-bottom: 3em;
   letter-spacing: 2px;
 }
 
