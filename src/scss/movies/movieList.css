@@ -1,0 +1,14 @@
+.movieList {
+  background: yellow;
+}
+
+.movieList__card__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.movieList__card {
+  border-radius: 5px;
+}
+/*# sourceMappingURL=movieList.css.map */

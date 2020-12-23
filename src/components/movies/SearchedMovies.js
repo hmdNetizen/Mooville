@@ -2,8 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import Spinner from "../Spinner";
 import MovieListItem from "./MovieListItem";
+import MovieItem from "./MovieItem";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const SearchedMovie = ({ loading, searched, error, darkMode }) => {
+  const matchesSM = useMediaQuery("(max-width: 960px)");
   return (
     <div className="searchedMovies">
       {loading ? (
@@ -28,12 +31,21 @@ const SearchedMovie = ({ loading, searched, error, darkMode }) => {
         >
           Movie not found
         </h2>
-      ) : (
-        <div className="movie__card__wrapper">
+      ) : matchesSM ? (
+        <div
+          className={`movieList ${
+            darkMode ? "movieList--darkMode" : "movieList--lightMode"
+          }`}
+        >
           {searched &&
             searched.map((movie) => (
               <MovieListItem key={movie.id} movie={movie} />
             ))}
+        </div>
+      ) : (
+        <div className="movie__card__wrapper">
+          {searched &&
+            searched.map((movie) => <MovieItem key={movie.id} movie={movie} />)}
         </div>
       )}
     </div>

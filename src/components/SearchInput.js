@@ -16,10 +16,15 @@ const SearchInput = ({ darkMode, fetchSearchedMovies }) => {
   };
 
   return (
-    <form onSubmit={handleMovieSearch} className="search">
+    <form
+      onSubmit={handleMovieSearch}
+      className={`search ${
+        darkMode ? "search--darkMode" : "search--lightMode"
+      }`}
+    >
       <input
         type="text"
-        placeholder="Search favourite movies"
+        placeholder="Search your favourite movies"
         value={text}
         onChange={(e) => setText(e.target.value)}
         className={
@@ -34,7 +39,7 @@ const SearchInput = ({ darkMode, fetchSearchedMovies }) => {
           darkMode ? "search__button--darkMode" : "search__button--lightMode"
         }`}
       >
-        Search Movies
+        Search
       </button>
     </form>
   );

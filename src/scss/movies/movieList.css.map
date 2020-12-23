@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACT,UAAU,EAAE,MAAM;CAOnB;;AANE,AAAD,yBAAgB,CAAC;EACf,OAAO,EAAE,IAAI;CACd;;AACA,AAAD,gBAAO,CAAC;EACN,aAAa,EAAE,GAAG;CACnB",
+    "sources": [
+        "movieList.scss"
+    ],
+    "names": [],
+    "file": "movieList.css"
+}

@@ -1,0 +1,71 @@
+.movieList {
+  padding-bottom: 15em;
+  &--darkMode {
+    background: $color-dark-grey-1;
+  }
+
+  &--lightMode {
+    background: $color-white;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    padding: 3em 2em 0;
+  }
+
+  &__card {
+    border-radius: 1em;
+    margin-right: 2em;
+
+    &__poster {
+      border-radius: 1em;
+    }
+  }
+
+  &__details {
+    align-self: flex-start;
+    margin-right: auto;
+  }
+
+  &__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25em;
+
+    &--darkMode {
+      color: $color-white;
+    }
+
+    &--lightMode {
+      color: $color-primary;
+    }
+  }
+
+  &__date {
+    font-size: 1.2rem;
+    color: $color-light-grey;
+    margin-bottom: 5em;
+    letter-spacing: 2px;
+
+    &--darkMode {
+      color: $color-lighter-grey;
+    }
+
+    &--lightMode {
+      color: $color-light-grey;
+    }
+  }
+
+  &__download__icon {
+    font-size: 3rem;
+
+    &--darkMode {
+      color: $color-gold;
+    }
+
+    &--lightMode {
+      color: $color-tertiary;
+    }
+  }
+}

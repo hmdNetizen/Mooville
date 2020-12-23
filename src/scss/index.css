@@ -103,30 +103,20 @@ body {
 }
 
 @media (max-width: 960px) {
-  .search__hideForm {
-    -webkit-transform: translateY(-20em);
-            transform: translateY(-20em);
-    position: absolute;
-  }
-}
-
-@media (max-width: 960px) {
-  .search__showForm {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    margin-top: 5em;
-  }
-}
-
-@media (max-width: 960px) {
   .search {
-    padding: 0 5em;
+    padding: 5em;
+  }
+  .search--darkMode {
+    background: #2c2c2c;
+  }
+  .search--lightMode {
+    background: #fff;
   }
 }
 
 @media (max-width: 600px) {
   .search {
-    padding: 0 2em;
+    padding: 5em 2em;
   }
 }
 
@@ -430,6 +420,84 @@ body {
   .movie__star__icon {
     font-size: 0.85rem !important;
   }
+}
+
+.movieList {
+  padding-bottom: 15em;
+}
+
+.movieList--darkMode {
+  background: #2c2c2c;
+}
+
+.movieList--lightMode {
+  background: #fff;
+}
+
+.movieList__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 3em 2em 0;
+}
+
+.movieList__card {
+  border-radius: 1em;
+  margin-right: 2em;
+}
+
+.movieList__card__poster {
+  border-radius: 1em;
+}
+
+.movieList__details {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin-right: auto;
+}
+
+.movieList__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25em;
+}
+
+.movieList__title--darkMode {
+  color: #fff;
+}
+
+.movieList__title--lightMode {
+  color: #262525;
+}
+
+.movieList__date {
+  font-size: 1.2rem;
+  color: #8c8c8c;
+  margin-bottom: 5em;
+  letter-spacing: 2px;
+}
+
+.movieList__date--darkMode {
+  color: #d1d1d1;
+}
+
+.movieList__date--lightMode {
+  color: #8c8c8c;
+}
+
+.movieList__download__icon {
+  font-size: 3rem;
+}
+
+.movieList__download__icon--darkMode {
+  color: #d3a43f;
+}
+
+.movieList__download__icon--lightMode {
+  color: #c93126;
 }
 
 .singleMovie {

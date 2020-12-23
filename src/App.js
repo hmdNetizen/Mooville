@@ -6,11 +6,6 @@ import NavMenu from "./components/NavMenu";
 import Footer from "./components/layout/Footer";
 import "./scss/index.css";
 import store from "./redux/store";
-// import MainSection from "./components/layout/MainSection";
-// import FetchMovie from "./components/movies/FetchMovie";
-// import useMediaQuery from "@material-ui/core/useMediaQuery";
-// import SearchedMovie from "./components/movies/SearchedMovies";
-// import SearchInput from "./components/SearchInput";
 import Routes from "./components/Routes";
 
 function App() {
