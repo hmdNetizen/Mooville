@@ -32,6 +32,11 @@ body {
   position: relative;
 }
 
+.search-wrapper {
+  margin-left: 25em;
+  padding: 5em 0 1em;
+}
+
 .checkbox {
   position: absolute;
   opacity: 0;

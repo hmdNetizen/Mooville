@@ -2,31 +2,26 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { getSearchedMovies } from "../redux";
 
-const SearchInput = ({
-  darkMode,
-  selectedMenu,
-  fetchSearchedMovies,
-  movieSearched,
-  loading,
-}) => {
+const SearchInput = ({ darkMode, fetchSearchedMovies }) => {
   const [text, setText] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
 
+  const handleMovieSearch = (e) => {
+    e.preventDefault();
     if (text.trim() !== "") {
       fetchSearchedMovies(text);
     } else {
-      alert("Field cannot be empty");
+      alert("Please enter a text");
     }
     setText("");
   };
+
   return (
-    <form onSubmit={handleSubmit} className={`search`}>
+    <form onSubmit={handleMovieSearch} className="search">
       <input
         type="text"
+        placeholder="Search favourite movies"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Search your favourite movies"
         className={
           darkMode
             ? "search__input search__input--darkMode"
@@ -39,7 +34,7 @@ const SearchInput = ({
           darkMode ? "search__button--darkMode" : "search__button--lightMode"
         }`}
       >
-        Search
+        Search Movies
       </button>
     </form>
   );
@@ -48,9 +43,7 @@ const SearchInput = ({
 const mapStateToProps = (state) => {
   return {
     darkMode: state.theme.darkTheme,
-    selectedMenu: state.utils.selectedMenu,
-    movieSearched: state.movies.searchedMovies,
-    loading: state.movies.loading,
+    searched: state.movies.searchedMovies,
   };
 };
 

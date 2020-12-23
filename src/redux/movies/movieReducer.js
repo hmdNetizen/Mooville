@@ -26,14 +26,14 @@ export default (state = initialState, action) => {
         ...state,
         trending: action.payload,
         loading: false,
-        error: ""
+        error: "",
       };
     case GET_ACTION_MOVIES_SUCCESS:
       return {
         ...state,
         actionMovies: action.payload,
         loading: false,
-        error: ""
+        error: "",
       };
     case GET_SINGLE_MOVIE:
       return {

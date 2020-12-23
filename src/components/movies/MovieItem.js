@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import StarRating from "../StarRating";
 
 const makeshiftPoster =
-  "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8bW92aWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60";
+  "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8bW92aWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=185&h=262&q=60";
 
 const Movies = ({ movie, darkMode }) => {
   return (
@@ -31,7 +31,7 @@ const Movies = ({ movie, darkMode }) => {
                 : "movie__card__title--lightMode"
             }`}
           >
-            {movie.title}
+            {movie.title || movie.name}
           </h4>
           <div
             className={`movie__card__rating ${

@@ -1,16 +1,18 @@
 import React, { Fragment } from "react";
-import SearchInput from "../SearchField";
+import SearchInput from "../SearchInput";
 import { connect } from "react-redux";
 import FetchTrendingMovie from "../movies/FetchTrendingMovies";
 import FetchAllMovies from "../movies/FetchAllMovies";
+import SearchedMovies from "../movies/SearchedMovies";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-const MainSection = ({ darkMode }) => {
+const MainSection = ({ darkMode, searched }) => {
+  const matchesSM = useMediaQuery("(max-width: 960px)");
   return (
     <main className={`main ${darkMode ? "main__darkMode" : "main__lightMode"}`}>
       <section className="section">
-        <Fragment>
-          <SearchInput />
-        </Fragment>
+        {!matchesSM && <SearchInput />}
+        {!matchesSM && searched && searched.length > 0 && <SearchedMovies />}
         <Fragment>
           <FetchTrendingMovie />
         </Fragment>
@@ -25,6 +27,7 @@ const MainSection = ({ darkMode }) => {
 const mapStateToProps = (state) => {
   return {
     darkMode: state.theme.darkTheme,
+    searched: state.movies.searchedMovies,
   };
 };
 

@@ -30,6 +30,13 @@ const Footer = (props) => {
     },
     {
       id: 2,
+      title: "Viewed",
+      icon: "fas fa-eye",
+      path: "/viewed",
+      description: "Footer eye icon",
+    },
+    {
+      id: 3,
       title: "Bookmarks",
       icon: "far fa-bookmark",
       path: "/bookmarks",

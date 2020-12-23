@@ -100,10 +100,14 @@ export const getSearchedMovies = (searched) => async (dispatch) => {
     const response = await axios.get(
       `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=en-US&query=${searched}&page=1&include_adult=false`
     );
+    const filteredResponse = response.data.results.filter(
+      (filtered) =>
+        filtered.media_type === "movie" || filtered.media_type === "tv"
+    );
 
     dispatch({
       type: GET_SEARCHED_MOVIES,
-      payload: response.data.results,
+      payload: filteredResponse,
     });
   } catch (error) {
     dispatch(getMoviesFailure(error.message));
