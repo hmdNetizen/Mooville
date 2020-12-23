@@ -444,9 +444,21 @@ body {
   padding: 3em 2em 0;
 }
 
+@media (max-width: 320px) {
+  .movieList__wrapper {
+    padding: 3em 1em 0;
+  }
+}
+
 .movieList__card {
   border-radius: 1em;
   margin-right: 2em;
+}
+
+@media (max-width: 320px) {
+  .movieList__card {
+    margin-right: 1em;
+  }
 }
 
 .movieList__card--darkMode {
@@ -459,17 +471,15 @@ body {
   box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.33);
 }
 
-@media (max-width: 600px) {
-  .movieList__card {
-    width: 10em;
-    height: 15em;
-  }
-}
-
 .movieList__card__poster {
   border-radius: 1em;
-  width: 100%;
-  height: 100%;
+}
+
+@media (max-width: 600px) {
+  .movieList__card__poster {
+    max-width: 12em;
+    max-height: 18em;
+  }
 }
 
 .movieList__details {
@@ -482,6 +492,12 @@ body {
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 0.35em;
+}
+
+@media (max-width: 320px) {
+  .movieList__title {
+    font-size: 1.25rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -505,6 +521,12 @@ body {
   letter-spacing: 2px;
 }
 
+@media (max-width: 320px) {
+  .movieList__date {
+    font-size: 1rem;
+  }
+}
+
 .movieList__date--darkMode {
   color: #d1d1d1;
 }
@@ -515,6 +537,12 @@ body {
 
 .movieList__download__icon {
   font-size: 3rem;
+}
+
+@media (max-width: 320px) {
+  .movieList__download__icon {
+    font-size: 2rem;
+  }
 }
 
 .movieList__download__icon--darkMode {
