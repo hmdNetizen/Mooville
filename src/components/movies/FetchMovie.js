@@ -88,6 +88,18 @@ const FetchMovie = (props) => {
             >
               Unknown Server Error!
             </h2>
+          ) : video && Object.keys(video).length < 1 ? (
+            <div className="movie__error__wrapper">
+              <h2
+                className={`movie__error__heading ${
+                  darkMode
+                    ? "movie__error__heading--darkMode"
+                    : "movie__error__heading--lightMode"
+                }`}
+              >
+                Video Unavailable
+              </h2>
+            </div>
           ) : (
             video !== null &&
             video.map((vid) => (
@@ -106,7 +118,11 @@ const FetchMovie = (props) => {
           className={`singleMovie__description ${
             darkMode
               ? "singleMovie__description--darkMode"
-              : "singleMovie__description-lightMode"
+              : "singleMovie__description--lightMode"
+          } ${
+            video &&
+            Object.keys(video).length < 1 &&
+            "singleMovie__description--removeMarginTop"
           }`}
         >
           {loading ? (

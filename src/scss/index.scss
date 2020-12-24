@@ -7,11 +7,12 @@
 
 //components
 @import "components/switchButton";
-@import "components/searchField";
+@import "components/searchInput";
 
 //movies
 @import "movies/movies";
 @import "movies/movieList";
+@import "movies/searchedMovies";
 @import "movies/singleMovie";
 @import "movies/trending";
 

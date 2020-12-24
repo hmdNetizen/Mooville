@@ -3,7 +3,7 @@ import SearchInput from "../SearchInput";
 import { connect } from "react-redux";
 import FetchTrendingMovie from "../movies/FetchTrendingMovies";
 import FetchAllMovies from "../movies/FetchAllMovies";
-import SearchedMovies from "../movies/SearchedMovies";
+import SearchedMovie from "../movies/SearchedMovies";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const MainSection = ({ darkMode, searched }) => {
@@ -12,7 +12,7 @@ const MainSection = ({ darkMode, searched }) => {
     <main className={`main ${darkMode ? "main__darkMode" : "main__lightMode"}`}>
       <section className="section">
         {!matchesSM && <SearchInput />}
-        {!matchesSM && searched && searched.length > 0 && <SearchedMovies />}
+        {!matchesSM && searched && searched.length > 0 && <SearchedMovie />}
         <Fragment>
           <FetchTrendingMovie />
         </Fragment>

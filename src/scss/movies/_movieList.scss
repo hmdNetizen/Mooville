@@ -8,6 +8,27 @@
     background: $color-white;
   }
 
+  &__mediaType__title {
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: 500;
+
+    @include match(sm) {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-left: 1em;
+      margin-top: 1.5em;
+    }
+
+    @include match(xs) {
+      font-size: 1.75rem;
+    }
+
+    @include match(xxs) {
+      font-size: 1.5rem;
+    }
+  }
+
   &__wrapper {
     display: flex;
     align-items: center;
@@ -56,6 +77,7 @@
   &__title {
     font-size: 1.75rem;
     font-weight: 700;
+    text-transform: uppercase;
     margin-bottom: 0.35em;
 
     @include match(xxs) {

@@ -12,7 +12,7 @@ const initialState = {
   trending: [],
   actionMovies: [],
   similarMovies: [],
-  searchMovies: [],
+  searchedMovies: [],
   error: "",
   loading: true,
   selectedMovie: null,

@@ -7,6 +7,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const SearchedMovie = ({ loading, searched, error, darkMode }) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
+  console.log(searched);
   return (
     <div className="searchedMovies">
       {loading ? (
@@ -21,7 +22,7 @@ const SearchedMovie = ({ loading, searched, error, darkMode }) => {
         >
           Unknown Server Error!
         </h2>
-      ) : searched && searched.length < 1 ? (
+      ) : searched.length < 1 ? (
         <h2
           className={`movie__error__heading ${
             darkMode
@@ -37,6 +38,7 @@ const SearchedMovie = ({ loading, searched, error, darkMode }) => {
             darkMode ? "movieList--darkMode" : "movieList--lightMode"
           }`}
         >
+          <h3 className="movieList__mediaType__title">TV shows & Movies</h3>
           {searched &&
             searched.map((movie) => (
               <MovieListItem key={movie.id} movie={movie} />

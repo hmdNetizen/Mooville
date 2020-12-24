@@ -7,10 +7,9 @@ import { connect } from "react-redux";
 const makeshiftPoster =
   "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8bW92aWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=185&h=231&q=60";
 
-const MovieListItem = ({ title, movie, darkMode }) => {
+const MovieListItem = ({ movie, darkMode }) => {
   return (
     <Fragment>
-      <h3>{title}</h3>
       <Link to={`/movie/${movie.id}`} className="movieList__card__link">
         <div className="movieList__wrapper">
           <div

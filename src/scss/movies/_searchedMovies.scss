@@ -1,0 +1,6 @@
+.searchedMovies {
+  margin-top: 3em;
+  @include match(sm) {
+    margin-top: 0;
+  }
+}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { getSearchedMovies } from "../redux";
 
-const SearchInput = ({ darkMode, fetchSearchedMovies }) => {
+const SearchInput = ({ darkMode, fetchSearchedMovies, searched }) => {
   const [text, setText] = useState("");
 
   const handleMovieSearch = (e) => {
@@ -20,7 +20,7 @@ const SearchInput = ({ darkMode, fetchSearchedMovies }) => {
       onSubmit={handleMovieSearch}
       className={`search ${
         darkMode ? "search--darkMode" : "search--lightMode"
-      }`}
+      } ${searched.length < 1 && "search--fullHeight"}`}
     >
       <input
         type="text"
@@ -32,6 +32,7 @@ const SearchInput = ({ darkMode, fetchSearchedMovies }) => {
             ? "search__input search__input--darkMode"
             : "search__input search__input--lightMode"
         }
+        autoFocus
       />
       <button
         type="submit"

@@ -2,24 +2,24 @@
   width: 100%;
   transition: transform 0.25s ease-in-out;
 
-  &__hideForm {
-    @include match(sm) {
-      display: none;
-    }
-  }
-
-  &__showForm {
-    @include match(sm) {
-      display: block;
-    }
+  &--fullHeight {
+    height: 100vh;
   }
 
   @include match(sm) {
-    padding: 0 5em;
+    padding: 5em;
+
+    &--darkMode {
+      background: $color-dark-grey-1;
+    }
+
+    &--lightMode {
+      background: $color-white;
+    }
   }
 
   @include match(xs) {
-    padding: 0 2em;
+    padding: 5em 2em 1em;
   }
 
   &__input {
@@ -104,8 +104,4 @@
       outline: none;
     }
   }
-}
-
-.search-wrapper {
-  background: yellow;
 }

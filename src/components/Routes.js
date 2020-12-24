@@ -29,7 +29,7 @@ const Routes = ({ searched }) => {
           render={(props) => (
             <Fragment>
               <SearchInput />
-              {searched && searched.length > 0 && <SearchedMovies />}
+              {searched && searched.length > 0 && <SearchedMovies {...props} />}
             </Fragment>
           )}
         />

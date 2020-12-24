@@ -52,6 +52,7 @@
   &__video {
     width: 60%;
     margin-right: 5%;
+    height: 70vh;
 
     @include match(md) {
       width: 100%;
@@ -61,6 +62,11 @@
     @include match(sm) {
       width: 100%;
       margin-right: 0;
+      height: 45vh;
+    }
+
+    @include match(xs) {
+      height: 30vh;
     }
   }
 
@@ -93,23 +99,27 @@
     padding-bottom: 15em;
 
     @include match(md) {
-      margin-top: 70vh;
       width: 100%;
+      margin-top: 0;
       padding-left: 7em;
       padding-right: 7em;
     }
 
     @include match(sm) {
-      margin-top: 45vh;
+      margin-top: 0;
       padding-left: 5em;
       padding-right: 5em;
       padding-top: 0;
     }
 
     @include match(xs) {
-      margin-top: 30vh;
+      margin-top: 0;
       padding-left: 2em;
       padding-right: 2em;
+    }
+
+    &--removeMarginTop {
+      margin-top: 0;
     }
 
     &--darkMode {
