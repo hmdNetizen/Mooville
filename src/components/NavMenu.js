@@ -4,15 +4,16 @@ import { connect } from "react-redux";
 import { setOpenDrawer, setValue } from "../redux";
 
 const navLists = [
-  { id: 0, title: "Action", link: "/action" },
-  { id: 1, title: "Adventure", link: "/adventure" },
-  { id: 2, title: "Animation", link: "/animation" },
-  { id: 3, title: "Comedy", link: "/comedy" },
-  { id: 4, title: "Documentary", link: "/documentary" },
-  { id: 5, title: "Horror", link: "/horror" },
-  { id: 6, title: "Romance", link: "/romance" },
-  { id: 7, title: "Science Fiction", link: "/science" },
-  { id: 8, title: "Thriller", link: "/thriller" },
+  { id: 0, title: "Home", link: "/" },
+  { id: 1, title: "Action", link: "/action" },
+  { id: 2, title: "Adventure", link: "/adventure" },
+  { id: 3, title: "Animation", link: "/animation" },
+  { id: 4, title: "Comedy", link: "/comedy" },
+  { id: 5, title: "Documentary", link: "/documentary" },
+  { id: 6, title: "Horror", link: "/horror" },
+  { id: 7, title: "Romance", link: "/romance" },
+  { id: 8, title: "Science Fiction", link: "/science" },
+  { id: 9, title: "Thriller", link: "/thriller" },
 ];
 
 const NavMenu = (props) => {

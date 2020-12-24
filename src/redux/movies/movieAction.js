@@ -7,6 +7,7 @@ import {
   GET_SIMILAR_MOVIES,
   GET_MOVIE_VIDEO,
   GET_SEARCHED_MOVIES,
+  GET_POPULAR_ADVENTURE_MOVIES,
 } from "./movieTypes";
 
 const apiKey = "f5205bcd74d03769d95f80b89c9f4db6";
@@ -108,6 +109,22 @@ export const getSearchedMovies = (searched) => async (dispatch) => {
     dispatch({
       type: GET_SEARCHED_MOVIES,
       payload: filteredResponse,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
+// Adventure Movies
+export const getPopularAdventureMovies = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.gte=2020&with_genres=12`
+    );
+
+    dispatch({
+      type: GET_POPULAR_ADVENTURE_MOVIES,
+      payload: response.data.results,
     });
   } catch (error) {
     dispatch(getMoviesFailure(error.message));

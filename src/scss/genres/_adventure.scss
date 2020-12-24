@@ -1,0 +1,27 @@
+.adventure {
+  margin-left: 25em;
+  width: 100%;
+  padding-top: 5em;
+  padding-bottom: 5em;
+
+  @include match(sm) {
+    padding-top: 0;
+  }
+
+  @include match(sm) {
+    margin-left: 0;
+  }
+
+  &__title {
+    @include headingTitle;
+    font-weight: 700;
+
+    &--darkMode {
+      color: $color-white;
+    }
+
+    &--lightMode {
+      color: $color-primary;
+    }
+  }
+}

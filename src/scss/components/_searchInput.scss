@@ -3,7 +3,9 @@
   transition: transform 0.25s ease-in-out;
 
   &--fullHeight {
-    height: 100vh;
+    @include match(sm) {
+      height: 100vh;
+    }
   }
 
   @include match(sm) {

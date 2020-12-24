@@ -102,8 +102,10 @@ body {
   transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
 }
 
-.search--fullHeight {
-  height: 100vh;
+@media (max-width: 960px) {
+  .search--fullHeight {
+    height: 100vh;
+  }
 }
 
 @media (max-width: 960px) {
@@ -242,6 +244,49 @@ body {
 
 .search__button:focus {
   outline: none;
+}
+
+.adventure {
+  margin-left: 25em;
+  width: 100%;
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+@media (max-width: 960px) {
+  .adventure {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .adventure {
+    margin-left: 0;
+  }
+}
+
+.adventure__title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5em;
+  margin-left: 2.7em;
+  font-weight: 700;
+}
+
+.adventure__title--darkMode {
+  color: #d3a43f;
+}
+
+.adventure__title--lightMode {
+  color: #c93126;
+}
+
+.adventure__title--darkMode {
+  color: #fff;
+}
+
+.adventure__title--lightMode {
+  color: #262525;
 }
 
 .movie {
@@ -503,6 +548,13 @@ body {
   margin-right: 2em;
 }
 
+@media (max-width: 600px) {
+  .movieList__card {
+    max-width: 12em;
+    max-height: 18em;
+  }
+}
+
 @media (max-width: 320px) {
   .movieList__card {
     margin-right: 1em;
@@ -525,8 +577,8 @@ body {
 
 @media (max-width: 600px) {
   .movieList__card__poster {
-    max-width: 12em;
-    max-height: 18em;
+    max-width: 100%;
+    max-height: 100%;
   }
 }
 
@@ -1344,6 +1396,7 @@ body {
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
+  margin-left: 0;
 }
 
 .trending__error__heading--darkMode {

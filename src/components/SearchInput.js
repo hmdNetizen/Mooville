@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { getSearchedMovies } from "../redux";
 
-const SearchInput = ({ darkMode, fetchSearchedMovies, searched }) => {
+const SearchInput = ({ darkMode, fetchSearchedMovies, searched, loading }) => {
   const [text, setText] = useState("");
 
   const handleMovieSearch = (e) => {

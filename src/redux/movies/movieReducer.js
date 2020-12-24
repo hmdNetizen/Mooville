@@ -6,6 +6,7 @@ import {
   GET_SIMILAR_MOVIES,
   GET_MOVIE_VIDEO,
   GET_SEARCHED_MOVIES,
+  GET_POPULAR_ADVENTURE_MOVIES,
 } from "./movieTypes";
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   actionMovies: [],
   similarMovies: [],
   searchedMovies: [],
+  popularAdventureMovies: [],
   error: "",
   loading: true,
   selectedMovie: null,
@@ -59,12 +61,19 @@ export default (state = initialState, action) => {
         searchedMovies: action.payload,
         loading: false,
       };
+    case GET_POPULAR_ADVENTURE_MOVIES:
+      return {
+        ...state,
+        popularAdventureMovies: action.payload,
+        loading: false,
+      };
     case GET_MOVIES_FAILURE:
       return {
         ...state,
         trending: [],
         actionMovies: [],
         searchedMovies: [],
+        popularAdventureMovies: [],
         error: action.payload,
         selectedMovie: null,
         movieVideo: null,
