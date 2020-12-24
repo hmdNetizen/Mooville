@@ -5,7 +5,7 @@
   padding-bottom: 5em;
 
   @include match(sm) {
-    padding-top: 0;
+    padding-top: 5em;
   }
 
   @include match(sm) {
@@ -16,6 +16,16 @@
     @include headingTitle;
     font-weight: 700;
 
+    @include match(sm) {
+      margin-left: 1.5em;
+    }
+
+    @include match(xs) {
+      margin-left: 0.5em;
+      font-size: 2rem;
+      text-align: center;
+    }
+
     &--darkMode {
       color: $color-white;
     }
@@ -23,5 +33,11 @@
     &--lightMode {
       color: $color-primary;
     }
+  }
+}
+
+.adventureMovies {
+  & .section {
+    padding-top: 0;
   }
 }

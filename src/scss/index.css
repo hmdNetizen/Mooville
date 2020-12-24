@@ -255,7 +255,7 @@ body {
 
 @media (max-width: 960px) {
   .adventure {
-    padding-top: 0;
+    padding-top: 5em;
   }
 }
 
@@ -281,12 +281,30 @@ body {
   color: #c93126;
 }
 
+@media (max-width: 960px) {
+  .adventure__title {
+    margin-left: 1.5em;
+  }
+}
+
+@media (max-width: 600px) {
+  .adventure__title {
+    margin-left: 0.5em;
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+
 .adventure__title--darkMode {
   color: #fff;
 }
 
 .adventure__title--lightMode {
   color: #262525;
+}
+
+.adventureMovies .section {
+  padding-top: 0;
 }
 
 .movie {

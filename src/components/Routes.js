@@ -6,6 +6,7 @@ import SearchInput from "./SearchInput";
 import SearchedMovies from "./movies/SearchedMovies";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { connect } from "react-redux";
+import GetPopularAdventureMovies from "./pages/GetPopularAdventureMovies";
 import GetAdventureMovies from "./pages/GetAdventureMovies";
 
 const Routes = ({ searched }) => {
@@ -37,7 +38,16 @@ const Routes = ({ searched }) => {
       )}
 
       <Route exact path="/bookmarks" component={() => <div>Bookmarks</div>} />
-      <Route exact path="/adventure" component={GetAdventureMovies} />
+      <Route
+        exact
+        path="/adventure"
+        render={(props) => (
+          <Fragment>
+            <GetPopularAdventureMovies {...props} />
+            <GetAdventureMovies {...props} />
+          </Fragment>
+        )}
+      />
     </Switch>
   );
 };

@@ -1,96 +1,56 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import swiperCore, { EffectCoverflow, Scrollbar } from "swiper";
 import { connect } from "react-redux";
-import { getPopularAdventureMovies } from "../../redux";
+import { getAdventureMovies } from "../../redux";
 import Spinner from "../Spinner";
-
-swiperCore.use([EffectCoverflow, Scrollbar]);
+import MovieItem from "../movies/MovieItem";
 
 const GetAdventureMovies = (props) => {
   const {
-    popularAdventureMovies,
-    darkMode,
+    showAdventureMovies,
+    adventureMovies,
     loading,
     error,
-    showPopularAdventureMovies,
+    darkMode,
   } = props;
   useEffect(() => {
-    showPopularAdventureMovies();
-  }, [showPopularAdventureMovies]);
+    showAdventureMovies();
+  }, [showAdventureMovies]);
   return (
     <section
-      className={`main ${darkMode ? "main__darkMode" : "main__lightMode"}`}
+      className={`main adventureMovies ${
+        darkMode ? "main__darkMode" : "main__lightMode"
+      }`}
     >
-      <div className="adventure">
-        <h1
-          className={`adventure__title ${
-            darkMode
-              ? "adventure__title--darkMode"
-              : "adventure__title--lightMode"
-          }`}
-        >
-          Discover Movies (Adventure)
-        </h1>
-        <div className="trending">
+      <div className="section">
+        <div className="movie">
           <h2
-            className={`trending__heading ${
+            className={`movie__heading ${
               darkMode
-                ? "trending__heading--darkMode"
-                : "trending__heading--lightMode"
+                ? "movie__heading--darkMode"
+                : "movie__heading--lightMode"
             }`}
           >
-            Most Popular (2020)
+            Adventure
           </h2>
-          <div className="slider-wrapper">
-            {loading ? (
-              <Spinner />
-            ) : error ? (
-              <h2
-                className={`trending__error__heading ${
-                  darkMode
-                    ? "trending__error__heading--darkMode"
-                    : "trending__error__heading--lightMode"
-                }`}
-              >
-                Unknown Server Error!
-              </h2>
-            ) : (
-              <Swiper
-                // spaceBetween={50}
-                centeredSlides={true}
-                effect="coverflow"
-                height={250}
-                width={170}
-                style={{ borderRadius: 20 }}
-              >
-                {popularAdventureMovies.map((adventure) => (
-                  <SwiperSlide
-                    key={adventure.id}
-                    stle={{ borderRadius: "20px !important" }}
-                  >
-                    <div
-                      className={`trending__poster__wrapper ${
-                        darkMode
-                          ? "trending__poster__wrapper--darkMode"
-                          : undefined
-                      }`}
-                    >
-                      <Link to={`/movie/${adventure.id}`}>
-                        <img
-                          src={`http://image.tmdb.org/t/p/w185/${adventure.poster_path}`}
-                          alt="post"
-                          className="trending__poster"
-                          sizes="185px"
-                        />
-                      </Link>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            )}
-          </div>
+          {loading ? (
+            <Spinner />
+          ) : error ? (
+            <h2
+              className={`movie__error__heading ${
+                darkMode
+                  ? "movie__error__heading--darkMode"
+                  : "movie__error__heading--lightMode"
+              }`}
+            >
+              Unknown Server Error!
+            </h2>
+          ) : (
+            <div className="movie__card__wrapper">
+              {adventureMovies.map((movie) => (
+                <MovieItem key={movie.id} movie={movie} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -99,16 +59,16 @@ const GetAdventureMovies = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    popularAdventureMovies: state.movies.popularAdventureMovies,
-    darkMode: state.theme.darkTheme,
     loading: state.movies.loading,
+    adventureMovies: state.movies.adventureMovies,
     error: state.movies.error,
+    darkMode: state.theme.darkTheme,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showPopularAdventureMovies: () => dispatch(getPopularAdventureMovies()),
+    showAdventureMovies: () => dispatch(getAdventureMovies()),
   };
 };
 

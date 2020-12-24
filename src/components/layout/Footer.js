@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { setOpenDrawer } from "./../../redux/";
-import { setSelectedMenu } from "./../../redux/utils/utilsAction";
+import { setOpenDrawer, setSelectedMenu, setValue } from "./../../redux/";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
 const Footer = (props) => {
@@ -12,6 +11,7 @@ const Footer = (props) => {
     setOpenDrawer,
     selectedMenu,
     setSelectedMenu,
+    setValue,
   } = props;
   const footerMenus = [
     {
@@ -78,6 +78,7 @@ const Footer = (props) => {
             onClick={() => {
               setOpenDrawer(false);
               setSelectedMenu(menu.id);
+              selectedMenu === 0 && setValue(0);
             }}
           >
             <li className="footer__list__item">
@@ -123,6 +124,7 @@ const mapStateToProps = (state) => {
     darkMode: state.theme.darkTheme,
     openDrawer: state.utils.openDrawer,
     selectedMenu: state.utils.selectedMenu,
+    value: state.utils.value,
   };
 };
 
@@ -130,6 +132,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setOpenDrawer: (openDrawer) => dispatch(setOpenDrawer(openDrawer)),
     setSelectedMenu: (selectedMenu) => dispatch(setSelectedMenu(selectedMenu)),
+    setValue: (value) => dispatch(setValue(value)),
   };
 };
 
