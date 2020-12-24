@@ -38,7 +38,15 @@ const SearchedMovie = ({ loading, searched, error, darkMode }) => {
             darkMode ? "movieList--darkMode" : "movieList--lightMode"
           }`}
         >
-          <h3 className="movieList__mediaType__title">TV shows & Movies</h3>
+          <h3
+            className={`movieList__mediaType__title ${
+              darkMode
+                ? "movieList__mediaType__title--darkMode"
+                : "movieList__mediaType__title--lightMode"
+            }`}
+          >
+            TV shows & Movies
+          </h3>
           {searched &&
             searched.map((movie) => (
               <MovieListItem key={movie.id} movie={movie} />

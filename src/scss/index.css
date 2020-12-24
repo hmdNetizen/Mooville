@@ -453,12 +453,20 @@ body {
   font-weight: 500;
 }
 
+.movieList__mediaType__title--darkMode {
+  color: #fff;
+}
+
+.movieList__mediaType__title--lightMode {
+  color: #262525;
+}
+
 @media (max-width: 960px) {
   .movieList__mediaType__title {
     font-size: 2.5rem;
     font-weight: 600;
     margin-left: 1em;
-    margin-top: 1.5em;
+    padding-top: 1.5em;
   }
 }
 
