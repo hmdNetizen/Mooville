@@ -7,9 +7,11 @@ import {
   GET_MOVIE_VIDEO,
   GET_SEARCHED_MOVIES,
   GET_POPULAR_ADVENTURE_MOVIES,
-  GET_ADVENTURE_MOVIES,
   GET_POPULAR_ANIMATION_MOVIES,
+  GET_POPULAR_COMEDY_MOVIES,
+  GET_ADVENTURE_MOVIES,
   GET_ANIMATION_MOVIES,
+  GET_COMEDY_MOVIES,
 } from "./movieTypes";
 
 const initialState = {
@@ -19,8 +21,10 @@ const initialState = {
   searchedMovies: [],
   popularAdventureMovies: [],
   popularAnimationMovies: [],
+  popularComedyMovies: [],
   adventureMovies: [],
   animationMovies: [],
+  comedyMovies: [],
   error: "",
   loading: true,
   selectedMovie: null,
@@ -79,6 +83,12 @@ export default (state = initialState, action) => {
         popularAnimationMovies: action.payload,
         loading: false,
       };
+    case GET_POPULAR_COMEDY_MOVIES:
+      return {
+        ...state,
+        popularComedyMovies: action.payload,
+        loading: false,
+      };
     case GET_ANIMATION_MOVIES:
       return {
         ...state,
@@ -91,12 +101,19 @@ export default (state = initialState, action) => {
         adventureMovies: action.payload,
         loading: false,
       };
+    case GET_COMEDY_MOVIES:
+      return {
+        ...state,
+        comedyMovies: action.payload,
+        loading: false,
+      };
     case GET_MOVIES_FAILURE:
       return {
         ...state,
         trending: [],
         actionMovies: [],
         searchedMovies: [],
+        comedyMovies: [],
         popularAdventureMovies: [],
         adventureMovies: [],
         error: action.payload,

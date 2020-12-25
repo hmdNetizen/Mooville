@@ -10,6 +10,9 @@ import GetPopularAdventureMovies from "./pages/GetPopularAdventureMovies";
 import GetAdventureMovies from "./pages/GetAdventureMovies";
 import GetPopularAnimationMovies from "./pages/GetPopularAnimationMovies";
 import GetAnimationMovies from "./pages/GetAnimationMovies";
+import FetchAllMovies from "./movies/FetchAllMovies";
+import GetPopularComedyMovies from "./pages/GetPopularComedyMovies";
+import GetComedyMovies from "./pages/GetComedyMovies";
 
 const Routes = ({ searched }) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
@@ -57,6 +60,25 @@ const Routes = ({ searched }) => {
           <Fragment>
             <GetPopularAnimationMovies />
             <GetAnimationMovies />
+          </Fragment>
+        )}
+      />
+      <Route
+        exact
+        path="/action"
+        render={() => (
+          <Fragment>
+            <FetchAllMovies />
+          </Fragment>
+        )}
+      />
+      <Route
+        exact
+        path="/comedy"
+        render={() => (
+          <Fragment>
+            <GetPopularComedyMovies />
+            <GetComedyMovies />
           </Fragment>
         )}
       />

@@ -9,8 +9,10 @@ import {
   GET_SEARCHED_MOVIES,
   GET_POPULAR_ADVENTURE_MOVIES,
   GET_POPULAR_ANIMATION_MOVIES,
+  GET_POPULAR_COMEDY_MOVIES,
   GET_ADVENTURE_MOVIES,
   GET_ANIMATION_MOVIES,
+  GET_COMEDY_MOVIES,
 } from "./movieTypes";
 
 const apiKey = "f5205bcd74d03769d95f80b89c9f4db6";
@@ -173,6 +175,36 @@ export const getAnimationMovies = () => async (dispatch) => {
 
     dispatch({
       type: GET_ANIMATION_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
+export const getPopularComedyMovies = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&year=2020&with_genres=35`
+    );
+
+    dispatch({
+      type: GET_POPULAR_COMEDY_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
+export const getComedyMovies = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&with_genres=35`
+    );
+
+    dispatch({
+      type: GET_COMEDY_MOVIES,
       payload: response.data.results,
     });
   } catch (error) {
