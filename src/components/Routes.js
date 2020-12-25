@@ -14,6 +14,7 @@ import FetchAllMovies from "./movies/FetchAllMovies";
 import GetPopularComedyMovies from "./pages/GetPopularComedyMovies";
 import GetComedyMovies from "./pages/GetComedyMovies";
 import GetPopularDocumentaryMovies from "./pages/GetPopularDocumentaryMovies";
+import GetDocumentaryMovies from "./pages/GetDocumentaryMovies";
 
 const Routes = ({ searched }) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
@@ -89,6 +90,7 @@ const Routes = ({ searched }) => {
         render={() => (
           <Fragment>
             <GetPopularDocumentaryMovies />
+            <GetDocumentaryMovies />
           </Fragment>
         )}
       />
