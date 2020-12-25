@@ -9,9 +9,11 @@ import {
   GET_POPULAR_ADVENTURE_MOVIES,
   GET_POPULAR_ANIMATION_MOVIES,
   GET_POPULAR_COMEDY_MOVIES,
+  GET_POPULAR_DOCUMENTARY_MOVIES,
   GET_ADVENTURE_MOVIES,
   GET_ANIMATION_MOVIES,
   GET_COMEDY_MOVIES,
+  GET_DOCUMENTARY_MOVIES,
 } from "./movieTypes";
 
 const initialState = {
@@ -22,9 +24,11 @@ const initialState = {
   popularAdventureMovies: [],
   popularAnimationMovies: [],
   popularComedyMovies: [],
+  popularDocumentaryMovies: [],
   adventureMovies: [],
   animationMovies: [],
   comedyMovies: [],
+  documentaryMovies: [],
   error: "",
   loading: true,
   selectedMovie: null,
@@ -89,10 +93,10 @@ export default (state = initialState, action) => {
         popularComedyMovies: action.payload,
         loading: false,
       };
-    case GET_ANIMATION_MOVIES:
+    case GET_POPULAR_DOCUMENTARY_MOVIES:
       return {
         ...state,
-        animationMovies: action.payload,
+        popularDocumentaryMovies: action.payload,
         loading: false,
       };
     case GET_ADVENTURE_MOVIES:
@@ -101,10 +105,23 @@ export default (state = initialState, action) => {
         adventureMovies: action.payload,
         loading: false,
       };
+    case GET_ANIMATION_MOVIES:
+      return {
+        ...state,
+        animationMovies: action.payload,
+        loading: false,
+      };
+
     case GET_COMEDY_MOVIES:
       return {
         ...state,
         comedyMovies: action.payload,
+        loading: false,
+      };
+    case GET_DOCUMENTARY_MOVIES:
+      return {
+        ...state,
+        documentaryMovies: action.payload,
         loading: false,
       };
     case GET_MOVIES_FAILURE:

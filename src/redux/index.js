@@ -10,7 +10,9 @@ export {
   getPopularAdventureMovies,
   getPopularAnimationMovies,
   getPopularComedyMovies,
+  getPopularDocumentaryMovies,
   getAdventureMovies,
   getAnimationMovies,
   getComedyMovies,
+  getDocumentaryMovies,
 } from "./movies/movieAction";
