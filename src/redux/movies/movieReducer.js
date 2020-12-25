@@ -10,10 +10,12 @@ import {
   GET_POPULAR_ANIMATION_MOVIES,
   GET_POPULAR_COMEDY_MOVIES,
   GET_POPULAR_DOCUMENTARY_MOVIES,
+  GET_POPULAR_HORROR_MOVIES,
   GET_ADVENTURE_MOVIES,
   GET_ANIMATION_MOVIES,
   GET_COMEDY_MOVIES,
   GET_DOCUMENTARY_MOVIES,
+  GET_HORROR_MOVIES,
 } from "./movieTypes";
 
 const initialState = {
@@ -25,10 +27,12 @@ const initialState = {
   popularAnimationMovies: [],
   popularComedyMovies: [],
   popularDocumentaryMovies: [],
+  popularHorrorMovies: [],
   adventureMovies: [],
   animationMovies: [],
   comedyMovies: [],
   documentaryMovies: [],
+  horrorMovies: [],
   error: "",
   loading: true,
   selectedMovie: null,
@@ -97,6 +101,18 @@ export default (state = initialState, action) => {
       return {
         ...state,
         popularDocumentaryMovies: action.payload,
+        loading: false,
+      };
+    case GET_POPULAR_HORROR_MOVIES:
+      return {
+        ...state,
+        popularHorrorMovies: action.payload,
+        loading: false,
+      };
+    case GET_HORROR_MOVIES:
+      return {
+        ...state,
+        horrorMovies: action.payload,
         loading: false,
       };
     case GET_ADVENTURE_MOVIES:

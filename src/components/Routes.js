@@ -7,14 +7,16 @@ import SearchedMovies from "./movies/SearchedMovies";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { connect } from "react-redux";
 import GetPopularAdventureMovies from "./pages/GetPopularAdventureMovies";
-import GetAdventureMovies from "./pages/GetAdventureMovies";
 import GetPopularAnimationMovies from "./pages/GetPopularAnimationMovies";
+import GetPopularComedyMovies from "./pages/GetPopularComedyMovies";
+import GetPopularDocumentaryMovies from "./pages/GetPopularDocumentaryMovies";
+import GetPopularHorrorMovies from "./pages/GetPopularHorrorMovies";
+import GetAdventureMovies from "./pages/GetAdventureMovies";
 import GetAnimationMovies from "./pages/GetAnimationMovies";
 import FetchAllMovies from "./movies/FetchAllMovies";
-import GetPopularComedyMovies from "./pages/GetPopularComedyMovies";
 import GetComedyMovies from "./pages/GetComedyMovies";
-import GetPopularDocumentaryMovies from "./pages/GetPopularDocumentaryMovies";
 import GetDocumentaryMovies from "./pages/GetDocumentaryMovies";
+import GetHorrorMovies from "./pages/GetHorrorMovies";
 
 const Routes = ({ searched }) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
@@ -91,6 +93,16 @@ const Routes = ({ searched }) => {
           <Fragment>
             <GetPopularDocumentaryMovies />
             <GetDocumentaryMovies />
+          </Fragment>
+        )}
+      />
+      <Route
+        exact
+        path="/horror"
+        render={() => (
+          <Fragment>
+            <GetPopularHorrorMovies />
+            <GetHorrorMovies />
           </Fragment>
         )}
       />
