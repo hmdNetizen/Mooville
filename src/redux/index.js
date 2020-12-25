@@ -12,9 +12,11 @@ export {
   getPopularComedyMovies,
   getPopularDocumentaryMovies,
   getPopularHorrorMovies,
+  getPopularRomanceMovies,
   getAdventureMovies,
   getAnimationMovies,
   getComedyMovies,
   getDocumentaryMovies,
   getHorrorMovies,
+  getRomanceMovies,
 } from "./movies/movieAction";

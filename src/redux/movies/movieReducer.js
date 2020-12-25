@@ -11,11 +11,13 @@ import {
   GET_POPULAR_COMEDY_MOVIES,
   GET_POPULAR_DOCUMENTARY_MOVIES,
   GET_POPULAR_HORROR_MOVIES,
+  GET_POPULAR_ROMANCE_MOVIES,
   GET_ADVENTURE_MOVIES,
   GET_ANIMATION_MOVIES,
   GET_COMEDY_MOVIES,
   GET_DOCUMENTARY_MOVIES,
   GET_HORROR_MOVIES,
+  GET_ROMANCE_MOVIES,
 } from "./movieTypes";
 
 const initialState = {
@@ -28,11 +30,13 @@ const initialState = {
   popularComedyMovies: [],
   popularDocumentaryMovies: [],
   popularHorrorMovies: [],
+  popularRomanceMovies: [],
   adventureMovies: [],
   animationMovies: [],
   comedyMovies: [],
   documentaryMovies: [],
   horrorMovies: [],
+  romanceMovies: [],
   error: "",
   loading: true,
   selectedMovie: null,
@@ -109,6 +113,12 @@ export default (state = initialState, action) => {
         popularHorrorMovies: action.payload,
         loading: false,
       };
+    case GET_POPULAR_ROMANCE_MOVIES:
+      return {
+        ...state,
+        popularRomanceMovies: action.payload,
+        loading: false,
+      };
     case GET_HORROR_MOVIES:
       return {
         ...state,
@@ -140,6 +150,12 @@ export default (state = initialState, action) => {
         documentaryMovies: action.payload,
         loading: false,
       };
+    case GET_ROMANCE_MOVIES:
+      return {
+        ...state,
+        romanceMovies: action.payload,
+        loading: false,
+      };
     case GET_MOVIES_FAILURE:
       return {
         ...state,
@@ -148,7 +164,14 @@ export default (state = initialState, action) => {
         searchedMovies: [],
         comedyMovies: [],
         popularAdventureMovies: [],
+        popularAnimationMovies: [],
+        popularDocumentaryMovies: [],
+        popularRomanceMovies: [],
+        popularComedyMovies: [],
         adventureMovies: [],
+        animationMovies: [],
+        documentaryMovies: [],
+        romanceMovies: [],
         error: action.payload,
         selectedMovie: null,
         movieVideo: null,
