@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import swiperCore, { EffectCoverflow, Scrollbar } from "swiper";
 import { connect } from "react-redux";
-import { getPopularAdventureMovies } from "../../redux";
+import { getPopularAnimationMovies } from "../../redux";
 import Spinner from "../Spinner";
 
 swiperCore.use([EffectCoverflow, Scrollbar]);
 
-const GetPopularAdventureMovies = (props) => {
+const GetPopularAnimationMovies = (props) => {
   const {
-    popularAdventureMovies,
+    popularAnimationMovies,
     darkMode,
     loading,
     error,
-    showPopularAdventureMovies,
+    showPopularAnimationMovies,
   } = props;
   useEffect(() => {
-    showPopularAdventureMovies();
-  }, [showPopularAdventureMovies]);
+    showPopularAnimationMovies();
+  }, [showPopularAnimationMovies]);
   return (
     <section
       className={`main ${darkMode ? "main__darkMode" : "main__lightMode"}`}
@@ -29,7 +29,7 @@ const GetPopularAdventureMovies = (props) => {
             darkMode ? "genres__title--darkMode" : "genres__title--lightMode"
           }`}
         >
-          Discover Movies (Adventure)
+          Discover Movies (Animation)
         </h1>
         <div className="carousel">
           <h2
@@ -63,11 +63,8 @@ const GetPopularAdventureMovies = (props) => {
                 width={170}
                 style={{ borderRadius: 20 }}
               >
-                {popularAdventureMovies.map((adventure) => (
-                  <SwiperSlide
-                    key={adventure.id}
-                    stle={{ borderRadius: "20px !important" }}
-                  >
+                {popularAnimationMovies.map((adventure) => (
+                  <SwiperSlide key={adventure.id}>
                     <div
                       className={`carousel__poster__wrapper ${
                         darkMode
@@ -97,7 +94,7 @@ const GetPopularAdventureMovies = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    popularAdventureMovies: state.movies.popularAdventureMovies,
+    popularAnimationMovies: state.movies.popularAnimationMovies,
     darkMode: state.theme.darkTheme,
     loading: state.movies.loading,
     error: state.movies.error,
@@ -106,11 +103,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showPopularAdventureMovies: () => dispatch(getPopularAdventureMovies()),
+    showPopularAnimationMovies: () => dispatch(getPopularAnimationMovies()),
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(GetPopularAdventureMovies);
+)(GetPopularAnimationMovies);

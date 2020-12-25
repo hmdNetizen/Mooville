@@ -8,6 +8,8 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { connect } from "react-redux";
 import GetPopularAdventureMovies from "./pages/GetPopularAdventureMovies";
 import GetAdventureMovies from "./pages/GetAdventureMovies";
+import GetPopularAnimationMovies from "./pages/GetPopularAnimationMovies";
+import GetAnimationMovies from "./pages/GetAnimationMovies";
 
 const Routes = ({ searched }) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
@@ -45,6 +47,16 @@ const Routes = ({ searched }) => {
           <Fragment>
             <GetPopularAdventureMovies {...props} />
             <GetAdventureMovies {...props} />
+          </Fragment>
+        )}
+      />
+      <Route
+        exact
+        path="/animation"
+        render={(props) => (
+          <Fragment>
+            <GetPopularAnimationMovies />
+            <GetAnimationMovies />
           </Fragment>
         )}
       />

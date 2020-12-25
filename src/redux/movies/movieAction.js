@@ -8,7 +8,9 @@ import {
   GET_MOVIE_VIDEO,
   GET_SEARCHED_MOVIES,
   GET_POPULAR_ADVENTURE_MOVIES,
+  GET_POPULAR_ANIMATION_MOVIES,
   GET_ADVENTURE_MOVIES,
+  GET_ANIMATION_MOVIES,
 } from "./movieTypes";
 
 const apiKey = "f5205bcd74d03769d95f80b89c9f4db6";
@@ -120,7 +122,7 @@ export const getSearchedMovies = (searched) => async (dispatch) => {
 export const getPopularAdventureMovies = () => async (dispatch) => {
   try {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.gte=2020&with_genres=12`
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2020&with_genres=12`
     );
 
     dispatch({
@@ -140,6 +142,37 @@ export const getAdventureMovies = () => async (dispatch) => {
 
     dispatch({
       type: GET_ADVENTURE_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
+// Animation movies
+export const getPopularAnimationMovies = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=f5205bcd74d03769d95f80b89c9f4db6&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&year=2020&with_genres=16`
+    );
+
+    dispatch({
+      type: GET_POPULAR_ANIMATION_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
+export const getAnimationMovies = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&with_genres=16`
+    );
+
+    dispatch({
+      type: GET_ANIMATION_MOVIES,
       payload: response.data.results,
     });
   } catch (error) {

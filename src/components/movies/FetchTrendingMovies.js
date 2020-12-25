@@ -14,12 +14,12 @@ const FetchTrendingMovie = (props) => {
     showTrendingMovies();
   }, [showTrendingMovies]);
   return (
-    <section className="trending">
+    <section className="carousel">
       <h2
-        className={`trending__heading ${
+        className={`carousel__heading ${
           darkMode
-            ? "trending__heading--darkMode"
-            : "trending__heading--lightMode"
+            ? "carousel__heading--darkMode"
+            : "carousel__heading--lightMode"
         }`}
       >
         Trending Now
@@ -29,10 +29,10 @@ const FetchTrendingMovie = (props) => {
           <Spinner />
         ) : error ? (
           <h2
-            className={`trending__error__heading ${
+            className={`carousel__error__heading ${
               darkMode
-                ? "trending__error__heading--darkMode"
-                : "trending__error__heading--lightMode"
+                ? "carousel__error__heading--darkMode"
+                : "carousel__error__heading--lightMode"
             }`}
           >
             Unknown Server Error!
@@ -47,20 +47,17 @@ const FetchTrendingMovie = (props) => {
             style={{ borderRadius: 20 }}
           >
             {trending.map((trend) => (
-              <SwiperSlide
-                key={trend.id}
-                stle={{ borderRadius: "20px !important" }}
-              >
+              <SwiperSlide key={trend.id}>
                 <div
-                  className={`trending__poster__wrapper ${
-                    darkMode ? "trending__poster__wrapper--darkMode" : undefined
+                  className={`carousel__poster__wrapper ${
+                    darkMode ? "carousel__poster__wrapper--darkMode" : undefined
                   }`}
                 >
                   <Link to={`/movie/${trend.id}`}>
                     <img
                       src={`http://image.tmdb.org/t/p/w185/${trend.poster_path}`}
                       alt="post"
-                      className="trending__poster"
+                      className="carousel__poster"
                       sizes="185px"
                     />
                   </Link>

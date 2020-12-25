@@ -10,14 +10,14 @@
 @import "components/searchInput";
 
 //genres
-@import "genres/adventure";
+@import "genres/genres";
 
 //movies
 @import "movies/movies";
 @import "movies/movieList";
 @import "movies/searchedMovies";
 @import "movies/singleMovie";
-@import "movies/trending";
+@import "movies/carousel";
 
 //layout
 @import "layout/footer";

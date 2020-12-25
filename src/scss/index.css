@@ -246,7 +246,7 @@ body {
   outline: none;
 }
 
-.adventure {
+.genres {
   margin-left: 25em;
   width: 100%;
   padding-top: 5em;
@@ -254,18 +254,18 @@ body {
 }
 
 @media (max-width: 960px) {
-  .adventure {
+  .genres {
     padding-top: 5em;
   }
 }
 
 @media (max-width: 960px) {
-  .adventure {
+  .genres {
     margin-left: 0;
   }
 }
 
-.adventure__title {
+.genres__title {
   font-size: 2.5rem;
   font-weight: 500;
   margin-bottom: 1.5em;
@@ -273,33 +273,33 @@ body {
   font-weight: 700;
 }
 
-.adventure__title--darkMode {
+.genres__title--darkMode {
   color: #d3a43f;
 }
 
-.adventure__title--lightMode {
+.genres__title--lightMode {
   color: #c93126;
 }
 
 @media (max-width: 960px) {
-  .adventure__title {
+  .genres__title {
     margin-left: 1.5em;
   }
 }
 
 @media (max-width: 600px) {
-  .adventure__title {
+  .genres__title {
     margin-left: 0.5em;
     font-size: 2rem;
     text-align: center;
   }
 }
 
-.adventure__title--darkMode {
+.genres__title--darkMode {
   color: #fff;
 }
 
-.adventure__title--lightMode {
+.genres__title--lightMode {
   color: #262525;
 }
 
@@ -1375,38 +1375,38 @@ body {
   }
 }
 
-.trending {
+.carousel {
   margin-top: 5em;
 }
 
 @media (max-width: 960px) {
-  .trending {
+  .carousel {
     margin-left: 1em;
   }
 }
 
-.trending__heading {
+.carousel__heading {
   font-size: 2.5rem;
   font-weight: 500;
   margin-bottom: 1.5em;
   margin-left: 2.7em;
 }
 
-.trending__heading--darkMode {
+.carousel__heading--darkMode {
   color: #d3a43f;
 }
 
-.trending__heading--lightMode {
+.carousel__heading--lightMode {
   color: #c93126;
 }
 
 @media (max-width: 960px) {
-  .trending__heading {
+  .carousel__heading {
     margin-left: 0;
   }
 }
 
-.trending__error__heading {
+.carousel__error__heading {
   font-size: 2.5rem;
   font-weight: 500;
   margin-bottom: 1.5em;
@@ -1417,34 +1417,34 @@ body {
   margin-left: 0;
 }
 
-.trending__error__heading--darkMode {
+.carousel__error__heading--darkMode {
   color: #d3a43f;
 }
 
-.trending__error__heading--lightMode {
+.carousel__error__heading--lightMode {
   color: #c93126;
 }
 
-.trending__error__heading--darkMode {
+.carousel__error__heading--darkMode {
   color: #c93126;
 }
 
-.trending__error__heading--lightMode {
+.carousel__error__heading--lightMode {
   color: #c93126;
 }
 
-.trending__poster__wrapper {
+.carousel__poster__wrapper {
   width: 17em;
   height: 25em;
   border-radius: 1.5em;
 }
 
-.trending__poster__wrapper--darkMode {
+.carousel__poster__wrapper--darkMode {
   -webkit-box-shadow: 1px 1px 15px 0px rgba(140, 140, 140, 0.48);
   box-shadow: 1px 1px 15px 0px rgba(140, 140, 140, 0.48);
 }
 
-.trending__poster {
+.carousel__poster {
   width: 100%;
   height: 100%;
   border-radius: 1.5em;
