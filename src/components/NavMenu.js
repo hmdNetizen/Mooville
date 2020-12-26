@@ -14,6 +14,7 @@ const navLists = [
   { id: 7, title: "Romance", link: "/romance" },
   { id: 8, title: "Science Fiction", link: "/science" },
   { id: 9, title: "Thriller", link: "/thriller" },
+  { id: 10, title: "War", link: "/war" },
 ];
 
 const NavMenu = (props) => {

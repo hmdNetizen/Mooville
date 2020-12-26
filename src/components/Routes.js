@@ -24,6 +24,7 @@ import GetHorrorMovies from "./pages/GetHorrorMovies";
 import GetRomanceMovies from "./pages/GetRomanceMovies";
 import GetScienceFictionMovies from "./pages/GetScienceFictionMovies";
 import GetThrillerMovies from "./pages/GetThrillerMovies";
+import GetWarMovies from "./pages/GetWarMovies"
 
 const Routes = ({ searched }) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
@@ -143,7 +144,9 @@ const Routes = ({ searched }) => {
           </Fragment>
         )}
       />
-      <Route exact path="/war" render={()=> <Fragment><GetPopularWarMovies /></Fragment>} />
+      <Route exact path="/war" render={()=> <Fragment><GetPopularWarMovies />
+      <GetWarMovies />
+      </Fragment>} />
     </Switch>
   );
 };
