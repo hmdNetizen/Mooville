@@ -14,6 +14,8 @@ import {
   GET_POPULAR_HORROR_MOVIES,
   GET_POPULAR_ROMANCE_MOVIES,
   GET_POPULAR_SCIENCE_MOVIES,
+  GET_POPULAR_THRILLER_MOVIES,
+  GET_POPULAR_WAR_MOVIES,
   GET_ADVENTURE_MOVIES,
   GET_ANIMATION_MOVIES,
   GET_COMEDY_MOVIES,
@@ -21,6 +23,8 @@ import {
   GET_HORROR_MOVIES,
   GET_ROMANCE_MOVIES,
   GET_SCIENCE_FICTION_MOVIES,
+  GET_THRILLER_MOVIES,
+  GET_WAR_MOVIES
 } from "./movieTypes";
 
 const apiKey = "f5205bcd74d03769d95f80b89c9f4db6";
@@ -339,6 +343,68 @@ export const getScienceFictionMovies = () => async (dispatch) => {
 
     dispatch({
       type: GET_SCIENCE_FICTION_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
+// Thriller movies
+export const getPopularThrillerMovies = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&year=2020&with_genres=53`
+    );
+
+    dispatch({
+      type: GET_POPULAR_THRILLER_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
+export const getThrillerMovies = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&with_genres=53`
+    );
+
+    dispatch({
+      type: GET_THRILLER_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
+// War Movies
+export const getPopularWarMovies = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&year=2020&with_genres=10752`
+    );
+
+    dispatch({
+      type: GET_POPULAR_WAR_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
+export const getWarMovies = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&with_genres=10752`
+    );
+
+    dispatch({
+      type: GET_WAR_MOVIES,
       payload: response.data.results,
     });
   } catch (error) {

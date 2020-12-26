@@ -13,6 +13,8 @@ import {
   GET_POPULAR_HORROR_MOVIES,
   GET_POPULAR_ROMANCE_MOVIES,
   GET_POPULAR_SCIENCE_MOVIES,
+  GET_POPULAR_THRILLER_MOVIES,
+  GET_POPULAR_WAR_MOVIES,
   GET_ADVENTURE_MOVIES,
   GET_ANIMATION_MOVIES,
   GET_COMEDY_MOVIES,
@@ -20,6 +22,8 @@ import {
   GET_HORROR_MOVIES,
   GET_ROMANCE_MOVIES,
   GET_SCIENCE_FICTION_MOVIES,
+  GET_THRILLER_MOVIES,
+  GET_WAR_MOVIES
 } from "./movieTypes";
 
 const initialState = {
@@ -34,13 +38,17 @@ const initialState = {
   popularHorrorMovies: [],
   popularRomanceMovies: [],
   popularScienceMovies: [],
-  adventureMovies: [],
+  popularThrillerMovies: [],
+  popularWarMovies: [],
+ adventureMovies: [],
   animationMovies: [],
   comedyMovies: [],
   documentaryMovies: [],
   horrorMovies: [],
   romanceMovies: [],
   scienceFictionMovies: [],
+  thrillerMovies: [],
+  warMovies: [],
   error: "",
   loading: true,
   selectedMovie: null,
@@ -140,7 +148,20 @@ export default (state = initialState, action) => {
         loading: false,
         error: "",
       };
-
+      case GET_POPULAR_THRILLER_MOVIES:
+        return {
+          ...state,
+          popularThrillerMovies: action.payload,
+          loading: false,
+          error: ""
+        }
+      case GET_POPULAR_WAR_MOVIES:
+      return {
+        ...state,
+        popularWarMovies: action.payload,
+        loading: false,
+        error: ""
+      }
     case GET_ADVENTURE_MOVIES:
       return {
         ...state,
@@ -191,22 +212,42 @@ export default (state = initialState, action) => {
         loading: false,
         error: "",
       };
+    case GET_THRILLER_MOVIES:
+    return {
+      ...state,
+      thrillerMovies: action.payload,
+      loading: false,
+      error: ""
+    }
+    case GET_WAR_MOVIES:
+    return {
+      ...state,
+      warMovies: action.payload,
+      loading: false,
+      error: ""
+    }
     case GET_MOVIES_FAILURE:
       return {
         ...state,
         trending: [],
         actionMovies: [],
         searchedMovies: [],
-        comedyMovies: [],
         popularAdventureMovies: [],
         popularAnimationMovies: [],
         popularDocumentaryMovies: [],
         popularRomanceMovies: [],
         popularComedyMovies: [],
+        popularHorrorMovies: [],
+        popularScienceMovies: [],
+        popularWarMovies: [],
         adventureMovies: [],
         animationMovies: [],
+        comedyMovies: [],
         documentaryMovies: [],
         romanceMovies: [],
+        horrorMovies: [],
+        scienceFictionMovies: [],
+        warMovies: [],
         error: action.payload,
         selectedMovie: null,
         movieVideo: null,

@@ -14,6 +14,7 @@ import GetPopularHorrorMovies from "./pages/GetPopularHorrorMovies";
 import GetPopularRomanceMovies from "./pages/GetPopularRomanceMovies";
 import GetPopularScienceMovies from "./pages/GetPopularScienceMovies";
 import GetPopularThrillerMovies from "./pages/GetPopularThrillerMovies";
+import GetPopularWarMovies from "./pages/GetPopularWarMovies";
 import GetAdventureMovies from "./pages/GetAdventureMovies";
 import GetAnimationMovies from "./pages/GetAnimationMovies";
 import FetchAllMovies from "./movies/FetchAllMovies";
@@ -22,6 +23,7 @@ import GetDocumentaryMovies from "./pages/GetDocumentaryMovies";
 import GetHorrorMovies from "./pages/GetHorrorMovies";
 import GetRomanceMovies from "./pages/GetRomanceMovies";
 import GetScienceFictionMovies from "./pages/GetScienceFictionMovies";
+import GetThrillerMovies from "./pages/GetThrillerMovies";
 
 const Routes = ({ searched }) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
@@ -137,9 +139,11 @@ const Routes = ({ searched }) => {
         render={() => (
           <Fragment>
             <GetPopularThrillerMovies />
+            <GetThrillerMovies />
           </Fragment>
         )}
       />
+      <Route exact path="/war" render={()=> <Fragment><GetPopularWarMovies /></Fragment>} />
     </Switch>
   );
 };

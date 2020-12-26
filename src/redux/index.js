@@ -14,6 +14,8 @@ export {
   getPopularHorrorMovies,
   getPopularRomanceMovies,
   getPopularScienceMovies,
+  getPopularThrillerMovies,
+  getPopularWarMovies,
   getAdventureMovies,
   getAnimationMovies,
   getComedyMovies,
@@ -21,4 +23,6 @@ export {
   getHorrorMovies,
   getRomanceMovies,
   getScienceFictionMovies,
+  getThrillerMovies,
+  getWarMovies
 } from "./movies/movieAction";
