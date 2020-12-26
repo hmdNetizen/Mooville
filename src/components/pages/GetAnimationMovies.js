@@ -19,7 +19,7 @@ const GetAnimationMovies = (props) => {
     <section
       className={`main adventureMovies ${
         darkMode ? "main__darkMode" : "main__lightMode"
-      }`}
+      } ${animationMovies.length < 1 && "main__fullHeight"}`}
     >
       <div className="section">
         <div className="movie">

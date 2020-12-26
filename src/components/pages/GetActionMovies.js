@@ -5,13 +5,7 @@ import Spinner from "../Spinner";
 import MovieItem from "../movies/MovieItem";
 
 const GetActionMovies = (props) => {
-  const {
-    showActionMovies,
-    actionMovies,
-    loading,
-    error,
-    darkMode,
-  } = props;
+  const { showActionMovies, actionMovies, loading, error, darkMode } = props;
   useEffect(() => {
     showActionMovies();
   }, [showActionMovies]);
@@ -19,9 +13,9 @@ const GetActionMovies = (props) => {
     <section
       className={`main adventureMovies ${
         darkMode ? "main__darkMode" : "main__lightMode"
-      }`}
+      } ${actionMovies.length < 1 && "main__fullHeight"}`}
     >
-      <div className="section" style={{marginLeft: 0}}>
+      <div className="section">
         <div className="movie">
           <h2
             className={`movie__heading ${

@@ -5,7 +5,13 @@ import Spinner from "../Spinner";
 import MovieItem from "../movies/MovieItem";
 
 const GetThrillerMovies = (props) => {
-  const { showThrillerMovies, thrillerMovies, loading, error, darkMode } = props;
+  const {
+    showThrillerMovies,
+    thrillerMovies,
+    loading,
+    error,
+    darkMode,
+  } = props;
   useEffect(() => {
     showThrillerMovies();
   }, [showThrillerMovies]);
@@ -13,7 +19,7 @@ const GetThrillerMovies = (props) => {
     <section
       className={`main adventureMovies ${
         darkMode ? "main__darkMode" : "main__lightMode"
-      }`}
+      } ${thrillerMovies.length < 1 && "main__fullHeight"}`}
     >
       <div className="section">
         <div className="movie">

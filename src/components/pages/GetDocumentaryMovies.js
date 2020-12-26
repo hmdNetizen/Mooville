@@ -19,7 +19,7 @@ const GetDocumentaryMovies = (props) => {
     <section
       className={`main adventureMovies ${
         darkMode ? "main__darkMode" : "main__lightMode"
-      }`}
+      } ${documentaryMovies.length < 1 && "main__fullHeight"}`}
     >
       <div className="section">
         <div className="movie">

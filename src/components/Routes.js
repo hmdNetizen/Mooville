@@ -25,7 +25,8 @@ import GetHorrorMovies from "./pages/GetHorrorMovies";
 import GetRomanceMovies from "./pages/GetRomanceMovies";
 import GetScienceFictionMovies from "./pages/GetScienceFictionMovies";
 import GetThrillerMovies from "./pages/GetThrillerMovies";
-import GetWarMovies from "./pages/GetWarMovies"
+import GetWarMovies from "./pages/GetWarMovies";
+import BookmarkedMovies from "./movies/BookmarkedMovies";
 
 const Routes = ({ searched }) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
@@ -55,7 +56,7 @@ const Routes = ({ searched }) => {
         />
       )}
 
-      <Route exact path="/bookmarks" component={() => <div>Bookmarks</div>} />
+      <Route exact path="/bookmarks" component={BookmarkedMovies} />
       <Route
         exact
         path="/adventure"
@@ -81,7 +82,7 @@ const Routes = ({ searched }) => {
         path="/action"
         render={() => (
           <Fragment>
-          <GetPopularActionMovies />
+            <GetPopularActionMovies />
             <GetActionMovies />
           </Fragment>
         )}
@@ -146,9 +147,16 @@ const Routes = ({ searched }) => {
           </Fragment>
         )}
       />
-      <Route exact path="/war" render={()=> <Fragment><GetPopularWarMovies />
-      <GetWarMovies />
-      </Fragment>} />
+      <Route
+        exact
+        path="/war"
+        render={() => (
+          <Fragment>
+            <GetPopularWarMovies />
+            <GetWarMovies />
+          </Fragment>
+        )}
+      />
     </Switch>
   );
 };

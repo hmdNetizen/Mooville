@@ -11,6 +11,10 @@
     background: $color-white;
     transition: background 0.25s linear;
   }
+
+  &__fullHeight {
+    height: 100vh;
+  }
 }
 .section {
   margin-left: 25em;
@@ -25,4 +29,8 @@
   @include match(sm) {
     margin-left: 0;
   }
+}
+
+.homepage .section {
+  margin-left: 0;
 }

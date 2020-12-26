@@ -1774,6 +1774,10 @@ body {
   transition: background 0.25s linear;
 }
 
+.main__fullHeight {
+  height: 100vh;
+}
+
 .section {
   margin-left: 25em;
   width: 100%;
@@ -1791,5 +1795,9 @@ body {
   .section {
     margin-left: 0;
   }
+}
+
+.homepage .section {
+  margin-left: 0;
 }
 /*# sourceMappingURL=index.css.map */

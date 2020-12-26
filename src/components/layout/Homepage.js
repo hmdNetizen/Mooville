@@ -10,7 +10,7 @@ const MainSection = ({ darkMode, searched }) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
   return (
     <main className={`main ${darkMode ? "main__darkMode" : "main__lightMode"}`}>
-      <section className="section">
+      <section className="section homepage">
         {!matchesSM && <SearchInput />}
         {!matchesSM && searched && searched.length > 0 && <SearchedMovie />}
         <Fragment>
