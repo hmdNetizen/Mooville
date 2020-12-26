@@ -2,9 +2,9 @@ import React, { Fragment } from "react";
 import SearchInput from "../SearchInput";
 import { connect } from "react-redux";
 import FetchTrendingMovie from "../movies/FetchTrendingMovies";
-import FetchAllMovies from "../movies/FetchAllMovies";
 import SearchedMovie from "../movies/SearchedMovies";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import GetActionMovies from "../pages/GetActionMovies"
 
 const MainSection = ({ darkMode, searched }) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
@@ -17,8 +17,8 @@ const MainSection = ({ darkMode, searched }) => {
           <FetchTrendingMovie />
         </Fragment>
         <Fragment>
-          <FetchAllMovies />
-        </Fragment>
+          <GetActionMovies />        
+          </Fragment>
       </section>
     </main>
   );

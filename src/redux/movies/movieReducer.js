@@ -6,6 +6,7 @@ import {
   GET_SIMILAR_MOVIES,
   GET_MOVIE_VIDEO,
   GET_SEARCHED_MOVIES,
+  GET_POPULAR_ACTION_MOVIES,
   GET_POPULAR_ADVENTURE_MOVIES,
   GET_POPULAR_ANIMATION_MOVIES,
   GET_POPULAR_COMEDY_MOVIES,
@@ -31,6 +32,7 @@ const initialState = {
   actionMovies: [],
   similarMovies: [],
   searchedMovies: [],
+  popularActionMovies: [],
   popularAdventureMovies: [],
   popularAnimationMovies: [],
   popularComedyMovies: [],
@@ -99,6 +101,13 @@ export default (state = initialState, action) => {
         loading: false,
         error: "",
       };
+      case GET_POPULAR_ACTION_MOVIES:
+      return {
+        ...state,
+        popularActionMovies: action.payload,
+        loading: false,
+        error: ""
+      }
     case GET_POPULAR_ADVENTURE_MOVIES:
       return {
         ...state,
@@ -238,6 +247,7 @@ export default (state = initialState, action) => {
         popularRomanceMovies: [],
         popularComedyMovies: [],
         popularHorrorMovies: [],
+        popularThrillerMovies: [],
         popularScienceMovies: [],
         popularWarMovies: [],
         adventureMovies: [],
@@ -247,6 +257,7 @@ export default (state = initialState, action) => {
         romanceMovies: [],
         horrorMovies: [],
         scienceFictionMovies: [],
+        thrillerMovies: [],
         warMovies: [],
         error: action.payload,
         selectedMovie: null,

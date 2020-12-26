@@ -1,11 +1,12 @@
 import React, { Fragment } from "react";
 import { Switch, Route } from "react-router-dom";
-import MainSection from "./layout/MainSection";
+import Homepage from "./layout/Homepage";
 import FetchMovie from "./movies/FetchMovie";
 import SearchInput from "./SearchInput";
 import SearchedMovies from "./movies/SearchedMovies";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { connect } from "react-redux";
+import GetPopularActionMovies from "./pages/GetPopularActionMovies";
 import GetPopularAdventureMovies from "./pages/GetPopularAdventureMovies";
 import GetPopularAnimationMovies from "./pages/GetPopularAnimationMovies";
 import GetPopularComedyMovies from "./pages/GetPopularComedyMovies";
@@ -17,7 +18,7 @@ import GetPopularThrillerMovies from "./pages/GetPopularThrillerMovies";
 import GetPopularWarMovies from "./pages/GetPopularWarMovies";
 import GetAdventureMovies from "./pages/GetAdventureMovies";
 import GetAnimationMovies from "./pages/GetAnimationMovies";
-import FetchAllMovies from "./movies/FetchAllMovies";
+import GetActionMovies from "./pages/GetActionMovies";
 import GetComedyMovies from "./pages/GetComedyMovies";
 import GetDocumentaryMovies from "./pages/GetDocumentaryMovies";
 import GetHorrorMovies from "./pages/GetHorrorMovies";
@@ -34,7 +35,7 @@ const Routes = ({ searched }) => {
         exact
         path="/"
         strict
-        render={(props) => <MainSection {...props} />}
+        render={(props) => <Homepage {...props} />}
       />
       <Route
         exact
@@ -80,7 +81,8 @@ const Routes = ({ searched }) => {
         path="/action"
         render={() => (
           <Fragment>
-            <FetchAllMovies />
+          <GetPopularActionMovies />
+            <GetActionMovies />
           </Fragment>
         )}
       />

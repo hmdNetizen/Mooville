@@ -8,6 +8,7 @@ export {
   getMovieVideo,
   getSearchedMovies,
   getPopularAdventureMovies,
+  getPopularActionMovies,
   getPopularAnimationMovies,
   getPopularComedyMovies,
   getPopularDocumentaryMovies,

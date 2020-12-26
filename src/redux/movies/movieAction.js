@@ -7,6 +7,7 @@ import {
   GET_SIMILAR_MOVIES,
   GET_MOVIE_VIDEO,
   GET_SEARCHED_MOVIES,
+  GET_POPULAR_ACTION_MOVIES,
   GET_POPULAR_ADVENTURE_MOVIES,
   GET_POPULAR_ANIMATION_MOVIES,
   GET_POPULAR_COMEDY_MOVIES,
@@ -67,6 +68,23 @@ export const getTrendingMovies = () => async (dispatch) => {
     dispatch(getMoviesFailure(error.message));
   }
 };
+
+// Action Movies
+
+export const getPopularActionMovies = () => async dispatch => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&year=2020&with_genres=28`
+    );
+
+    dispatch({
+      type: GET_POPULAR_ACTION_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+}
 
 export const getActionMovies = () => async (dispatch) => {
   try {
