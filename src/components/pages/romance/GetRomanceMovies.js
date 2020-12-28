@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getActionMovies } from "../../redux";
-import Spinner from "../Spinner";
-import MovieItem from "../movies/MovieItem";
+import { getRomanceMovies } from "../../../redux";
+import Spinner from "../../Spinner";
+import MovieItem from "../../movies/MovieItem";
 
-const GetActionMovies = (props) => {
-  const { showActionMovies, actionMovies, loading, error, darkMode } = props;
+const GetRomanceMovies = (props) => {
+  const { showRomanceMovies, romanceMovies, loading, error, darkMode } = props;
   useEffect(() => {
-    showActionMovies();
-  }, [showActionMovies]);
+    showRomanceMovies();
+  }, [showRomanceMovies]);
   return (
     <section
       className={`main adventureMovies ${
         darkMode ? "main__darkMode" : "main__lightMode"
-      } ${actionMovies.length < 1 && "main__fullHeight"}`}
+      } ${romanceMovies.length < 1 && "main__fullHeight"}`}
     >
       <div className="section">
         <div className="movie">
@@ -24,7 +24,7 @@ const GetActionMovies = (props) => {
                 : "movie__heading--lightMode"
             }`}
           >
-            Discover(Action)
+            Romance
           </h2>
           {loading ? (
             <Spinner />
@@ -40,7 +40,7 @@ const GetActionMovies = (props) => {
             </h2>
           ) : (
             <div className="movie__card__wrapper">
-              {actionMovies.map((movie) => (
+              {romanceMovies.map((movie) => (
                 <MovieItem key={movie.id} movie={movie} />
               ))}
             </div>
@@ -54,7 +54,7 @@ const GetActionMovies = (props) => {
 const mapStateToProps = (state) => {
   return {
     loading: state.movies.loading,
-    actionMovies: state.movies.actionMovies,
+    romanceMovies: state.movies.romanceMovies,
     error: state.movies.error,
     darkMode: state.theme.darkTheme,
   };
@@ -62,8 +62,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showActionMovies: () => dispatch(getActionMovies()),
+    showRomanceMovies: () => dispatch(getRomanceMovies()),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(GetActionMovies);
+export default connect(mapStateToProps, mapDispatchToProps)(GetRomanceMovies);

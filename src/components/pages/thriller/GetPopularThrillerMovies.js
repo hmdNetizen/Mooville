@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import swiperCore, { EffectCoverflow, Scrollbar } from "swiper";
 import { connect } from "react-redux";
-import { getPopularActionMovies } from "../../redux";
-import Spinner from "../Spinner";
+import { getPopularThrillerMovies } from "../../../redux";
+import Spinner from "../../Spinner";
 
 swiperCore.use([EffectCoverflow, Scrollbar]);
 
-const GetPopularActionMovies = (props) => {
+const GetPopularThrillerMovies = (props) => {
   const {
-    popularActionMovies,
+    popularThrillerMovies,
     darkMode,
     loading,
     error,
-    showPopularActionMovies,
+    showPopularThrillerMovies,
   } = props;
   useEffect(() => {
-    showPopularActionMovies();
-  }, [showPopularActionMovies]);
+    showPopularThrillerMovies();
+  }, [showPopularThrillerMovies]);
   return (
     <section
       className={`main ${darkMode ? "main__darkMode" : "main__lightMode"}`}
@@ -29,7 +29,7 @@ const GetPopularActionMovies = (props) => {
             darkMode ? "genres__title--darkMode" : "genres__title--lightMode"
           }`}
         >
-          Discover Movies (Action)
+          Discover Movies (Thriller)
         </h1>
         <div className="carousel">
           <h2
@@ -63,8 +63,8 @@ const GetPopularActionMovies = (props) => {
                 width={170}
                 style={{ borderRadius: 20 }}
               >
-                {popularActionMovies.map((action) => (
-                  <SwiperSlide key={action.id}>
+                {popularThrillerMovies.map((thriller) => (
+                  <SwiperSlide key={thriller.id}>
                     <div
                       className={`carousel__poster__wrapper ${
                         darkMode
@@ -72,9 +72,9 @@ const GetPopularActionMovies = (props) => {
                           : undefined
                       }`}
                     >
-                      <Link to={`/movie/${action.id}`}>
+                      <Link to={`/movie/${thriller.id}`}>
                         <img
-                          src={`http://image.tmdb.org/t/p/w185/${action.poster_path}`}
+                          src={`http://image.tmdb.org/t/p/w185/${thriller.poster_path}`}
                           alt="post"
                           className="carousel__poster"
                           sizes="185px"
@@ -94,7 +94,7 @@ const GetPopularActionMovies = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    popularActionMovies: state.movies.popularActionMovies,
+    popularThrillerMovies: state.movies.popularThrillerMovies,
     darkMode: state.theme.darkTheme,
     loading: state.movies.loading,
     error: state.movies.error,
@@ -103,11 +103,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showPopularActionMovies: () => dispatch(getPopularActionMovies()),
+    showPopularThrillerMovies: () => dispatch(getPopularThrillerMovies()),
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(GetPopularActionMovies);
+)(GetPopularThrillerMovies);

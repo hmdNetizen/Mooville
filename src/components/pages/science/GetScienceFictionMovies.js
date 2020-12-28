@@ -1,19 +1,25 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getWarMovies } from "../../redux";
-import Spinner from "../Spinner";
-import MovieItem from "../movies/MovieItem";
+import { getScienceFictionMovies } from "../../../redux";
+import Spinner from "../../Spinner";
+import MovieItem from "../../movies/MovieItem";
 
-const GetWarMovies = (props) => {
-  const { showWarMovies, warMovies, loading, error, darkMode } = props;
+const GetScienceFictionMovies = (props) => {
+  const {
+    showScienceFictionMovies,
+    scienceFictionMovies,
+    loading,
+    error,
+    darkMode,
+  } = props;
   useEffect(() => {
-    showWarMovies();
-  }, [showWarMovies]);
+    showScienceFictionMovies();
+  }, [showScienceFictionMovies]);
   return (
     <section
       className={`main adventureMovies ${
         darkMode ? "main__darkMode" : "main__lightMode"
-      } ${warMovies.length < 1 && "main__fullHeight"}`}
+      } ${scienceFictionMovies.length < 1 && "main__fullHeight"}`}
     >
       <div className="section">
         <div className="movie">
@@ -24,7 +30,7 @@ const GetWarMovies = (props) => {
                 : "movie__heading--lightMode"
             }`}
           >
-            War
+            Science Fiction
           </h2>
           {loading ? (
             <Spinner />
@@ -40,7 +46,7 @@ const GetWarMovies = (props) => {
             </h2>
           ) : (
             <div className="movie__card__wrapper">
-              {warMovies.map((movie) => (
+              {scienceFictionMovies.map((movie) => (
                 <MovieItem key={movie.id} movie={movie} />
               ))}
             </div>
@@ -54,7 +60,7 @@ const GetWarMovies = (props) => {
 const mapStateToProps = (state) => {
   return {
     loading: state.movies.loading,
-    warMovies: state.movies.warMovies,
+    scienceFictionMovies: state.movies.scienceFictionMovies,
     error: state.movies.error,
     darkMode: state.theme.darkTheme,
   };
@@ -62,8 +68,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showWarMovies: () => dispatch(getWarMovies()),
+    showScienceFictionMovies: () => dispatch(getScienceFictionMovies()),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(GetWarMovies);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GetScienceFictionMovies);

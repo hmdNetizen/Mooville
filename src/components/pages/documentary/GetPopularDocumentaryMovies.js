@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import swiperCore, { EffectCoverflow, Scrollbar } from "swiper";
 import { connect } from "react-redux";
-import { getPopularWarMovies } from "../../redux";
-import Spinner from "../Spinner";
+import { getPopularDocumentaryMovies } from "../../../redux";
+import Spinner from "../../Spinner";
 
 swiperCore.use([EffectCoverflow, Scrollbar]);
 
-const GetPopularWarMovies = (props) => {
+const GetPopularDocumentaryMovies = (props) => {
   const {
-    popularWarMovies,
+    popularDocumentaryMovies,
     darkMode,
     loading,
     error,
-    showPopularWarMovies,
+    showPopularDocumentaryMovies,
   } = props;
   useEffect(() => {
-    showPopularWarMovies();
-  }, [showPopularWarMovies]);
+    showPopularDocumentaryMovies();
+  }, [showPopularDocumentaryMovies]);
   return (
     <section
       className={`main ${darkMode ? "main__darkMode" : "main__lightMode"}`}
@@ -29,7 +29,7 @@ const GetPopularWarMovies = (props) => {
             darkMode ? "genres__title--darkMode" : "genres__title--lightMode"
           }`}
         >
-          Discover Movies (War)
+          Discover Movies (Documentary)
         </h1>
         <div className="carousel">
           <h2
@@ -63,8 +63,8 @@ const GetPopularWarMovies = (props) => {
                 width={170}
                 style={{ borderRadius: 20 }}
               >
-                {popularWarMovies.map((war) => (
-                  <SwiperSlide key={war.id}>
+                {popularDocumentaryMovies.map((documentary) => (
+                  <SwiperSlide key={documentary.id}>
                     <div
                       className={`carousel__poster__wrapper ${
                         darkMode
@@ -72,9 +72,9 @@ const GetPopularWarMovies = (props) => {
                           : undefined
                       }`}
                     >
-                      <Link to={`/movie/${war.id}`}>
+                      <Link to={`/movie/${documentary.id}`}>
                         <img
-                          src={`http://image.tmdb.org/t/p/w185/${war.poster_path}`}
+                          src={`http://image.tmdb.org/t/p/w185/${documentary.poster_path}`}
                           alt="post"
                           className="carousel__poster"
                           sizes="185px"
@@ -94,7 +94,7 @@ const GetPopularWarMovies = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    popularWarMovies: state.movies.popularWarMovies,
+    popularDocumentaryMovies: state.movies.popularDocumentaryMovies,
     darkMode: state.theme.darkTheme,
     loading: state.movies.loading,
     error: state.movies.error,
@@ -103,11 +103,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showPopularWarMovies: () => dispatch(getPopularWarMovies()),
+    showPopularDocumentaryMovies: () => dispatch(getPopularDocumentaryMovies()),
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(GetPopularWarMovies);
+)(GetPopularDocumentaryMovies);

@@ -1,25 +1,25 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getScienceFictionMovies } from "../../redux";
-import Spinner from "../Spinner";
-import MovieItem from "../movies/MovieItem";
+import { getAnimationMovies } from "../../../redux";
+import Spinner from "../../Spinner";
+import MovieItem from "../../movies/MovieItem";
 
-const GetScienceFictionMovies = (props) => {
+const GetAnimationMovies = (props) => {
   const {
-    showScienceFictionMovies,
-    scienceFictionMovies,
+    showAnimationMovies,
+    animationMovies,
     loading,
     error,
     darkMode,
   } = props;
   useEffect(() => {
-    showScienceFictionMovies();
-  }, [showScienceFictionMovies]);
+    showAnimationMovies();
+  }, [showAnimationMovies]);
   return (
     <section
       className={`main adventureMovies ${
         darkMode ? "main__darkMode" : "main__lightMode"
-      } ${scienceFictionMovies.length < 1 && "main__fullHeight"}`}
+      } ${animationMovies.length < 1 && "main__fullHeight"}`}
     >
       <div className="section">
         <div className="movie">
@@ -30,7 +30,7 @@ const GetScienceFictionMovies = (props) => {
                 : "movie__heading--lightMode"
             }`}
           >
-            Science Fiction
+            Animation
           </h2>
           {loading ? (
             <Spinner />
@@ -46,7 +46,7 @@ const GetScienceFictionMovies = (props) => {
             </h2>
           ) : (
             <div className="movie__card__wrapper">
-              {scienceFictionMovies.map((movie) => (
+              {animationMovies.map((movie) => (
                 <MovieItem key={movie.id} movie={movie} />
               ))}
             </div>
@@ -60,7 +60,7 @@ const GetScienceFictionMovies = (props) => {
 const mapStateToProps = (state) => {
   return {
     loading: state.movies.loading,
-    scienceFictionMovies: state.movies.scienceFictionMovies,
+    animationMovies: state.movies.animationMovies,
     error: state.movies.error,
     darkMode: state.theme.darkTheme,
   };
@@ -68,11 +68,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showScienceFictionMovies: () => dispatch(getScienceFictionMovies()),
+    showAnimationMovies: () => dispatch(getAnimationMovies()),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(GetScienceFictionMovies);
+export default connect(mapStateToProps, mapDispatchToProps)(GetAnimationMovies);

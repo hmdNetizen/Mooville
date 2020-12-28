@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import swiperCore, { EffectCoverflow, Scrollbar } from "swiper";
 import { connect } from "react-redux";
-import { getPopularRomanceMovies } from "../../redux";
-import Spinner from "../Spinner";
+import { getPopularWarMovies } from "../../../redux";
+import Spinner from "../../Spinner";
 
 swiperCore.use([EffectCoverflow, Scrollbar]);
 
-const GetPopularRomanceMovies = (props) => {
+const GetPopularWarMovies = (props) => {
   const {
-    popularRomanceMovies,
+    popularWarMovies,
     darkMode,
     loading,
     error,
-    showPopularRomanceMovies,
+    showPopularWarMovies,
   } = props;
   useEffect(() => {
-    showPopularRomanceMovies();
-  }, [showPopularRomanceMovies]);
+    showPopularWarMovies();
+  }, [showPopularWarMovies]);
   return (
     <section
       className={`main ${darkMode ? "main__darkMode" : "main__lightMode"}`}
@@ -29,7 +29,7 @@ const GetPopularRomanceMovies = (props) => {
             darkMode ? "genres__title--darkMode" : "genres__title--lightMode"
           }`}
         >
-          Discover Movies (Romance)
+          Discover Movies (War)
         </h1>
         <div className="carousel">
           <h2
@@ -63,8 +63,8 @@ const GetPopularRomanceMovies = (props) => {
                 width={170}
                 style={{ borderRadius: 20 }}
               >
-                {popularRomanceMovies.map((romance) => (
-                  <SwiperSlide key={romance.id}>
+                {popularWarMovies.map((war) => (
+                  <SwiperSlide key={war.id}>
                     <div
                       className={`carousel__poster__wrapper ${
                         darkMode
@@ -72,9 +72,9 @@ const GetPopularRomanceMovies = (props) => {
                           : undefined
                       }`}
                     >
-                      <Link to={`/movie/${romance.id}`}>
+                      <Link to={`/movie/${war.id}`}>
                         <img
-                          src={`http://image.tmdb.org/t/p/w185/${romance.poster_path}`}
+                          src={`http://image.tmdb.org/t/p/w185/${war.poster_path}`}
                           alt="post"
                           className="carousel__poster"
                           sizes="185px"
@@ -94,7 +94,7 @@ const GetPopularRomanceMovies = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    popularRomanceMovies: state.movies.popularRomanceMovies,
+    popularWarMovies: state.movies.popularWarMovies,
     darkMode: state.theme.darkTheme,
     loading: state.movies.loading,
     error: state.movies.error,
@@ -103,11 +103,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showPopularRomanceMovies: () => dispatch(getPopularRomanceMovies()),
+    showPopularWarMovies: () => dispatch(getPopularWarMovies()),
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(GetPopularRomanceMovies);
+)(GetPopularWarMovies);

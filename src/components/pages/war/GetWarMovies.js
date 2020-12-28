@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getHorrorMovies } from "../../redux";
-import Spinner from "../Spinner";
-import MovieItem from "../movies/MovieItem";
+import { getWarMovies } from "../../../redux";
+import Spinner from "../../Spinner";
+import MovieItem from "../../movies/MovieItem";
 
-const GetHorrorMovies = (props) => {
-  const { showHorrorMovies, horrorMovies, loading, error, darkMode } = props;
+const GetWarMovies = (props) => {
+  const { showWarMovies, warMovies, loading, error, darkMode } = props;
   useEffect(() => {
-    showHorrorMovies();
-  }, [showHorrorMovies]);
+    showWarMovies();
+  }, [showWarMovies]);
   return (
     <section
       className={`main adventureMovies ${
         darkMode ? "main__darkMode" : "main__lightMode"
-      } ${horrorMovies.length < 1 && "main__fullHeight"}`}
+      } ${warMovies.length < 1 && "main__fullHeight"}`}
     >
       <div className="section">
         <div className="movie">
@@ -24,7 +24,7 @@ const GetHorrorMovies = (props) => {
                 : "movie__heading--lightMode"
             }`}
           >
-            Horror
+            War
           </h2>
           {loading ? (
             <Spinner />
@@ -40,7 +40,7 @@ const GetHorrorMovies = (props) => {
             </h2>
           ) : (
             <div className="movie__card__wrapper">
-              {horrorMovies.map((movie) => (
+              {warMovies.map((movie) => (
                 <MovieItem key={movie.id} movie={movie} />
               ))}
             </div>
@@ -54,7 +54,7 @@ const GetHorrorMovies = (props) => {
 const mapStateToProps = (state) => {
   return {
     loading: state.movies.loading,
-    horrorMovies: state.movies.horrorMovies,
+    warMovies: state.movies.warMovies,
     error: state.movies.error,
     darkMode: state.theme.darkTheme,
   };
@@ -62,8 +62,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showHorrorMovies: () => dispatch(getHorrorMovies()),
+    showWarMovies: () => dispatch(getWarMovies()),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(GetHorrorMovies);
+export default connect(mapStateToProps, mapDispatchToProps)(GetWarMovies);
