@@ -35,6 +35,8 @@ import GetUpcomingHorrorMovies from "./pages/horror/GetUpcomingHorrorMovies";
 import GetUpcomingRomanceMovies from "./pages/romance/GetUpcomingRomanceMovies";
 import GetUpcomingScienceFiction from "./pages/science/GetUpcomingScienceFiction";
 import BookmarkedMovies from "./movies/BookmarkedMovies";
+import GetUpcomingThrillerMovies from "./pages/thriller/GetUpcomingThrillerMovies";
+import GetUpcomingWarMovies from "./pages/war/GetUpcomingWarMovies";
 
 const Routes = ({ searched }) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
@@ -160,6 +162,7 @@ const Routes = ({ searched }) => {
         render={() => (
           <Fragment>
             <GetPopularThrillerMovies />
+            <GetUpcomingThrillerMovies />
             <GetThrillerMovies />
           </Fragment>
         )}
@@ -170,6 +173,7 @@ const Routes = ({ searched }) => {
         render={() => (
           <Fragment>
             <GetPopularWarMovies />
+            <GetUpcomingWarMovies />
             <GetWarMovies />
           </Fragment>
         )}

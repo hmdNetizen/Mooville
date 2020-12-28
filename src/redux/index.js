@@ -34,4 +34,5 @@ export {
   getUpcomingHorrorMovies,
   getUpcomingRomanceMovies,
   getUpcomingScienceFictionMovies,
+  getUpcomingThrillerMovies,
 } from "./movies/movieAction";

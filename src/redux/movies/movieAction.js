@@ -34,6 +34,7 @@ import {
   GET_UPCOMING_HORROR_MOVIES,
   GET_UPCOMING_ROMANCE_MOVIES,
   GET_UPCOMING_SCIENCE_FICTION_MOVIES,
+  GET_UPCOMING_THRILLER_MOVIES
 } from "./movieTypes";
 
 const apiKey = "f5205bcd74d03769d95f80b89c9f4db6";
@@ -522,6 +523,21 @@ export const getThrillerMovies = () => async (dispatch) => {
 
     dispatch({
       type: GET_THRILLER_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
+export const getUpcomingThrillerMovies = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=2021&with_genres=53`
+    );
+
+    dispatch({
+      type: GET_UPCOMING_THRILLER_MOVIES,
       payload: response.data.results,
     });
   } catch (error) {

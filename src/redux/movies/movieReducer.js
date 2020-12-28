@@ -33,6 +33,7 @@ import {
   GET_UPCOMING_HORROR_MOVIES,
   GET_UPCOMING_ROMANCE_MOVIES,
   GET_UPCOMING_SCIENCE_FICTION_MOVIES,
+  GET_UPCOMING_THRILLER_MOVIES,
 } from "./movieTypes";
 
 const initialState = {
@@ -58,6 +59,7 @@ const initialState = {
   upcomingHorrorMovies: [],
   upcomingRomanceMovies: [],
   upcomingScienceMovies: [],
+  upcomingThrillerMovies: [],
   adventureMovies: [],
   animationMovies: [],
   comedyMovies: [],
@@ -244,6 +246,13 @@ export default (state = initialState, action) => {
         loading: false,
         error: "",
       };
+    case GET_UPCOMING_THRILLER_MOVIES:
+      return {
+        ...state,
+        upcomingThrillerMovies: action.payload,
+        loading: false,
+        error: "",
+      };
     case GET_ADVENTURE_MOVIES:
       return {
         ...state,
@@ -331,6 +340,7 @@ export default (state = initialState, action) => {
         upcomingHorrorMovies: [],
         upcomingRomanceMovies: [],
         upcomingScienceMovies: [],
+        upcomingThrillerMovies: [],
         actionMovies: [],
         adventureMovies: [],
         animationMovies: [],
