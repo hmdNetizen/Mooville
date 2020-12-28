@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import swiperCore, { EffectCoverflow, Scrollbar } from "swiper";
 import { connect } from "react-redux";
-import { getUpcomingRomanceMovies } from "../../../redux";
+import { getUpcomingScienceFictionMovies } from "../../../redux";
 import Spinner from "../../Spinner";
 
 swiperCore.use([EffectCoverflow, Scrollbar]);
@@ -12,15 +12,15 @@ const makeshiftPoster =
 
 const GetUpcomingScienceFictionMovies = (props) => {
   const {
-    showUpcomingRomanceMovies,
-    upcomingRomanceMovies,
+    showUpcomingScienceFictionMovies,
+    upcomingScienceFictionMovies,
     darkMode,
     loading,
     error,
   } = props;
   useEffect(() => {
-    showUpcomingRomanceMovies();
-  }, [showUpcomingRomanceMovies]);
+    showUpcomingScienceFictionMovies();
+  }, [showUpcomingScienceFictionMovies]);
   return (
     <section
       className={`main adventureMovies ${
@@ -60,7 +60,7 @@ const GetUpcomingScienceFictionMovies = (props) => {
                 width={170}
                 style={{ borderRadius: 20 }}
               >
-                {upcomingRomanceMovies.map((movie) => (
+                {upcomingScienceFictionMovies.map((movie) => (
                   <SwiperSlide key={movie.id}>
                     <div
                       className={`carousel__poster__wrapper ${
@@ -96,7 +96,7 @@ const GetUpcomingScienceFictionMovies = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    upcomingRomanceMovies: state.movies.upcomingRomanceMovies,
+    upcomingScienceFictionMovies: state.movies.upcomingScienceMovies,
     darkMode: state.theme.darkTheme,
     loading: state.movies.loading,
     error: state.movies.error,
@@ -105,7 +105,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showUpcomingRomanceMovies: () => dispatch(getUpcomingRomanceMovies()),
+    showUpcomingScienceFictionMovies: () =>
+      dispatch(getUpcomingScienceFictionMovies()),
   };
 };
 
