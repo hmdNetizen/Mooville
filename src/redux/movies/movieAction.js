@@ -28,6 +28,8 @@ import {
   GET_WAR_MOVIES,
   GET_UPCOMING_ACTION_MOVIES,
   GET_UPCOMING_ADVENTURE_MOVIES,
+  GET_UPCOMING_ANIMATION_MOVIES,
+  GET_UPCOMING_COMEDY_MOVIES,
 } from "./movieTypes";
 
 const apiKey = "f5205bcd74d03769d95f80b89c9f4db6";
@@ -245,6 +247,21 @@ export const getAnimationMovies = () => async (dispatch) => {
   }
 };
 
+export const getUpcomingAnimationMovies = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=2021&with_genres=16`
+    );
+
+    dispatch({
+      type: GET_UPCOMING_ANIMATION_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
 // Comedy Movies
 
 export const getPopularComedyMovies = () => async (dispatch) => {
@@ -270,6 +287,21 @@ export const getComedyMovies = () => async (dispatch) => {
 
     dispatch({
       type: GET_COMEDY_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
+export const getUpcomingComedyMovies = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=2021&with_genres=35`
+    );
+
+    dispatch({
+      type: GET_UPCOMING_COMEDY_MOVIES,
       payload: response.data.results,
     });
   } catch (error) {
