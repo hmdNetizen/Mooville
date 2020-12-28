@@ -3,24 +3,24 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import swiperCore, { EffectCoverflow, Scrollbar } from "swiper";
 import { connect } from "react-redux";
-import { getUpcomingDocumentaryMovies } from "../../../redux";
+import { getUpcomingHorrorMovies } from "../../../redux";
 import Spinner from "../../Spinner";
 
 swiperCore.use([EffectCoverflow, Scrollbar]);
 const makeshiftPoster =
   "https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8bW92aWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=185&h=231&q=60";
 
-const GetUpcomingDocumentaryMovies = (props) => {
+const GetUpcomingHorrorMovies = (props) => {
   const {
-    showUpcomingDocumentaryMovies,
-    upcomingDocumentaryMovies,
+    showUpcomingHorrorMovies,
+    upcomingHorrorMovies,
     darkMode,
     loading,
     error,
   } = props;
   useEffect(() => {
-    showUpcomingDocumentaryMovies();
-  }, [showUpcomingDocumentaryMovies]);
+    showUpcomingHorrorMovies();
+  }, [showUpcomingHorrorMovies]);
   return (
     <section
       className={`main adventureMovies ${
@@ -60,7 +60,7 @@ const GetUpcomingDocumentaryMovies = (props) => {
                 width={170}
                 style={{ borderRadius: 20 }}
               >
-                {upcomingDocumentaryMovies.map((movie) => (
+                {upcomingHorrorMovies.map((movie) => (
                   <SwiperSlide key={movie.id}>
                     <div
                       className={`carousel__poster__wrapper ${
@@ -96,7 +96,7 @@ const GetUpcomingDocumentaryMovies = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    upcomingDocumentaryMovies: state.movies.upcomingDocumentaryMovies,
+    upcomingHorrorMovies: state.movies.upcomingHorrorMovies,
     darkMode: state.theme.darkTheme,
     loading: state.movies.loading,
     error: state.movies.error,
@@ -105,12 +105,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showUpcomingDocumentaryMovies: () =>
-      dispatch(getUpcomingDocumentaryMovies()),
+    showUpcomingHorrorMovies: () => dispatch(getUpcomingHorrorMovies()),
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(GetUpcomingDocumentaryMovies);
+)(GetUpcomingHorrorMovies);

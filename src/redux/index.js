@@ -30,4 +30,6 @@ export {
   getUpcomingAdventureMovies,
   getUpcomingAnimationMovies,
   getUpcomingComedyMovies,
+  getUpcomingDocumentaryMovies,
+  getUpcomingHorrorMovies,
 } from "./movies/movieAction";
