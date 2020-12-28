@@ -32,6 +32,8 @@ import GetUpcomingAnimationMovies from "./pages/animation/GetUpcomingAnimationMo
 import GetUpcomingComedyMovies from "./pages/comedy/GetUpcomingComedyMovies";
 import GetUpcomingDocumentaryMovies from "./pages/documentary/GetUpcomingDocumentaryMovies";
 import GetUpcomingHorrorMovies from "./pages/horror/GetUpcomingHorrorMovies";
+import GetUpcomingRomanceMovies from "./pages/romance/GetUpcomingRomanceMovies";
+import GetUpcomingScienceFiction from "./pages/science/GetUpcomingScienceFiction";
 import BookmarkedMovies from "./movies/BookmarkedMovies";
 
 const Routes = ({ searched }) => {
@@ -136,6 +138,7 @@ const Routes = ({ searched }) => {
         render={() => (
           <Fragment>
             <GetPopularRomanceMovies />
+            <GetUpcomingRomanceMovies />
             <GetRomanceMovies />
           </Fragment>
         )}
@@ -146,6 +149,7 @@ const Routes = ({ searched }) => {
         render={() => (
           <Fragment>
             <GetPopularScienceMovies />
+            <GetUpcomingScienceFiction />
             <GetScienceFictionMovies />
           </Fragment>
         )}

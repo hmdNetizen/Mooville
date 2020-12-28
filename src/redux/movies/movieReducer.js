@@ -31,6 +31,7 @@ import {
   GET_UPCOMING_COMEDY_MOVIES,
   GET_UPCOMING_DOCUMENTARY_MOVIES,
   GET_UPCOMING_HORROR_MOVIES,
+  GET_UPCOMING_ROMANCE_MOVIES,
 } from "./movieTypes";
 
 const initialState = {
@@ -54,6 +55,7 @@ const initialState = {
   upcomingComedyMovies: [],
   upcomingDocumentaryMovies: [],
   upcomingHorrorMovies: [],
+  upcomingRomanceMovies: [],
   adventureMovies: [],
   animationMovies: [],
   comedyMovies: [],
@@ -223,6 +225,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         upcomingHorrorMovies: action.payload,
+        loading: false,
+        error: "",
+      };
+    case GET_UPCOMING_ROMANCE_MOVIES:
+      return {
+        ...state,
+        upcomingRomanceMovies: action.payload,
         loading: false,
         error: "",
       };
