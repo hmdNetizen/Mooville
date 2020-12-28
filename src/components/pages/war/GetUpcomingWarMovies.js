@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import swiperCore, { EffectCoverflow, Scrollbar } from "swiper";
 import { connect } from "react-redux";
-import { getUpcomingThrillerMovies } from "../../../redux";
+import { getUpcomingWarMovies } from "../../../redux";
 import Spinner from "../../Spinner";
 
 swiperCore.use([EffectCoverflow, Scrollbar]);
@@ -12,15 +12,15 @@ const makeshiftPoster =
 
 const GetUpcomingWarMovies = (props) => {
   const {
-    showUpcomingThrillerMovies,
-    upcomingThrillerMovies,
+    showUpcomingWarMovies,
+    upcomingWarMovies,
     darkMode,
     loading,
     error,
   } = props;
   useEffect(() => {
-    showUpcomingThrillerMovies();
-  }, [showUpcomingThrillerMovies]);
+    showUpcomingWarMovies();
+  }, [showUpcomingWarMovies]);
   return (
     <section
       className={`main adventureMovies ${
@@ -60,7 +60,7 @@ const GetUpcomingWarMovies = (props) => {
                 width={170}
                 style={{ borderRadius: 20 }}
               >
-                {upcomingThrillerMovies.map((movie) => (
+                {upcomingWarMovies.map((movie) => (
                   <SwiperSlide key={movie.id}>
                     <div
                       className={`carousel__poster__wrapper ${
@@ -96,7 +96,7 @@ const GetUpcomingWarMovies = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    upcomingThrillerMovies: state.movies.upcomingThrillerMovies,
+    upcomingWarMovies: state.movies.upcomingWarMovies,
     darkMode: state.theme.darkTheme,
     loading: state.movies.loading,
     error: state.movies.error,
@@ -105,7 +105,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showUpcomingThrillerMovies: () => dispatch(getUpcomingThrillerMovies()),
+    showUpcomingWarMovies: () => dispatch(getUpcomingWarMovies()),
   };
 };
 
