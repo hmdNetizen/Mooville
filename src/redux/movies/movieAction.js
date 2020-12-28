@@ -25,7 +25,9 @@ import {
   GET_ROMANCE_MOVIES,
   GET_SCIENCE_FICTION_MOVIES,
   GET_THRILLER_MOVIES,
-  GET_WAR_MOVIES
+  GET_WAR_MOVIES,
+  GET_UPCOMING_ACTION_MOVIES,
+  GET_UPCOMING_ADVENTURE_MOVIES,
 } from "./movieTypes";
 
 const apiKey = "f5205bcd74d03769d95f80b89c9f4db6";
@@ -71,7 +73,7 @@ export const getTrendingMovies = () => async (dispatch) => {
 
 // Action Movies
 
-export const getPopularActionMovies = () => async dispatch => {
+export const getPopularActionMovies = () => async (dispatch) => {
   try {
     const response = await axios.get(
       `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&year=2020&with_genres=28`
@@ -84,7 +86,7 @@ export const getPopularActionMovies = () => async dispatch => {
   } catch (error) {
     dispatch(getMoviesFailure(error.message));
   }
-}
+};
 
 export const getActionMovies = () => async (dispatch) => {
   try {
@@ -94,6 +96,22 @@ export const getActionMovies = () => async (dispatch) => {
 
     dispatch({
       type: GET_ACTION_MOVIES_SUCCESS,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
+export const getUpcomingActionMovies = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=2021&with_genres=28
+      `
+    );
+
+    dispatch({
+      type: GET_UPCOMING_ACTION_MOVIES,
       payload: response.data.results,
     });
   } catch (error) {
@@ -174,6 +192,21 @@ export const getAdventureMovies = () => async (dispatch) => {
 
     dispatch({
       type: GET_ADVENTURE_MOVIES,
+      payload: response.data.results,
+    });
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
+export const getUpcomingAdventureMovies = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=f5205bcd74d03769d95f80b89c9f4db6&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=2021&with_genres=12`
+    );
+
+    dispatch({
+      type: GET_UPCOMING_ADVENTURE_MOVIES,
       payload: response.data.results,
     });
   } catch (error) {

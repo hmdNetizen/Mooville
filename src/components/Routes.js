@@ -26,6 +26,8 @@ import GetRomanceMovies from "./pages/romance/GetRomanceMovies";
 import GetScienceFictionMovies from "./pages/science/GetScienceFictionMovies";
 import GetThrillerMovies from "./pages/thriller/GetThrillerMovies";
 import GetWarMovies from "./pages/war/GetWarMovies";
+import GetUpcomingActionMovies from "./pages/action/GetUpcomingActionMovies";
+import GetUpcomingAdventureMovies from "./pages/adventure/GetUpcomingAdventureMovies";
 import BookmarkedMovies from "./movies/BookmarkedMovies";
 
 const Routes = ({ searched }) => {
@@ -59,10 +61,22 @@ const Routes = ({ searched }) => {
       <Route exact path="/bookmarks" component={BookmarkedMovies} />
       <Route
         exact
+        path="/action"
+        render={() => (
+          <Fragment>
+            <GetPopularActionMovies />
+            <GetUpcomingActionMovies />
+            <GetActionMovies />
+          </Fragment>
+        )}
+      />
+      <Route
+        exact
         path="/adventure"
         render={(props) => (
           <Fragment>
             <GetPopularAdventureMovies {...props} />
+            <GetUpcomingAdventureMovies />
             <GetAdventureMovies {...props} />
           </Fragment>
         )}
@@ -77,16 +91,7 @@ const Routes = ({ searched }) => {
           </Fragment>
         )}
       />
-      <Route
-        exact
-        path="/action"
-        render={() => (
-          <Fragment>
-            <GetPopularActionMovies />
-            <GetActionMovies />
-          </Fragment>
-        )}
-      />
+
       <Route
         exact
         path="/comedy"

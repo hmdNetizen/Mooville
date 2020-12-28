@@ -25,5 +25,7 @@ export {
   getRomanceMovies,
   getScienceFictionMovies,
   getThrillerMovies,
-  getWarMovies
+  getWarMovies,
+  getUpcomingActionMovies,
+  getUpcomingAdventureMovies,
 } from "./movies/movieAction";

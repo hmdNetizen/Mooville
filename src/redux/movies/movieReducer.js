@@ -24,7 +24,9 @@ import {
   GET_ROMANCE_MOVIES,
   GET_SCIENCE_FICTION_MOVIES,
   GET_THRILLER_MOVIES,
-  GET_WAR_MOVIES
+  GET_WAR_MOVIES,
+  GET_UPCOMING_ACTION_MOVIES,
+  GET_UPCOMING_ADVENTURE_MOVIES,
 } from "./movieTypes";
 
 const initialState = {
@@ -42,7 +44,9 @@ const initialState = {
   popularScienceMovies: [],
   popularThrillerMovies: [],
   popularWarMovies: [],
- adventureMovies: [],
+  upcomingActionMovies: [],
+  upcomingAdventureMovies: [],
+  adventureMovies: [],
   animationMovies: [],
   comedyMovies: [],
   documentaryMovies: [],
@@ -101,13 +105,13 @@ export default (state = initialState, action) => {
         loading: false,
         error: "",
       };
-      case GET_POPULAR_ACTION_MOVIES:
+    case GET_POPULAR_ACTION_MOVIES:
       return {
         ...state,
         popularActionMovies: action.payload,
         loading: false,
-        error: ""
-      }
+        error: "",
+      };
     case GET_POPULAR_ADVENTURE_MOVIES:
       return {
         ...state,
@@ -157,20 +161,35 @@ export default (state = initialState, action) => {
         loading: false,
         error: "",
       };
-      case GET_POPULAR_THRILLER_MOVIES:
-        return {
-          ...state,
-          popularThrillerMovies: action.payload,
-          loading: false,
-          error: ""
-        }
-      case GET_POPULAR_WAR_MOVIES:
+    case GET_POPULAR_THRILLER_MOVIES:
+      return {
+        ...state,
+        popularThrillerMovies: action.payload,
+        loading: false,
+        error: "",
+      };
+
+    case GET_POPULAR_WAR_MOVIES:
       return {
         ...state,
         popularWarMovies: action.payload,
         loading: false,
-        error: ""
-      }
+        error: "",
+      };
+    case GET_UPCOMING_ACTION_MOVIES:
+      return {
+        ...state,
+        upcomingActionMovies: action.payload,
+        loading: false,
+        error: "",
+      };
+    case GET_UPCOMING_ADVENTURE_MOVIES:
+      return {
+        ...state,
+        upcomingAdventureMovies: action.payload,
+        loading: false,
+        error: "",
+      };
     case GET_ADVENTURE_MOVIES:
       return {
         ...state,
@@ -178,6 +197,7 @@ export default (state = initialState, action) => {
         loading: false,
         error: "",
       };
+
     case GET_ANIMATION_MOVIES:
       return {
         ...state,
@@ -222,24 +242,23 @@ export default (state = initialState, action) => {
         error: "",
       };
     case GET_THRILLER_MOVIES:
-    return {
-      ...state,
-      thrillerMovies: action.payload,
-      loading: false,
-      error: ""
-    }
+      return {
+        ...state,
+        thrillerMovies: action.payload,
+        loading: false,
+        error: "",
+      };
     case GET_WAR_MOVIES:
-    return {
-      ...state,
-      warMovies: action.payload,
-      loading: false,
-      error: ""
-    }
+      return {
+        ...state,
+        warMovies: action.payload,
+        loading: false,
+        error: "",
+      };
     case GET_MOVIES_FAILURE:
       return {
         ...state,
         trending: [],
-        actionMovies: [],
         searchedMovies: [],
         popularAdventureMovies: [],
         popularAnimationMovies: [],
@@ -250,6 +269,9 @@ export default (state = initialState, action) => {
         popularThrillerMovies: [],
         popularScienceMovies: [],
         popularWarMovies: [],
+        upcomingActionMovies: [],
+        upcomingAdventureMovies: [],
+        actionMovies: [],
         adventureMovies: [],
         animationMovies: [],
         comedyMovies: [],

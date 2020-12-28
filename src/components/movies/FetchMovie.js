@@ -133,6 +133,18 @@ const FetchMovie = (props) => {
             selectedMovie && (
               <Fragment>
                 <h2 className="singleMovie__title">{selectedMovie.title}</h2>
+                <p className="singleMovie__date">
+                  Released Date:{" "}
+                  <span
+                    className={`singleMovie__fullDate ${
+                      darkMode
+                        ? "singleMovie__fullDate--darkMode"
+                        : "singleMovie__fullDate--lightMode"
+                    }`}
+                  >
+                    {selectedMovie.release_date}
+                  </span>
+                </p>
                 <Fragment>
                   <StarRating
                     rating={Math.ceil(selectedMovie.vote_average / 2)}

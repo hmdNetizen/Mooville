@@ -875,6 +875,32 @@ body {
   }
 }
 
+.singleMovie__date {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1280px) {
+  .singleMovie__date {
+    text-align: center;
+  }
+}
+
+.singleMovie__fullDate {
+  letter-spacing: 2px;
+  margin-left: 0.5em;
+}
+
+.singleMovie__fullDate--darkMode {
+  color: #d3a43f !important;
+}
+
+.singleMovie__fullDate--lightMode {
+  color: #c93126;
+}
+
 .singleMovie__overview {
   font-size: 2rem;
   margin-top: 0.75em;

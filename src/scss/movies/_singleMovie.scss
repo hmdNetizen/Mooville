@@ -146,6 +146,28 @@
     }
   }
 
+  &__date {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75em;
+    text-transform: uppercase;
+
+    @include match(md) {
+      text-align: center;
+    }
+  }
+
+  &__fullDate {
+    letter-spacing: 2px;
+    margin-left: 0.5em;
+    &--darkMode {
+      color: $color-gold !important;
+    }
+    &--lightMode {
+      color: $color-tertiary;
+    }
+  }
+
   &__overview {
     font-size: 2rem;
     margin-top: 0.75em;

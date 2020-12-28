@@ -56,7 +56,7 @@ const FetchTrendingMovie = (props) => {
                   <Link to={`/movie/${trend.id}`}>
                     <img
                       src={`http://image.tmdb.org/t/p/w185/${trend.poster_path}`}
-                      alt="post"
+                      alt={`${trend.title || trend.name} poster`}
                       className="carousel__poster"
                       sizes="185px"
                     />
