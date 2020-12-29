@@ -573,6 +573,13 @@ body {
   }
 }
 
+@media (max-width: 420px) {
+  .movieList__card {
+    width: 7em;
+    height: 10em;
+  }
+}
+
 @media (max-width: 320px) {
   .movieList__card {
     margin-right: 1em;
@@ -591,6 +598,13 @@ body {
 
 .movieList__card__poster {
   border-radius: 1em;
+}
+
+@media (max-width: 420px) {
+  .movieList__card__poster {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 @media (max-width: 600px) {

@@ -44,6 +44,12 @@
     }
   }
 
+  @if $breakpoints == xss {
+    @media (max-width: 420px) {
+      @content;
+    }
+  }
+
   @if $breakpoints == xs {
     @media (max-width: 600px) {
       @content;

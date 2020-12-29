@@ -7,7 +7,6 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const SearchedMovie = ({ loading, searched, error, darkMode }) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
-  console.log(searched);
   return (
     <div className="searchedMovies">
       {loading ? (
