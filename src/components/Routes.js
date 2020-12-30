@@ -37,6 +37,7 @@ import GetUpcomingScienceFiction from "./pages/science/GetUpcomingScienceFiction
 import BookmarkedMovies from "./movies/BookmarkedMovies";
 import GetUpcomingThrillerMovies from "./pages/thriller/GetUpcomingThrillerMovies";
 import GetUpcomingWarMovies from "./pages/war/GetUpcomingWarMovies";
+import ShowViewedMovies from "./movies/ShowViewedMovies";
 
 const Routes = ({ searched }) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
@@ -65,8 +66,6 @@ const Routes = ({ searched }) => {
           )}
         />
       )}
-
-      <Route exact path="/bookmarks" component={BookmarkedMovies} />
       <Route
         exact
         path="/action"
@@ -178,6 +177,8 @@ const Routes = ({ searched }) => {
           </Fragment>
         )}
       />
+      <Route exact path="/bookmarks" component={BookmarkedMovies} />
+      <Route exact path="/viewed" component={ShowViewedMovies} />
     </Switch>
   );
 };

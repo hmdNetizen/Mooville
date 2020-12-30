@@ -16,8 +16,8 @@ function App() {
         <NavMenu />
         <div className="container">
           <Routes />
-          <Footer />
         </div>
+        <Footer />
       </Router>
     </Provider>
   );

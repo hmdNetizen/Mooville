@@ -6,9 +6,11 @@ const ShowViewedMovies = ({ viewedMovies, selectedMovie }) => {
     console.log(selectedMovie);
   });
   return (
-    <div style={{ marginTop: "5em" }}>
-      You currently haven't viewed any movie. Click on any movie to keep track
-      of the movies you have viewed
+    <div className="viewed">
+      <p>
+        You currently haven't viewed any movie. Click on any movie to keep track
+        of the movies you have viewed
+      </p>
     </div>
   );
 };
