@@ -36,6 +36,7 @@ import {
   GET_UPCOMING_SCIENCE_FICTION_MOVIES,
   GET_UPCOMING_THRILLER_MOVIES,
   GET_UPCOMING_WAR_MOVIES,
+  GET_VIEWED_MOVIES,
 } from "./movieTypes";
 
 const apiKey = "f5205bcd74d03769d95f80b89c9f4db6";
@@ -54,6 +55,14 @@ const getMoviesFailure = (error) => {
   };
 };
 
+// Viewed movies action creator
+export const displayViewedMovies = (viewed) => {
+  return {
+    type: GET_VIEWED_MOVIES,
+    payload: viewed,
+  };
+};
+
 export const getSingleMovie = (movieId) => async (dispatch) => {
   try {
     const response = await axios.get(
@@ -63,6 +72,12 @@ export const getSingleMovie = (movieId) => async (dispatch) => {
       type: GET_SINGLE_MOVIE,
       payload: response.data,
     });
+
+    if (response.data) {
+      const data = [];
+      data.push(response.data);
+      dispatch(displayViewedMovies(data));
+    }
   } catch (error) {
     dispatch(getMoviesFailure(error.message));
   }

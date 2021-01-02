@@ -35,6 +35,7 @@ import {
   GET_UPCOMING_SCIENCE_FICTION_MOVIES,
   GET_UPCOMING_THRILLER_MOVIES,
   GET_UPCOMING_WAR_MOVIES,
+  GET_VIEWED_MOVIES,
 } from "./movieTypes";
 
 const initialState = {
@@ -75,6 +76,7 @@ const initialState = {
   loading: true,
   selectedMovie: null,
   movieVideo: null,
+  viewedMovies: JSON.parse(localStorage.getItem("viewed")) || [],
 };
 
 export default (state = initialState, action) => {
@@ -365,6 +367,14 @@ export default (state = initialState, action) => {
         selectedMovie: null,
         movieVideo: null,
         loading: false,
+      };
+    case GET_VIEWED_MOVIES:
+      localStorage.setItem("viewed", JSON.stringify(action.payload));
+      return {
+        ...state,
+        viewedMovies: action.payload,
+        loading: false,
+        error: "",
       };
 
     default:

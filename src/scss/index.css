@@ -1521,7 +1521,30 @@ body {
 .viewed p {
   font-size: 2rem;
   padding: 0 3em;
-  margin-top: -5em;
+}
+
+@media (max-width: 600px) {
+  .viewed p {
+    padding: 0 1.5em;
+  }
+}
+
+.bookmarked {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+
+.bookmarked p {
+  font-size: 2rem;
+  padding: 0 3em;
 }
 
 .footer {

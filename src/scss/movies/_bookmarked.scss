@@ -1,5 +1,4 @@
-.viewed {
-  //   margin-top: 5em;
+.bookmarked {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,9 +7,5 @@
   & p {
     font-size: 2rem;
     padding: 0 3em;
-
-    @include match(xs) {
-      padding: 0 1.5em;
-    }
   }
 }
