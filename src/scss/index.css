@@ -1518,13 +1518,30 @@ body {
   height: 100vh;
 }
 
-.viewed p {
+.viewed--darkMode {
+  background: #2c2c2c;
+}
+
+.viewed--lightMode {
+  background: #fff;
+}
+
+.viewed__defaultText {
+  margin-top: -5em;
   font-size: 2rem;
   padding: 0 3em;
 }
 
+.viewed__defaultText--darkMode {
+  color: #d1d1d1;
+}
+
+.viewed__defaultText--lightMode {
+  color: #c93126;
+}
+
 @media (max-width: 600px) {
-  .viewed p {
+  .viewed__defaultText {
     padding: 0 1.5em;
   }
 }
@@ -1542,9 +1559,32 @@ body {
   height: 100vh;
 }
 
-.bookmarked p {
+.bookmarked--darkMode {
+  background: #2c2c2c;
+}
+
+.bookmarked--lightMode {
+  background: #fff;
+}
+
+.bookmarked__defaultText {
+  margin-top: -5em;
   font-size: 2rem;
   padding: 0 3em;
+}
+
+.bookmarked__defaultText--darkMode {
+  color: #d1d1d1;
+}
+
+.bookmarked__defaultText--lightMode {
+  color: #c93126;
+}
+
+@media (max-width: 600px) {
+  .bookmarked__defaultText {
+    padding: 0 1.5em;
+  }
 }
 
 .footer {
