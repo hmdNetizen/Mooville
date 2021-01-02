@@ -37,6 +37,7 @@ import {
   GET_UPCOMING_THRILLER_MOVIES,
   GET_UPCOMING_WAR_MOVIES,
   GET_VIEWED_MOVIES,
+  GET_BOOKMARKED_MOVIES,
 } from "./movieTypes";
 
 const apiKey = "f5205bcd74d03769d95f80b89c9f4db6";
@@ -81,6 +82,13 @@ export const getSingleMovie = (movieId) => async (dispatch) => {
   } catch (error) {
     dispatch(getMoviesFailure(error.message));
   }
+};
+
+export const getBookmarkedMovies = (id) => {
+  return {
+    type: GET_BOOKMARKED_MOVIES,
+    payload: id,
+  };
 };
 
 export const getTrendingMovies = () => async (dispatch) => {
