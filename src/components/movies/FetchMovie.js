@@ -11,6 +11,8 @@ import {
 import Spinner from "../Spinner";
 import MovieItem from "./MovieItem";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // This component fetches individual movies based on the movie user clicked
 const FetchMovie = (props) => {
@@ -33,9 +35,21 @@ const FetchMovie = (props) => {
   const [disliked, setDisliked] = useState(false);
   const [showReview, setShowReview] = useState(false);
 
+  const matchesMD = useMediaQuery("(max-width: 1280px)");
   const matchesSM = useMediaQuery("(max-width: 960px)");
 
   const myRef = useRef(null);
+
+  const notify = () =>
+    toast.error("Download Unavailable", {
+      position: matchesMD ? "top-center" : "top-right",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
   useEffect(() => {
     function showMovieTitle() {
@@ -239,6 +253,7 @@ const FetchMovie = (props) => {
                 </ul>
                 <div className="singleMovie__download__wrapper">
                   <button
+                    onClick={notify}
                     className={`singleMovie__download__btn ${
                       darkMode
                         ? "singleMovie__download__btn--darkMode"
@@ -253,6 +268,7 @@ const FetchMovie = (props) => {
                       Download
                     </span>
                   </button>
+                  <ToastContainer />
                 </div>
                 <div className="singleMovie__similarMovies">
                   <h2 className="singleMovie__similarMovies__heading">
