@@ -1,6 +1,6 @@
 import { SET_DARK_THEME } from "./themeTypes";
 const initialState = {
-  darkTheme: true,
+  darkTheme: false,
 };
 
 export default (state = initialState, action) => {
