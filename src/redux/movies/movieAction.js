@@ -41,6 +41,7 @@ import {
 } from "./movieTypes";
 
 const apiKey = "f5205bcd74d03769d95f80b89c9f4db6";
+// const key = process.env.API_KEY;
 
 const getTrendingMoviesSuccess = (success) => {
   return {
