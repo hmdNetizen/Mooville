@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { getSingleMovie, getSimilarMovies, getMovieVideo } from "./../../redux";
 import StarRating from "../StarRating";
 import { CgPlayListAdd } from "react-icons/cg";
@@ -39,6 +40,7 @@ const FetchMovie = (props) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
 
   const myRef = useRef(null);
+  const location = useLocation();
 
   const notify = () =>
     toast.error("Download Unavailable", {
@@ -52,21 +54,13 @@ const FetchMovie = (props) => {
     });
 
   useEffect(() => {
-    function showMovieTitle() {
-      document.addEventListener(
-        "DOMContentLoaded",
-        () => {
-          if (matchesSM && selectedMovie !== null) {
-            window.scrollTo(0, myRef.current.offsetTop + "40vh");
-          }
-        },
-        false
-      );
+    function scrollToMovieTitle() {
+      window.scrollTo(0, 0);
     }
     getMovie(match.params.id);
     fetchSimilarMovies(match.params.id);
     fetchMovieVideo(match.params.id);
-    showMovieTitle();
+    scrollToMovieTitle();
   }, [
     getMovie,
     match,
@@ -74,6 +68,7 @@ const FetchMovie = (props) => {
     selectedMovie,
     fetchSimilarMovies,
     fetchMovieVideo,
+    location,
   ]);
 
   const limitActionMovie = actionMovies.slice(1, 7);
