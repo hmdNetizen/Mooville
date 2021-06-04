@@ -1,6 +1,5 @@
-import React, { Fragment, useEffect, useState, useRef } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useLocation } from "react-router-dom";
 import { getSingleMovie, getSimilarMovies, getMovieVideo } from "./../../redux";
 import StarRating from "../StarRating";
 import { CgPlayListAdd } from "react-icons/cg";
@@ -39,9 +38,6 @@ const FetchMovie = (props) => {
   const matchesMD = useMediaQuery("(max-width: 1280px)");
   const matchesSM = useMediaQuery("(max-width: 960px)");
 
-  const myRef = useRef(null);
-  const location = useLocation();
-
   const notify = () =>
     toast.error("Download Unavailable", {
       position: matchesMD ? "top-center" : "top-right",
@@ -54,13 +50,9 @@ const FetchMovie = (props) => {
     });
 
   useEffect(() => {
-    function scrollToMovieTitle() {
-      window.scrollTo(0, 0);
-    }
     getMovie(match.params.id);
     fetchSimilarMovies(match.params.id);
     fetchMovieVideo(match.params.id);
-    scrollToMovieTitle();
   }, [
     getMovie,
     match,
@@ -68,7 +60,6 @@ const FetchMovie = (props) => {
     selectedMovie,
     fetchSimilarMovies,
     fetchMovieVideo,
-    location,
   ]);
 
   const limitActionMovie = actionMovies.slice(1, 7);
@@ -123,7 +114,6 @@ const FetchMovie = (props) => {
           )}
         </div>
         <div
-          ref={myRef}
           className={`singleMovie__description ${
             darkMode
               ? "singleMovie__description--darkMode"

@@ -38,6 +38,7 @@ import BookmarkedMovies from "./movies/BookmarkedMovies";
 import GetUpcomingThrillerMovies from "./pages/thriller/GetUpcomingThrillerMovies";
 import GetUpcomingWarMovies from "./pages/war/GetUpcomingWarMovies";
 import ShowViewedMovies from "./movies/ShowViewedMovies";
+import ScrollToView from "./utils/ScrollToView";
 
 const Routes = ({ searched }) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
@@ -49,11 +50,13 @@ const Routes = ({ searched }) => {
         strict
         render={(props) => <Homepage {...props} />}
       />
-      <Route
-        exact
-        path="/movie/:id"
-        render={(props) => <FetchMovie {...props} />}
-      />
+      <ScrollToView>
+        <Route
+          exact
+          path="/movie/:id"
+          render={(props) => <FetchMovie {...props} />}
+        />
+      </ScrollToView>
       {matchesSM && (
         <Route
           exact
