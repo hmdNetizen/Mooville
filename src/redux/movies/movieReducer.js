@@ -372,7 +372,7 @@ export default (state = initialState, action) => {
       localStorage.setItem("viewed", JSON.stringify(action.payload));
       return {
         ...state,
-        viewedMovies: action.payload,
+        viewedMovies: [action.payload, ...state.viewedMovies],
         loading: false,
         error: "",
       };

@@ -38,25 +38,17 @@ import BookmarkedMovies from "./movies/BookmarkedMovies";
 import GetUpcomingThrillerMovies from "./pages/thriller/GetUpcomingThrillerMovies";
 import GetUpcomingWarMovies from "./pages/war/GetUpcomingWarMovies";
 import ShowViewedMovies from "./movies/ShowViewedMovies";
-import ScrollToView from "./utils/ScrollToView";
 
-const Routes = ({ searched }) => {
+const Routes = ({ searched, loading }) => {
   const matchesSM = useMediaQuery("(max-width: 960px)");
   return (
     <Switch>
+      <Route exact path="/" render={(props) => <Homepage {...props} />} />
       <Route
         exact
-        path="/"
-        strict
-        render={(props) => <Homepage {...props} />}
+        path="/movie/:id"
+        render={(props) => <FetchMovie {...props} />}
       />
-      <ScrollToView>
-        <Route
-          exact
-          path="/movie/:id"
-          render={(props) => <FetchMovie {...props} />}
-        />
-      </ScrollToView>
       {matchesSM && (
         <Route
           exact
@@ -64,7 +56,7 @@ const Routes = ({ searched }) => {
           render={(props) => (
             <Fragment>
               <SearchInput />
-              {searched && searched.length > 0 && <SearchedMovies {...props} />}
+              {searched.length > 0 && <SearchedMovies {...props} />}
             </Fragment>
           )}
         />
@@ -189,6 +181,7 @@ const Routes = ({ searched }) => {
 const mapStateToProps = (state) => {
   return {
     searched: state.movies.searchedMovies,
+    loading: state.movies.loading,
   };
 };
 

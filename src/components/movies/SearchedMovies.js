@@ -21,7 +21,7 @@ const SearchedMovie = ({ loading, searched, error, darkMode }) => {
         >
           Unknown Server Error!
         </h2>
-      ) : searched.length < 1 ? (
+      ) : searched.length === 0 ? (
         <h2
           className={`movie__error__heading ${
             darkMode
@@ -53,8 +53,9 @@ const SearchedMovie = ({ loading, searched, error, darkMode }) => {
         </div>
       ) : (
         <div className="movie__card__wrapper">
-          {searched &&
-            searched.map((movie) => <MovieItem key={movie.id} movie={movie} />)}
+          {searched.map((movie) => (
+            <MovieItem key={movie.id} movie={movie} />
+          ))}
         </div>
       )}
     </div>

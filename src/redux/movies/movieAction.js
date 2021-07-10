@@ -65,6 +65,20 @@ export const displayViewedMovies = (viewed) => {
   };
 };
 
+export const getViewedMovies = (movieId) => async (dispatch) => {
+  const data = [];
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&append_to_response=videos`
+    );
+
+    data.push(response.data);
+    dispatch(displayViewedMovies(data));
+  } catch (error) {
+    dispatch(getMoviesFailure(error.message));
+  }
+};
+
 export const getSingleMovie = (movieId) => async (dispatch) => {
   try {
     const response = await axios.get(

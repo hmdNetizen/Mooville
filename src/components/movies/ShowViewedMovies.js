@@ -4,7 +4,7 @@ import { getSingleMovie } from "../../redux";
 
 const ShowViewedMovies = ({ viewed, match, getViewedMovies, darkMode }) => {
   useEffect(() => {
-    // getViewedMovies(match.id);
+    getViewedMovies(match.id);
   }, [getViewedMovies, match]);
   return (
     <div
@@ -34,7 +34,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    getViewedMovies: (value) => dispatch(getSingleMovie(value)),
+    getViewedMovies: (movieId) => dispatch(getSingleMovie(movieId)),
   };
 };
 

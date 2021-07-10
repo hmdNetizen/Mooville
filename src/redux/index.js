@@ -36,5 +36,5 @@ export {
   getUpcomingScienceFictionMovies,
   getUpcomingThrillerMovies,
   getUpcomingWarMovies,
-  displayViewedMovies,
+  getViewedMovies,
 } from "./movies/movieAction";

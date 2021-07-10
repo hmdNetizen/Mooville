@@ -7,17 +7,20 @@ import Footer from "./components/layout/Footer";
 import "./scss/index.css";
 import store from "./redux/store";
 import Routes from "./components/Routes";
+import ScrollToView from "./components/utils/ScrollToView";
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Header />
-        <NavMenu />
-        <div className="container">
-          <Routes />
-        </div>
-        <Footer />
+        <ScrollToView>
+          <Header />
+          <NavMenu />
+          <div className="container">
+            <Routes />
+          </div>
+          <Footer />
+        </ScrollToView>
       </Router>
     </Provider>
   );
