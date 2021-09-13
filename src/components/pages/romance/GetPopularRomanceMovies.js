@@ -1,21 +1,10 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import swiperCore, { EffectCoverflow, Scrollbar } from "swiper";
 import { connect } from "react-redux";
 import { getPopularRomanceMovies } from "../../../redux";
-import Spinner from "../../Spinner";
-
-swiperCore.use([EffectCoverflow, Scrollbar]);
+import Trending from "../../movies/Trending";
 
 const GetPopularRomanceMovies = (props) => {
-  const {
-    popularRomanceMovies,
-    darkMode,
-    loading,
-    error,
-    showPopularRomanceMovies,
-  } = props;
+  const { popularRomanceMovies, darkMode, showPopularRomanceMovies } = props;
   useEffect(() => {
     showPopularRomanceMovies();
   }, [showPopularRomanceMovies]);
@@ -41,51 +30,7 @@ const GetPopularRomanceMovies = (props) => {
           >
             Most Popular (2020)
           </h2>
-          <div className="slider-wrapper">
-            {loading ? (
-              <Spinner />
-            ) : error ? (
-              <h2
-                className={`carousel__error__heading ${
-                  darkMode
-                    ? "carousel__error__heading--darkMode"
-                    : "carousel__error__heading--lightMode"
-                }`}
-              >
-                Unknown Server Error!
-              </h2>
-            ) : (
-              <Swiper
-                // spaceBetween={50}
-                centeredSlides={true}
-                effect="coverflow"
-                height={250}
-                width={170}
-                style={{ borderRadius: 20 }}
-              >
-                {popularRomanceMovies.map((romance) => (
-                  <SwiperSlide key={romance.id}>
-                    <div
-                      className={`carousel__poster__wrapper ${
-                        darkMode
-                          ? "carousel__poster__wrapper--darkMode"
-                          : undefined
-                      }`}
-                    >
-                      <Link to={`/movie/${romance.id}`}>
-                        <img
-                          src={`http://image.tmdb.org/t/p/w185/${romance.poster_path}`}
-                          alt="post"
-                          className="carousel__poster"
-                          sizes="185px"
-                        />
-                      </Link>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            )}
-          </div>
+          <Trending movies={popularRomanceMovies} />
         </div>
       </div>
     </section>
@@ -96,8 +41,6 @@ const mapStateToProps = (state) => {
   return {
     popularRomanceMovies: state.movies.popularRomanceMovies,
     darkMode: state.theme.darkTheme,
-    loading: state.movies.loading,
-    error: state.movies.error,
   };
 };
 

@@ -1,6 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getSingleMovie, getSimilarMovies, getMovieVideo, getViewedMovies } from "./../../redux";
+import {
+  getSingleMovie,
+  getSimilarMovies,
+  getMovieVideo,
+  getViewedMovies,
+} from "./../../redux";
 import StarRating from "../StarRating";
 import { CgPlayListAdd } from "react-icons/cg";
 import { AiFillLike, AiFillDislike, AiOutlineDownload } from "react-icons/ai";
@@ -62,7 +67,7 @@ const FetchMovie = (props) => {
     selectedMovie,
     fetchSimilarMovies,
     fetchMovieVideo,
-    showViewedMovies
+    showViewedMovies,
   ]);
 
   const limitActionMovie = actionMovies.slice(1, 7);
@@ -393,7 +398,7 @@ const mapDispatchToProps = (dispatch) => {
     getMovie: (id) => dispatch(getSingleMovie(id)),
     fetchSimilarMovies: (id) => dispatch(getSimilarMovies(id)),
     fetchMovieVideo: (id) => dispatch(getMovieVideo(id)),
-    showViewedMovies: (movieId) => dispatch(getViewedMovies(movieId))
+    showViewedMovies: (movieId) => dispatch(getViewedMovies(movieId)),
   };
 };
 
